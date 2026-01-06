@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sashimi's Audio Masterlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pure-white: #ffffff;
+            --soft-white: #fefefe;
+            --cream-white: #fdfbf9;
+            --blush-light: #fff5f3;
+            --blush-medium: #ffefec;
+            --salmon-pale: #ffd5cf;
+            --salmon-light: #ffb8ad;
+            --salmon-pink: #e8a091;
+            --salmon-medium: #d4847a;
+            --salmon-deep: #c25d5d;
+            --text-dark: #4a3f3a;
+            --text-medium: #6b5a52;
+            --text-light: #8a7a72;
+            --glow-salmon: rgba(232, 160, 145, 0.4);
+            --font-display: 'Shippori Mincho', serif;
+            --font-body: 'Zen Maru Gothic', sans-serif;
+            --font-size-base: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: var(--font-size-base); scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--cream-white); color: var(--text-dark); min-height: 100vh; line-height: 1.6; overflow-x: hidden; position: relative; }
+        body.font-default { --font-body: 'Zen Maru Gothic', sans-serif; }
+        body.font-serif { --font-body: 'Shippori Mincho', serif; }
+        body.font-accessible { --font-body: 'Atkinson Hyperlegible', sans-serif; }
+        .background-image { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.08; z-index: -2; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(255,245,243,0.95) 0%, rgba(253,251,249,0.9) 50%, rgba(255,239,236,0.95) 100%); pointer-events: none; z-index: -1; }
+        .deco-circle { position: fixed; border-radius: 50%; pointer-events: none; z-index: -1; }
+        .deco-circle-1 { width: 500px; height: 500px; top: -150px; right: -150px; background: radial-gradient(circle, rgba(232, 160, 145, 0.15) 0%, transparent 70%); }
+        .deco-circle-2 { width: 400px; height: 400px; bottom: 5%; left: -100px; background: radial-gradient(circle, rgba(255, 184, 173, 0.12) 0%, transparent 70%); }
+        .age-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74, 63, 58, 0.97); z-index: 10000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        .age-modal-overlay.hidden { display: none; }
+        .age-modal { background: linear-gradient(145deg, var(--pure-white), var(--blush-light)); border: 2px solid var(--salmon-pink); border-radius: 20px; padding: 3rem; max-width: 480px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(194, 93, 93, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8); animation: modalAppear 0.4s ease-out; }
+        @keyframes modalAppear { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .age-modal-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; }
+        .age-modal h2 { font-family: var(--font-display); font-size: 1.8rem; color: var(--salmon-deep); margin-bottom: 1rem; }
+        .age-modal p { color: var(--text-medium); margin-bottom: 2rem; line-height: 1.7; }
+        .age-modal-buttons { display: flex; gap: 1rem; justify-content: center; }
+        .age-btn { padding: 0.9rem 2.5rem; border-radius: 30px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .age-btn-confirm { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: var(--pure-white); border-color: var(--salmon-medium); }
+        .age-btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-salmon); }
+        .age-btn-deny { background: transparent; color: var(--text-medium); border-color: var(--salmon-pale); }
+        .age-btn-deny:hover { border-color: var(--salmon-pink); color: var(--salmon-deep); }
+        .header { padding: 2rem; border-bottom: 1px solid rgba(232, 160, 145, 0.2); background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,245,243,0.95) 100%); backdrop-filter: blur(10px); }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .logo-icon { font-size: 2.5rem; }
+        .logo-text { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, var(--salmon-deep), var(--salmon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-sub { font-size: 0.8rem; color: var(--text-light); letter-spacing: 0.15em; text-transform: uppercase; }
+        .search-container { flex: 1; max-width: 400px; min-width: 250px; }
+        .search-wrapper { position: relative; }
+        .search-input { width: 100%; padding: 0.9rem 1.2rem 0.9rem 3rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 30px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.95rem; transition: all 0.3s ease; }
+        .search-input::placeholder { color: var(--text-light); }
+        .search-input:focus { outline: none; border-color: var(--salmon-pink); box-shadow: 0 0 20px var(--glow-salmon); }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--salmon-pink); width: 20px; height: 20px; }
+        .settings-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.2rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; color: var(--salmon-deep); font-family: var(--font-body); font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; }
+        .settings-btn:hover { background: var(--blush-light); border-color: var(--salmon-pink); }
+        .settings-btn svg { width: 18px; height: 18px; }
+        .settings-panel { position: fixed; top: 0; right: -350px; width: 320px; height: 100%; background: var(--pure-white); border-left: 2px solid var(--salmon-pale); z-index: 1000; padding: 2rem; transition: right 0.3s ease; overflow-y: auto; }
+        .settings-panel.open { right: 0; }
+        .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74, 63, 58, 0.3); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .settings-overlay.open { opacity: 1; visibility: visible; }
+        .settings-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--salmon-pale); }
+        .settings-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--salmon-deep); }
+        .settings-close { background: none; border: none; color: var(--text-medium); cursor: pointer; padding: 0.5rem; transition: color 0.3s ease; }
+        .settings-close:hover { color: var(--salmon-deep); }
+        .settings-section { margin-bottom: 2rem; }
+        .settings-section h4 { font-size: 0.85rem; color: var(--text-medium); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .font-size-controls { display: flex; align-items: center; gap: 1rem; }
+        .font-size-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--blush-light); border: 2px solid var(--salmon-pale); color: var(--text-dark); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .font-size-btn:hover { background: var(--salmon-pink); color: var(--pure-white); border-color: var(--salmon-pink); }
+        .font-size-value { flex: 1; text-align: center; color: var(--text-dark); font-weight: 600; }
+        .font-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .font-option { padding: 0.8rem 1rem; background: var(--blush-light); border: 2px solid transparent; border-radius: 10px; color: var(--text-dark); cursor: pointer; transition: all 0.3s ease; text-align: left; }
+        .font-option:hover { border-color: var(--salmon-pale); }
+        .font-option.active { background: linear-gradient(135deg, var(--salmon-pale), var(--blush-medium)); border-color: var(--salmon-pink); }
+        .main-content { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .nav-section { margin-bottom: 2rem; }
+        .nav-list { display: flex; flex-wrap: wrap; gap: 0.8rem; list-style: none; }
+        .nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.2rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; cursor: pointer; transition: all 0.3s ease; color: var(--text-medium); }
+        .nav-item:hover { border-color: var(--salmon-pink); color: var(--salmon-deep); }
+        .nav-item.active { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); border-color: var(--salmon-deep); color: var(--pure-white); }
+        .nav-icon { font-size: 1.1rem; }
+        .nav-count { font-size: 0.75rem; padding: 0.2rem 0.5rem; background: rgba(194, 93, 93, 0.15); border-radius: 10px; }
+        .nav-item.active .nav-count { background: rgba(255, 255, 255, 0.25); }
+        .controls-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .results-info { color: var(--text-medium); font-size: 0.95rem; }
+        .results-count { font-weight: 700; color: var(--salmon-deep); }
+        .view-toggle { display: flex; gap: 0.5rem; }
+        .view-btn { padding: 0.6rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 8px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.3rem; color: var(--text-medium); }
+        .view-btn:hover { border-color: var(--salmon-pink); }
+        .view-btn.active { background: var(--salmon-pink); border-color: var(--salmon-pink); color: var(--pure-white); }
+        .view-btn svg { width: 16px; height: 16px; }
+        .cards-grid { display: grid; gap: 1.5rem; }
+        .cards-grid.view-1 { grid-template-columns: 1fr; }
+        .cards-grid.view-2 { grid-template-columns: repeat(2, 1fr); }
+        .cards-grid.view-3 { grid-template-columns: repeat(3, 1fr); }
+        .card { background-color: #ffffff; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s ease; border: 2px solid var(--salmon-pale); box-shadow: 0 4px 15px rgba(194, 93, 93, 0.08); display: flex; flex-direction: column; animation: fadeInUp 0.4s ease-out backwards; isolation: isolate; cursor: pointer; }
+        .card:nth-child(1) { animation-delay: 0.02s; } .card:nth-child(2) { animation-delay: 0.04s; } .card:nth-child(3) { animation-delay: 0.06s; }
+        .card:nth-child(4) { animation-delay: 0.08s; } .card:nth-child(5) { animation-delay: 0.1s; } .card:nth-child(6) { animation-delay: 0.12s; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(194, 93, 93, 0.15); border-color: var(--salmon-pink); }
+        .card-image-wrapper { position: relative; height: 330px; background: linear-gradient(135deg, var(--blush-light), var(--blush-medium)); overflow: hidden; }
+        .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .card:hover .card-image { transform: scale(1.05); }
+        .card-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: linear-gradient(135deg, var(--blush-light), var(--salmon-pale)); color: var(--salmon-deep); opacity: 0.6; }
+        .card-category-badge { position: absolute; top: 1rem; left: 1rem; background: var(--pure-white); color: var(--salmon-deep); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .card-duration { position: absolute; bottom: 1rem; right: 1rem; background: rgba(74, 63, 58, 0.85); color: var(--pure-white); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.8rem; font-weight: 500; backdrop-filter: blur(5px); }
+        .card-play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(194, 93, 93, 0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .card:hover .card-play-overlay { opacity: 1; }
+        .play-icon { width: 70px; height: 70px; background: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); transform: scale(0.8); transition: transform 0.3s ease; }
+        .card:hover .play-icon { transform: scale(1); }
+        .play-icon svg { width: 30px; height: 30px; color: var(--salmon-deep); margin-left: 4px; }
+        .card-content { padding: 1.5rem; background-color: #ffffff; flex: 1; position: relative; z-index: 1; width: 100%; box-sizing: border-box; }
+        .card-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.4; max-height: 3.2em; overflow: hidden; }
+        .card-credits { margin-bottom: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        .credit-pill { display: inline-flex; align-items: center; gap: 0.3rem; background-color: #ffffff; border: 1px solid var(--salmon-pale); border-radius: 20px; padding: 0.35rem 0.7rem; font-size: 0.75rem; box-shadow: 0 1px 3px rgba(194, 93, 93, 0.1); width: fit-content; max-width: 100%; flex-wrap: wrap; }
+        .credit-label { font-weight: 600; color: var(--salmon-deep); white-space: nowrap; }
+        .credit-link { color: var(--salmon-medium); text-decoration: none; transition: color 0.2s ease; }
+        .credit-link:hover { color: var(--salmon-deep); text-decoration: underline; }
+        .collab-partners { display: inline; }
+        .collab-partners .credit-link { margin-right: 0.2rem; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+        .card-tags.collapsed { max-height: 28px; overflow: hidden; }
+        .tag { background: var(--blush-medium); color: var(--text-medium); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem; font-weight: 500; border: 1px solid var(--salmon-pale); transition: all 0.2s ease; cursor: pointer; }
+        .tag:hover { background: var(--salmon-pink); color: var(--pure-white); border-color: var(--salmon-pink); }
+        .tag-expand-btn { background: var(--salmon-pink); color: var(--pure-white); padding: 0.25rem 0.6rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--salmon-medium); cursor: pointer; transition: all 0.2s ease; }
+        .tag-expand-btn:hover { background: var(--salmon-deep); border-color: var(--salmon-deep); }
+        .hidden-tags { display: inline; }
+        .card-synopsis { color: var(--text-medium); font-size: 0.85rem; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-light); grid-column: 1 / -1; }
+        .empty-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5; }
+        .empty-title { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-medium); margin-bottom: 0.5rem; }
+        .empty-text { color: var(--text-light); }
+        @media (max-width: 1100px) { .cards-grid.view-3 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .cards-grid.view-2, .cards-grid.view-3 { grid-template-columns: 1fr; }
+            .view-toggle { display: none; }
+            .header-content { flex-direction: column; align-items: stretch; }
+            .search-container { max-width: 100%; }
+            .logo { justify-content: center; }
+            .card-image-wrapper { height: 280px; }
+        }
+    </style>
+</head>
+<body class="font-default">
+    <div class="background-image"></div>
+    <div class="deco-circle deco-circle-1"></div>
+    <div class="deco-circle deco-circle-2"></div>
+
+    <div class="age-modal-overlay" id="ageModal">
+        <div class="age-modal">
+            <span class="age-modal-icon">🍣</span>
+            <h2>Age Verification Required</h2>
+            <p>This website contains adult content. You must be at least 18 years old to enter.</p>
+            <div class="age-modal-buttons">
+                <button class="age-btn age-btn-confirm" onclick="verifyAge(true)">I am 18+</button>
+                <button class="age-btn age-btn-deny" onclick="verifyAge(false)">Leave</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🍣</span>
+                <div>
+                    <div class="logo-text">Sashimi's Audio Masterlist</div>
+                    <div class="logo-sub">Deliciously Lewd</div>
+                </div>
+            </div>
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search audios, tags...">
+                </div>
+            </div>
+            <button class="settings-btn" onclick="toggleSettings()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                Settings
+            </button>
+        </div>
+    </header>
+
+    <div class="settings-overlay" id="settingsOverlay" onclick="toggleSettings()"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3 class="settings-title">Settings</h3>
+            <button class="settings-close" onclick="toggleSettings()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="settings-section">
+            <h4>Font Size</h4>
+            <div class="font-size-controls">
+                <button class="font-size-btn" onclick="adjustFontSize(-2)">−</button>
+                <span class="font-size-value" id="fontSizeValue">16px</span>
+                <button class="font-size-btn" onclick="adjustFontSize(2)">+</button>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h4>Font Style</h4>
+            <div class="font-options">
+                <button class="font-option active" data-font="default" onclick="setFont('default')">Zen Maru Gothic</button>
+                <button class="font-option" data-font="serif" onclick="setFont('serif')">Shippori Mincho</button>
+                <button class="font-option" data-font="accessible" onclick="setFont('accessible')">Atkinson Hyperlegible</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <nav class="nav-section">
+            <ul class="nav-list">
+                <li class="nav-item active" data-category="all"><span class="nav-icon">🍱</span><span>All</span><span class="nav-count" id="count-all">0</span></li>
+                <li class="nav-item" data-category="fdom"><span class="nav-icon">⛓️</span><span>Fdom</span><span class="nav-count" id="count-fdom">0</span></li>
+                <li class="nav-item" data-category="fsub"><span class="nav-icon">🎀</span><span>Fsub</span><span class="nav-count" id="count-fsub">0</span></li>
+                <li class="nav-item" data-category="fswitch"><span class="nav-icon">🔄</span><span>Fswitch</span><span class="nav-count" id="count-fswitch">0</span></li>
+                <li class="nav-item" data-category="f4f"><span class="nav-icon">💕</span><span>F4F</span><span class="nav-count" id="count-f4f">0</span></li>
+                <li class="nav-item" data-category="script-offer"><span class="nav-icon">📝</span><span>Script Offer</span><span class="nav-count" id="count-script-offer">0</span></li>
+                <li class="nav-item" data-category="collab"><span class="nav-icon">🤝</span><span>Collab</span><span class="nav-count" id="count-collab">0</span></li>
+            </ul>
+        </nav>
+        <div class="controls-bar">
+            <div class="results-info">Showing <span class="results-count" id="resultsCount">0</span> audios</div>
+            <div class="view-toggle">
+                <button class="view-btn" data-view="1"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></button>
+                <button class="view-btn" data-view="2"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg></button>
+                <button class="view-btn active" data-view="3"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="18" rx="1"/><rect x="17" y="3" width="5" height="18" rx="1"/></svg></button>
+            </div>
+        </div>
+        <div class="cards-grid view-3" id="cardsGrid"></div>
+    </main>
+
+    <script>
+        const CONFIG = {
+            categories: {
+                all: { title: 'All', icon: '🍱' },
+                fdom: { title: 'Fdom', icon: '⛓️' },
+                fsub: { title: 'Fsub', icon: '🎀' },
+                fswitch: { title: 'Fswitch', icon: '🔄' },
+                f4f: { title: 'F4F', icon: '💕' },
+                'script-offer': { title: 'Script Offer', icon: '📝' },
+                collab: { title: 'Collab', icon: '🤝' }
+            }
+        };
+
+        const AUDIOS_DATA = 
+[
+  {
+    "id": 1,
+    "title": "Your Ex-Girlfriend\u2019s Hot Mom Becomes Your New Year\u2019s Resolution\ud83e\udd42",
+    "category": "fsub",
+    "tags": "[Sweet FSub][Big Cock Worship][Helping You Get Over My Daughter][Nipple Sucking][Fingering][Cunnilingus][Blowjob][Ball Sucking][Throat Bulge][Face Fucking][Eye Contact][Begging][Self Degradation][Cum Encouragement][Creampie][OC]",
+    "synopsis": "You broke up with your ex many months ago, but you've remained friends with her mom. On New Years Eve, you show up to her holiday party hoping to express your thanks for her support over the past year. The relationship between you is purely platonic, but as the night progresses, she is soon urging you to make her your (not so platonic) new years resolution.",
+    "duration": "26m 49s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1q3wqi1/f4m_your_exgirlfriends_hot_mom_becomes_your_new/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 2,
+    "title": "Your Bully Shows Up to Christmas Dinner and Confesses Her Love to You \ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Bratty Fdom] to [Loving FSub][Fake Relationship][Teasing][Meeting the Family][First Kiss][Neck Kisses][Nipple Sucking][Ass Grabbing][Cock Worship][First Blowjob][Cowgirl][Secret Crush][Confession][Creampie]",
+    "synopsis": "You are always getting nagged and teased by your family for not having a girlfriend. Somehow, you convinced your bully to accompany you to your family\u2019s Christmas dinner. A bratty attitude and sharp barbs are small prices to pay for fake love. But will this fake-love turn real?",
+    "duration": "21m 06s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1py21m6/f4mscript_fill_your_bully_shows_up_to_christmas/",
+    "scriptAuthor": "u/GunStripes",
+    "scriptAuthorPage": "https://www.reddit.com/user/GunStripes/",
+    "scriptLink": "",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": []
+  },
+  {
+    "id": 3,
+    "title": "Putting the Office Bully In Her Place On Your First Day\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[FDom] to [FSub][Rough Sex][Punish Me][It Hurts a little, Baby][Bent over desk][Hold Me Down][Begging][Spanking][Cunnilingus][Choking][Make Me Your Good Girl][Bitchy] then kind of [Sweet][Sloppy Blowjob][Cum On My Tits][OC]",
+    "synopsis": "You started working at a new site in the IT department when you meet the office manager who is tasked with showing you around the office on your first day. Everyone you've met thus far has been warm and friendly, but not her. She doesn't like you and she assumes you were hired based upon your attractive appearance and doesn't realize you that have several years of experience. She makes it very clear that you are not welcome at this work site. Instead of accepting her mistreatment, you decide to show her that you can be just as brutal...",
+    "duration": "22m 17s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1psbsvu/f4m_putting_the_office_bully_in_her_place_on_your/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 4,
+    "title": "Your Therapist is Desperate For Your Cum During NNN\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Professional FDom to Slutty FSub][Teasing][Consent Checks][Good Boys][Helping You Relax][Play With My Tits][Big Cock Worship][Handjob][Throatfucking][Throat Bulge][Eye Contact][Begging][Self-Degradation][Affirmations][Breeding][Creampie][OC]",
+    "synopsis": "You go to therapy because you are concerned that you might be addicted to jerking off. Due to your concerns, you have decided to participate in NNN. You love cumming, but you're afraid it's taking up too much of your life. You and your therapist explore your goals and she shows you how she can help you reach them so you can have a productive and healthy month.",
+    "duration": "28m 21s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1paq3u1/f4myour_therapist_is_desperate_for_your_cum/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 5,
+    "title": "Your Bully Wants To Use You Again\u2026 For Old Time\u2019s Sake\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Bully][Reunion][Fdom][Dubcon][RAPE][Car Sex][Rough Sex][Sloppy Blowjob][Deepthroat][Facefuck][Tying Up With The Seatbelt][Making The Car Bounce][Fucking You With My Tight Ass][Cowgirl][Reverse Cowgirl][Anal Creampie]",
+    "synopsis": "After five years apart, some of your friends have decided to organize an impromptu informal little college reunion. You opted to go, but the last person you expected to see was her: your former bully. Sure she helped you pass your classes, but she also used every part of her body to violate you. She\u2019d use all three holes on you whenever and wherever she pleased. She kind of ruined dating for you in college. It turns out she hasn\u2019t changed much and she\u2019s ready to use you again\u2026 just like old times. Don\u2019t deny\u2026 you love it.",
+    "duration": "28m 11s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1p4wgmh/f4mscript_fill_your_bully_wants_to_use_you_again/",
+    "scriptAuthor": "u/SpaceCowboy_1999",
+    "scriptAuthorPage": "https://www.reddit.com/user/SpaceCowboy_1999/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1p4vn0t/f4mscript_offer_your_bully_wants_to_rape_you/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 6,
+    "title": "Your Big Titty Grad School Professor Helps You Forget Your Ex & Improve Your Grade",
+    "category": "fdom",
+    "tags": "[FDom][Grinding][Fingering][Blowjob][Throatpie][Cock Worship][Eye Contact][Against the Wall][Older Woman/Younger Man][Good Boys][Spanking][Multiple Listener Orgasms][Panties to the side][Spit Play][Breeding][OC]",
+    "synopsis": "You are a graduate school student doing research on effective medication for certain mental disorders. Your girlfriend broke up with you two weeks ago and you have been so distracted that you did poorly on a recent midterm. You visit your professor during her office hours to see what can be done about the grade. Your professor comes up with some unique extra credit work for you that not only raises your grade, but helps you forget about your ex...",
+    "duration": "26m 21s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1p2atgl/f4m_your_big_titty_grad_school_professor_helps/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 7,
+    "title": "Your Bully Confesses Her True Feelings While Jerking Off On Your Desk\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Shy And Quiet Listener][Muscular Bully][Caught Masturbating][Confession][Kissing][Fdom to Fsub][Tits Worship][Abs Worship][Cunnilingus][Cowgirl][Missionary][L-Bombs][Begging For You To Fill Her Womb][Creampie]",
+    "synopsis": "The speaker is a known and feared muscular bully at college. However, her main target is the listener, who's an introvert, shy and quiet boy, who's actually really kind. Because of that kindness, she fell in love with him, but she's too shy to tell him that she loves him. One day after class, the speaker couldn't resist while thinking about her crush (the listener) and started to touch herself on the listener's desk. But the speaker was caught by him, and now she needs to show him her true feelings.",
+    "duration": "20m 05s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1oysu14/f4mscript_fill_your_bully_confesses_her_true/",
+    "scriptAuthor": "u/UnderlustBlaze",
+    "scriptAuthorPage": "https://www.reddit.com/user/UnderlustBlaze/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1427qs6/f4m_script_offer_your_bullys_true_feelings_shady/",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 8,
+    "title": "Turning Your Innocent Girlfriend Into Your Anal Whore\ud83d\udca6",
+    "category": "fsub",
+    "tags": "[Blowjob][Anal Creampie][Fsub][Teasing][Handjob][GFE][Dirty Talk][L-Bomb][Shy] to [Feral][Ass Eating][Fingering][Handjob][Yandere if you squint][Blowjob][Cock Worship][Teasing][Face Down Ass Up][Creampie][Buttplug]",
+    "synopsis": "You just had a wonderful date with your girlfriend and she is feeling the love. In fact, she wants to show you just how much she appreciates your effort to make her happy by rewarding you sexually. When you propose anal she's initially hesitant but you ease her into it and she goes from shy and reserved to absolute anal freak.",
+    "duration": "25m 50s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1omjl8s/f4mscript_fill_turning_your_innocent_girlfriend/",
+    "scriptAuthor": "u/BillyYandereCyrus",
+    "scriptAuthorPage": "https://www.reddit.com/user/BillyYandereCyrus/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1i1kt4i/f4m_turning_your_innocent_girlfriend_into_your/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 9,
+    "title": "Ghost mommy \u201ccomforts\u201d you after a scare",
+    "category": "fdom",
+    "tags": "[Gentle Fdom][MILF][DubCon][Rape][Size difference][Soft & Squishy][Scarousal][Breast Play][Big Tits][Yandere][Nursing Handjob][Warmth Kink][Good boy][Blowjob][Cum Swallow][Teasing][Missionary][Leg Lock] [Creampie][Aftercare][Multiple O\u2019s]",
+    "synopsis": "Ghosts ain\u2019t real\u2026unless you\u2019re taking a shortcut through a cemetery. When a ghost can appear out of thin air, threatening to devour you whole. She chases you for what feels like hours, her teasing voice always in your ear. Slamming the gate shut just before you escape. Now cornered you break down in tears, heart pounding, fearing what she\u2019ll do to you. But as she looms over you\u2026she pauses. Then is genuinely sorry for what she's done.",
+    "duration": "43m 17s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1ogp13i/f4mscript_fillghost_mommy_comforts_you_after_a/",
+    "scriptAuthor": "u/notReallyannon",
+    "scriptAuthorPage": "https://www.reddit.com/user/notReallyannon/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1nsxge3/f4m_ghost_mommy_comforts_you_after_a_scare_script/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 10,
+    "title": "Your Big Stepsister Needs Help Sprucing Up Her Instagram",
+    "category": "fdom",
+    "tags": "[Pushy FDom][Gently Aggressive][Dubcon]so[Rape][Incest][Handjob][Spit On It][Pull My Panties to the Side][Riding Your Fingers][Making You Taste Me][Good Boys][Shit talking][Self Degradation][Cock Worship][Cowgirl][Facefuck][Creampie][OC]",
+    "synopsis": "Your stepsister is starting to date again and she needs help sprucing up her social media. She asks you to come by her room and she's in a full lacy lingerie set. There's nothing sexual about it... she just needs your help with posing until she catches you staring one too many times.",
+    "duration": "29m 19s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1oawhdl/f4myour_big_stepsister_needs_help_sprucing_up_her/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 11,
+    "title": "Your Best Friend\u2019s Mom is the Neighborhood Fleshlight",
+    "category": "fsub",
+    "tags": "[Aggressive Fsub][Holes in the Wall][Brief Dubcon]so[Rape][Analingus][Cunnilingus][Finger My Ass then Fuck it][Double Penetration][Splitting Me Open][Watch My Tits Bounce][Treating Me Like an Object][Brainless Begging][Anal Creampie][OC]",
+    "synopsis": "You recently moved to your best friend\u2019s neighborhood and are at his mom\u2019s house to help mount a massive television. To welcome you to the neighborhood, she shows off the recreation room she had built in her basement. She invites all the single men in the neighborhood to use the space to blow off steam and she has a recent addition to the room that she\u2019s dying to show off to you.",
+    "duration": "19m 31s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1o7qm3w/f4myour_best_friends_mom_is_the_neighborhood/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 12,
+    "title": "Office Mommy Takes Care Of You On Your First Day\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[MILF][Older Woman][Younger Listener][Virgin Listener][Fdom][Office Sex][Boss][First Week][Mommydomme][Good Boy/Baby Boy][Babytalk][Nursing Handjob][Blowjob][Cum Swallowing][Cuddling] [Lay Your Head On My Breasts][Throatpie]",
+    "synopsis": "It's your first week on your first ever proper job! Obviously everything is a little nerve-wracking and you're still trying your best to settle in before your manager asks you to join her in her office for a little chat and an \"introductory meeting",
+    "duration": "20m 56s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1o54v1u/f4mscript_fill_office_mommy_takes_care_of_you_on/",
+    "scriptAuthor": "u/OpalescentMoonrise",
+    "scriptAuthorPage": "https://www.reddit.com/user/OpalescentMoonrise/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1hnq5dd/f4m_office_mommy_takes_care_of_you_on_your_first/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 13,
+    "title": "You Can\u2019t Stop Fucking Your Perverted Roommate\ud83d\udca6",
+    "category": "fsub",
+    "tags": "[Gooner] [Pervert] [Aggressive FSub] [Teasing] [Slutty] [Cumslut] [Facefucking] [Nympho] [Bratty] [Hatefuck] [Size Mentions] [Big Cock Worship] [Creampie]",
+    "synopsis": "our roommate is an absolute degenerate, she\u2019s messy, never has money for rent, and most importantly, she treats you like a piece of meat. You want to do something about her behavior, but there\u2019s a tiny problem",
+    "duration": "12m 24s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1nyyvfi/f4mscript_fill_you_cant_stop_fucking_your/",
+    "scriptAuthor": "u/JayinDismay",
+    "scriptAuthorPage": "https://www.reddit.com/user/JayinDismay/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1md9wk4/f4m_you_cant_stop_fucking_your_perverted_roommate/",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": []
+  },
+  {
+    "id": 14,
+    "title": "My Daughter Won\u2019t Let You Breed Her, So Breed Me Instead ",
+    "category": "fdom",
+    "tags": "[Gentle FDom][Older Woman/Younger Man][Nursing Handjob][BIG HEAVY TITS][Consent Checks][Cunnilingus][Analingus][Eat My Ass From Behind][DoggyStyle][Hair Pulling][No Condom][Dripping Wet Pussy][Begging][Rough][Breeding][Creampie][OC]",
+    "synopsis": "You spent the night getting drained by your girlfriend. The next morning, while she's out, your girlfriend\u2019s mom wanders into her room in only a bathrobe. She notices several used condoms on the floor and she makes it clear that she\u2019s aware of what you and her daughter have been up to. She\u2019s so grateful that you are good partner to her daughter that she offers to fulfill two of your fantasies that her daughter refuses right then and there. She and her daughter have a unique arrangement and her mom is determined to keep you satisfied.",
+    "duration": "20m 44s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1nn1nat/f4m_my_daughter_wont_let_you_breed_her_so_breed/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 15,
+    "title": "Used As Breeding Stock By A Pack of Wolf-Girls!\ud83d\udca6",
+    "category": "collab",
+    "tags": "[RAPE][INCEST][3X Fdom][Mom Teaching Daughters][Stronger Than You][Virgin][Scent Kink][Blowjob][Deepthroat][Cowgirl][Anal][Forbidden Creampie][Felching][Mom Eats Creampie Out of Daughter\u2019s Pussy][Orgasms for all]",
+    "synopsis": "You are lost in the woods. After a long day of walking around and feeling like you are being stalked by predators, you are able to start a fire to protect yourself from the cold.\n\nYour calming nerves are put on edge again when you hear howling, and in seconds you find yourself ambushed by three towering figures that have the features of wolves and women! Things look bad, you are at their mercy, but you could never have guessed that what they were after is not your flesh\u2026",
+    "duration": "34m 15s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mvrf25/fff4mscript_fill_used_as_breeding_stock_by_a_pack/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1mto1pw/fff4mscript_offer_used_as_breeding_stock_by_a/",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": [
+      {
+        "name": "u/Lurkydip",
+        "link": "https://www.reddit.com/user/Lurkydip/"
+      },
+      {
+        "name": "u/WldflowerPhoenix",
+        "link": "https://www.reddit.com/user/WldflowerPhoenix/"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Throatfucking Your Horny Queen While You Draw Her a Bath\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Sweet FDom] to [Helpless FSub][Rough][Servant Listener][Worshipping Her][Deepthroat][Gagging][Cock Worship][Ass Slapping][Pounding][Self Degradation][Choking][Begging][Make Me Take it][You Own Me][Serving You My Pussy][Creampie][OC]",
+    "synopsis": "You've been serving your new queen for the past week and have been fucking her for just as long. After a party, she invites you to help her prepare for bed where she confesses that you're more to her than just a servant.",
+    "duration": "24m 59s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mtva43/f4m_throatfucking_your_horny_queen_while_you_draw/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 17,
+    "title": "Your Mom\u2019s Slutty Best Friend Loves It When You Watch Her\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Gentle FDom][Curvy MILF][Older Woman/Younger Man][Deepthroat][Eye Contact][Over the Kitchen Table][Big Ass][Such A Good Fucking Boy For Me][Cock Worship][Voyeurism][Don\u2019t Tell Your Mom][Fill More of My Holes Please][Creampie][OC]",
+    "synopsis": "You arrive at your mom\u2019s best friend to help her with some chores around the house. After knocking on the door, you find it unlocked and you let yourself in. You wander through the house and hear strange noises coming from the kitchen. You poke your head around the corner and find your Mom\u2019s best friend touching herself right out in the open. You can\u2019t help but watch her for a bit until she catches you.",
+    "duration": "28m 14s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mmpgel/f4m_your_moms_slutty_best_friend_loves_it_when/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 18,
+    "title": "Fuck Me Like You Would Fuck My Daughter",
+    "category": "fdom",
+    "tags": "[Incest] [Mother] [First Date] [Back to My Place] [Brief Meeting with Daughter] [Taboo] [Let's Do It On Her Bed] [Sniff Her Panties] [Fantasising About You Fucking Her] [Bad Mommy] [Pervert] [Degradation] [Insults] [Both Cum]",
+    "synopsis": "A single mother surprises her date with her dark fantasies.",
+    "duration": "20m 21s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mk87k4/f4m_fuck_me_like_you_would_fuck_my_daughter/",
+    "scriptAuthor": "u/77DogDay",
+    "scriptAuthorPage": "https://www.reddit.com/user/77DogDay/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1c2w6c6/f4m_fuck_me_like_you_would_fuck_my_daughter/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 19,
+    "title": "Your Therapist Dares You to Destroy Her Ass For Research",
+    "category": "fsub",
+    "tags": "[Aggressive FSub][Anger Management][Power Bottom][Unethical Role Play][Affirmations][Kink Exploration][Guiding You][Punish Me for Their MIstakes][FACEFUCK][Deepthroat][Rough][Begging][It Hurts A Little][Self-degradation][Anal Creampie][OC]",
+    "synopsis": "You were recently involved in a serious physical altercation and are court mandated to attend therapy to avoid jail time. During your first session, your therapist provided you with relaxation techniques to help you and they have been working so far. During this session, your therapist asks you to participate in a study that she is leading. She is interested in the link between anger and sexual satisfaction. She plans to push you to your breaking point, and she is prepared to deal with the consequences. You are the perfect candidate.\n\nYou are ready to put your anger to good use.",
+    "duration": "30m 52s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mjmqvd/f4myour_therapist_dares_you_to_destroy_her_ass/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 20,
+    "title": "Make A Mess In Mommy's Pussy",
+    "category": "fdom",
+    "tags": "[Gentle Femdom] [Incest] [Good Boy] [Creampie] [Riding You] [Breeding] [Bedtime] [Handjob Under The Covers] [Tit sucking] [Drink From Mommy] [Aftercare] [Cum Seeping Through Cervix] [Stay Inside Me] and [Fall Asleep]",
+    "synopsis": "Mommy's soft and warm pussy relieves a good boy's aching cock before bed.",
+    "duration": "16m 36s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mglt9j/f4m_script_fill_make_a_mess_in_mommys_pussy/",
+    "scriptAuthor": "u/eyegazer444",
+    "scriptAuthorPage": "https://www.reddit.com/user/eyegazer444/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/qe4d55/f4m_make_a_mess_in_mommys_pussy_script_offer/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 21,
+    "title": "Your Ex's Mother Decides to Make You Hers\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[MILF][Your Ex's Mom][Falling In Love With Her][Going To Her House To Get Your Things][Mid Sex Phone Call][FDom][My Daughter Was a Fool to Leave You][Thiccccc][Kissing][Reverse Cowgirl][Revenge Sex][Cum With Me, Cutie]",
+    "synopsis": "You have recently been dumped by your girlfriend and must go to her house to get your things. You arrive only to find her mother there. She gives you a gentle hug, inviting you to stay a while, and that she's sorry. You've always had a thing for her, and you end up falling in love after her kindness and compassion. She decides that she's going to make you hers, and how can you say no to a beautiful, thicc, and kind woman? She fucks you reverse cowgirl and her daughter calls and gets to overhear your revenge.",
+    "duration": "14m 43s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1mb38aa/f4mscript_fill_your_exs_mother_decides_to_make/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1drtheb/f4m_your_exs_mother_decides_to_make_you/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 22,
+    "title": "I Owe You So Much More Than Some Silly Lap Dance",
+    "category": "fswitch",
+    "tags": "[FDom] to [Slutty FSub][Massage][Striptease][Slow Blowjob][Spreading My Legs For You][Fingering Myself][On My Desk][Self Degradation][Guiding You][Gentle][Holding me down][Make Me Watch While You Fuck Me][Anything You Want, Daddy][Facial][OC]",
+    "synopsis": "You are a regular at an upscale strip club where you spend a lot of time and money. You frequent the club every week, but you always sit in the same dark corner with the same drink. Tonight, the club is having an event to raise money for charity, giving everyone who shows up $5 lap dances. You are more interested in enjoying the view from afar. Seeing your disinterest in the girls on display, the owner of the club offers you another drink and keeps you company for a while before inviting you to her office. She\u2019s got big hair, full lips, beautiful tits, and a huge personality. She wants to show her appreciation for you for all that you do for the establishment, in whatever way that she can.",
+    "duration": "36m 23s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1lyv426/f4m_i_owe_you_so_much_more_than_some_silly_lap/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 23,
+    "title": "Your Big Sister\u2019s Best Friend Begs You For Her First Anal Creampie",
+    "category": "fsub",
+    "tags": "[Aggressive FSub][Banter][BIG TITS][Sloppy Deepthroat][ADDICTED to Giving Head][She\u2019s Totally a Virgin][Over the Sink][Make Me Watch You Fuck Me][Self-Degradation][Choking][Begging][Ass Smacking][Use My Pussy Juice as Lube][OC]",
+    "synopsis": "Your big sister\u2019s best friend is staying the night and while she\u2019s showering, you \u201caccidently\u201d walk in on her in your shared bathroom (let\u2019s be real, you wanted to catch a glimpse of her naked). You close the door behind you forgetting that it locks from the outside. While stuck together, you find out that she's a complete virgin who adores giving head and she matches your freak like you never expected.",
+    "duration": "24m 04s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1loje0n/f4myour_big_sisters_best_friend_begs_you_for_her/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 24,
+    "title": "Muscle Mommy Gym Manager Makes You Breed Her in her Office",
+    "category": "fdom",
+    "tags": "[FDom][Rough][DubCon]so[Rape][Degradation][Cock Kisses][BIG TITS][Sloppy Deepthroat][Don't Fight Me][Overstimulation][Insatiable][Over My Desk][Spanking][Begging][Breeding][Get Me Pregnant, Daddy!][Creampie][Give Me That Fucking Cum][OC]",
+    "synopsis": "You are a personal trainer who goes to check in with your gym manager at the end of your shift. You walk in on her changing in her office and she notices you before you can pretend you didn\u2019t see her. She demands that you come in and close the door behind you. You are already on her shitlist and have been since the day you were hired. You\u2019ve been trying to impress her ever since. She\u2019s an intimidating, muscular woman who has fired staff for less. You are desperate to keep your job.",
+    "duration": "19m 47s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1lcwsks/f4mmuscle_mommy_gym_manager_makes_you_breed_her/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 25,
+    "title": "Tomboy Friend Gets A BIT Protective When You Suck Her Tits \ud83d\udca6",
+    "category": "fdom",
+    "tags": "[FDom] Lots of [Tit Sucking] [Small Boob Appreciation] [MommyDomish] [Good Boys] [Tomboyish] [Possessive] [Leg lock] [Creampie] [Confession] [Let's Play Smash]",
+    "synopsis": "On a totally random day, your best friend comes to your house uninvited, but not unwelcome. After a period of boredom she can't help but push your buttons which culminates in her asking the age old question: \"Do you think my tits are suckable?\". After some thorough questioning, she eventually gets an answer from you, and also gets your mouth on one of her breasts. It might be staying there for good.",
+    "duration": "17m 59s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1l0q1wn/f4m_script_fill_tomboy_friend_gets_a_bit/",
+    "scriptAuthor": "u/L-Ost_C-Opy",
+    "scriptAuthorPage": "https://www.reddit.com/user/L-Ost_C-Opy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1jn7duk/f4m_tomboy_friend_gets_a_bit_protective_when_you/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 26,
+    "title": "\ud83d\udca6Additional Screening\ud83d\udc9c",
+    "category": "collab",
+    "tags": "[RAPE][Two Mommies][MDlb][Security][Abuse of Power][Groping][FDom][FSub][Handjob][Dirty Talk][Ball Sucking][Cock Slap][Swallowing][Ass Eating][Overstimulation][Blowjob][Restrained][Zip Ties][Cowgirl][Cock Drunk][Doggystyle][Everybody Cums]",
+    "synopsis": "Running late to your flight, two hot TSA agents set their sights on you. You've got some \"contraband\" they're dying to see and you just happened to be selected for \"additional screening\"",
+    "duration": "28m 05s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1kv6xeo/ff4mscript_filladditional_screeningrapetwo/",
+    "scriptAuthor": "u/BillyYandereCyrus",
+    "scriptAuthorPage": "https://www.reddit.com/user/BillyYandereCyrus/",
+    "scriptLink": "",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": [
+      {
+        "name": "u/beegeewanders",
+        "link": "https://www.reddit.com/user/beegeewanders/"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Big Stepsis Grudgingly Lets You Fuck Her Face After You Beg Her For Months (But She Ends Up Begging for More!)",
+    "category": "fsub",
+    "tags": "[Incest] [Rape] for brief [Somnophilia] [Femsub] [Degradation] [Blowjob] [Face Fucking] [Ravenous Gagging] [Cum in Mouth] [Pussy Licking] [Fucking] [Cum in Pussy]",
+    "synopsis": "You\u2019ve been lusting after your Sexy Stepsis for months and shamelessly begging her to let you fuck her face, but she\u2019s always dismissed you as a dorky weirdo. But your persistence pays off when you catch her at her most vulnerable - recently broken up and horny as fuck. She grudgingly gives in to your perverted impulses but starts getting into it and eventually becomes the one begging you for more. Hope you enjoy :)",
+    "duration": "28m 06s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1ks3225/f4m_script_fill_big_stepsis_grudgingly_lets_you/",
+    "scriptAuthor": "u/Taurean_adrift",
+    "scriptAuthorPage": "https://www.reddit.com/user/Taurean_adift/",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 28,
+    "title": "Your Bully Is Your Government Assigned Breeding Partner?\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Enemies To Parents] [Loser Turned Bully-Fucker] [Breeding For The Nation's Future] [Future Baby Mama] [Don't Be A Pussy] [Shoving Your Anger Down Her Throat] [Face Down And Ass UP] [Rough Hatefucking] [Creampie 1x]",
+    "synopsis": "The world's gone totally bonkers, birth rates are in the toilet, and everyone's turning into a wrinkly raisin. In a truly \u201chold my beer\u201d moment, the government rolls out a ''Go forth and multiply... aggressively!\u201d law. Our guy, who used to be the ultimate schoolyard punching bag, the human equivalent of a participation trophy, is just chilling at home when the doorbell rings. His assigned baby-making buddy has arrived. But seriously?! It HAD to be his old bully?",
+    "duration": "24m 33s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1kqd8jf/f4m_script_fill_your_bully_is_your_government/",
+    "scriptAuthor": "u/TheShyTributeGuy",
+    "scriptAuthorPage": "https://www.reddit.com/user/TheShyTributeGuy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1jwutqs/f4m_your_bully_is_your_gov_assigned_breeding/?share_id=4QUkGnzM6PAa_KJmak1zH&utm_content=2&utm_medium=ios_app&utm_name=ioscss&utm_source=share&utm_term=1",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 29,
+    "title": "Sinful Sensations In The Strip Club",
+    "category": "collab",
+    "tags": "[FFF4M][Risky Sex][Private Room][Strip Club][Don\u2019t Tell My Manager][4some][Lap Dance][Blowjob Galore][Deepthroat][Cunnilingus][Face Sitting][Riding][Strapon][Doggy][Remote Control Vibrator][Mutual Orgasm][4 Audios]",
+    "synopsis": "u/SpaceCowboy_1999 and I have been working to bring together a series of audios in which you and your horny girlfriend have hot sex in a new and risky place every single month. Some months, it'll be just the two of you. Other months, you\u2019ll meet a friend along the way. This post contains the first four audios of the series from January to April.",
+    "duration": "95m 55s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1kexmqb/fff4mscript_fillsinful_sensations_in_the_strip/",
+    "scriptAuthor": "u/SpaceCowboy_1999",
+    "scriptAuthorPage": "https://www.reddit.com/user/SpaceCowboy_1999/",
+    "scriptLink": "",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": [
+      {
+        "name": "u/WldflowerPhoenix",
+        "link": "https://www.reddit.com/user/WldflowerPhoenix/"
+      },
+      {
+        "name": "u/CocoKymmieVa",
+        "link": "https://www.reddit.com/user/CocoKymmieVa/"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Aggressively Fucking Your Horny Queen After She Demands Your Virginity\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Firm FDom] to [Helpless FSub][Servant Listener][Gentle][Eye Contact][Good Boy][BIG TITS][Body Appreciation][Grinding][Teasing][Use My Pussy][Choking][Hold Me Down and Make Me Take It][Ass Smacking][Begging][Creampie][OC]",
+    "synopsis": "You were recently brought as a servant to a new kingdom. Within days of arriving at your new home, you are summoned to the queen\u2019s quarters and she insists that you give yourself to her in service. You are hesitant at first, but soon take control of her after putting up with her relentless teasing.",
+    "duration": "24m 19s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1k34acr/f4m_aggressively_fucking_your_horny_queen_after/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 31,
+    "title": "Your Protective Older Sis Becomes Your Freeuse Playmate\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[Gentle FDom] to [FSub][Incest][Consent Checks][Tit Sucking][Use My Mouth][Eye Contact][Blowjob][Throatpie][Grinding][Pull My Panties to the Side][Just the Tip is Okay, Right?][Fuck Me Whenever You Want][Our Little Secret][Creampie][OC]",
+    "synopsis": "You recently throw a St. Patrick\u2019s Day Party with your older s!s during which you smoked too much weed and had too much to drink. She reminds you how the night between the two of you ended and, though you\u2019re somewhat embarrassed by your own actions, you're curious to see how far you might be able to go with her now that you're completely sober.",
+    "duration": "30m 41s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1jxx3xg/f4m_your_protective_older_sis_becomes_your/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 32,
+    "title": "Power Girl Lets You Casually Grope and Fuck her Big Tits at a Fan Meet ",
+    "category": "fsub",
+    "tags": "[Freeuse] [Power Girl] [DC] [Superhero] [Hypercasual Exhib] [Casual Groping While Chatting] [Boob Window] [Titfuck] [Spanking] [Fingering] [Pussy Flashing] [Facial] [Huge Tits] [Pussy Pics] [Slutty Poses]",
+    "synopsis": "Don\u2019t miss out. You don't get to grope a superhero every day. I'd be making the most of it if I were you",
+    "duration": "20m 54s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1jp05bm/f4m_script_fill_power_girl_lets_you_casually/",
+    "scriptAuthor": "u/OpalescentMoonrise",
+    "scriptAuthorPage": "https://www.reddit.com/user/OpalescentMoonrise/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1hzyem6/f4m_power_girl_lets_you_casually_grope_and_fuck/",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": []
+  },
+  {
+    "id": 33,
+    "title": "Muscle Mommy GF Uses Your Body for Stress Relief",
+    "category": "fdom",
+    "tags": "[Rape] due to [Dubious Consent][Fdom][Msub][GFE][Muscular Woman][Aggressively Horny][Throwing You Over Her Shoulder][Facesitting][Cunnilingus][Amazon Position][Creampie][Possessive][Lovey-Dovey][L-Bombs][Cuddling]",
+    "synopsis": "Sex can be a lot of things...a means of procreation, a way to pass the time, or even a method of relieving stress! Your girlfriend had a terrible day at work, and even though she's home now, the problems at the office are still weighing on her mind. The poor gal is pent-up, pissed off, and needs SOME kind of release! Luckily, she's got you...a perfectly fuckable boyfriend, that she can use to work out all her aggression...",
+    "duration": "13m 48s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1jlvwgk/f4m_script_fill_muscle_mommy_gf_uses_your_body/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1i586oq/script_offerf4m_muscle_mommy_gf_uses_your_body/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 34,
+    "title": "Double Teamed By Your Slutty Besties During a Study Session",
+    "category": "collab",
+    "tags": "[Gentle Fdom][Public Sex][Blindfolded][Encouraging][DubCon] so [Rape][Virgin listener][Anal][Cock Worship][Sloppy Deepthroat][Eye Contact][Cum Denial][FWB][Guiding You][Anal Creampie][Cum Eating]",
+    "synopsis": "Lily and Sasha have weekly study sessions with you, their mutual best friend. The entire semester you have been rallying the group, planning the sessions and being an all-round good friend. For today, Lily and Sasha have planned a very special \"session\". You are blindfolded and led out to a hidden place out next to the campus parking lot for a surprise. Once you removes his blindfold you watch as your best friends remove their clothes, revealing lingerie and mischievous smiles...",
+    "duration": "28m 40s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1jks0dr/ff4mscript_fill_double_teamed_by_your_slutty/",
+    "scriptAuthor": "u/StankyTofu25",
+    "scriptAuthorPage": "https://www.reddit.com/user/StankyTofu25/",
+    "scriptLink": "",
+    "audioEditor": "u/Kilbeggan32",
+    "audioEditorPage": "https://www.reddit.com/user/Kilbeggan32/",
+    "collabPartners": [
+      {
+        "name": "u/Lily-Danger",
+        "link": "https://www.reddit.com/user/Lily-Danger/"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Your Date Bounces On It In The Car After You Call Her a Bitch\ud83d\udca6",
+    "category": "fsub",
+    "tags": "[Hatefucking] [Riding] [Brat Taming] [Car Sex] [Fsub] [Name Calling] [Slapping] [Choking] [Facefucking] [Deepthroating] [Creampie] [Begging] [Cumming Together] [Mild Exhibitionism]",
+    "synopsis": "The night is over and you\u2019re driving your date home. The bad news is that it didn\u2019t go well. She was uninterested and rude all night towards your attempts at conversation, and the drive back is no different. When you finally confront her about it, she tells you the truth: she doesn\u2019t like you. She thinks you\u2019re boring. However, after a heated argument in the car on the side of the road, she does give you one last chance to prove how exciting you can be. And you don\u2019t plan on disappointing her.",
+    "duration": "24m 51s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1jfdp8v/f4m_your_date_bounces_on_it_in_the_car_after_you/",
+    "scriptAuthor": "u/kopaf12686",
+    "scriptAuthorPage": "https://www.reddit.com/user/kopaf12686/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1i7ar6p/f4m_your_date_bounces_on_it_in_the_car_after_you/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 36,
+    "title": "The Tall Muscle Mommy Masseuse is DEFINITELY Hitting on You \ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Gentle Fdom] [Massage] [Muscles] [Size Difference] [Bigger Woman] [Lube] [Handjob] [Amazon Position] [Creampie] [Acquaintances to Lovers] [Getting Pinned to the Massage Table] [Good Boy] [ASMR]",
+    "synopsis": "You\u2019ve been getting massages pretty frequently lately due to the stress of work. Your masseuse is a gorgeous, massive woman that towers over you and could probably bench you three times over. She seems to be a little more forward during this particular massage, though. You\u2019ve stirred up her protective instincts, and now she wants to pamper you\u2026 in more ways than one.",
+    "duration": "34m 03s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1j7h1rc/f4m_the_tall_muscle_mommy_masseuse_is_definitely/",
+    "scriptAuthor": "u/DracoKnoweVO",
+    "scriptAuthorPage": "https://www.reddit.com/user/DracoKnoweVO/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1esn31y/f4m_the_tall_muscle_mommy_masseuse_is_definitely/?utm_source=reddit&utm_medium=usertext&utm_name=gonewildaudio&utm_content=t3_1hxk0tx",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 37,
+    "title": "Your Ex-Bully Recognizes You While You're Serving Drinks, and Brings You Home To Be Served Your Cock\ud83d\udca6",
+    "category": "fsub",
+    "tags": "[Fit Tomboy Speaker][Shortstack][Muscular Nerd Listener][Enemies to Lovers][FSub][Confession][Light Self Degradation][Sloppy Blowjob][Daddy][Facefucking][Throatpie][Cowgirl]",
+    "synopsis": "You're working at your new job as a bartender, when your former bully sits at a stool. Since you've started college you've gotten in shape and worked on your self esteem, so she doesn't recognize you at first. Once she does, she tries to awkwardly reminisce with you, but you aren't having it. She leaves and you believe that's the end of it, until you run into her after your shift with a sudden invitation.",
+    "duration": "27m 46s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1i68wg7/f4mscript_fillyour_exbully_recognizes_you_while/",
+    "scriptAuthor": "u/SwampyImp",
+    "scriptAuthorPage": "https://www.reddit.com/user/SwampyImp/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1eucd9i/your_exbully_recognizes_you_while_youre_serving/",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 38,
+    "title": "Breeding Your Ex-Girlfriend's Mom for New Years\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[FDom][MILF][Affirmations][Comforting You With Her Pussy][Older Woman/Younger Man][BIG TITS][Deepthroat][Good Boy][Watch Me in the Mirror][Did You Think About Me While Fucking My Daughter?][Over the Bathroom Sink][Self-Degradation][Creampie][OC]",
+    "synopsis": "After breaking up with your girlfriend, you decide not to spend New Years Eve alone. Instead, you head to a cocktail party where you run into your now ex-girlfriend's mother. She is mature, extremely elegant and very beautiful. You've been attracted to her the entire time you were dating her daughter. Tonight is the perfect night to let her make you a Daddy.",
+    "duration": "28m 46s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1i03b6n/f4mbreeding_your_exgirlfriends_mom_for_new/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 39,
+    "title": "Your Superhero Mentor Is The Only One Strong Enough To Satisfy You\ud83d\udca6",
+    "category": "fdom",
+    "tags": " [Superhero][Sidekick][Mommydomme][Super Strength][Flight][Rough Sex][Nipple Sucking][Handjob][Blowjob][Supersonic Facefuck][Throatpie][Riding][Missionary][Doggystyle][Amazon Position][Mating Press][Creampie]",
+    "synopsis": "You are a college student who has acquired powers inherited from your now deceased superhero parents. Using these new abilities, one day you jump in to help save the city and some heroes take notice. The strongest among them knew your parents and has made you her sidekick and will show you the ropes. While you are happy about your newfound strength, it scares your girlfriend away as she felt like she was going to break when the two of you got intimate. Now not only do you feel depressed over the lost relationship but you also feel immeasurable blue balls. Your new mentor comes to see you at home and comforts you, but she notices how backed up you are using her x-ray vision. She knows if your strength is anything like her own, no woman alive is strong enough to handle your cock. Nobody except for her. There\u2019s nothing wrong with it, right? She\u2019s only doing what is necessary, right?",
+    "duration": "18m 44s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1hsx20r/f4mscript_fill_your_superhero_mentor_is_the_only/",
+    "scriptAuthor": "u/SpaceCowboy_1999",
+    "scriptAuthorPage": "https://www.reddit.com/user/SpaceCowboy_1999/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1edzmnm/f4mscript_offer_your_superhero_mentor_is_the_only/",
+    "audioEditor": "u/neondextrose",
+    "audioEditorPage": "https://www.reddit.com/user/neondextrose/",
+    "collabPartners": []
+  },
+  {
+    "id": 40,
+    "title": "Your Big Sister\u2019s Slutty Bestie Takes You Xmas Shopping Then Takes Your Virginity\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Mean FDom][Gentle][Body Appreciation][I'm Going to be Your First][DubCon] so [Rape][Blowjob][Be Quiet][Throatpie][Overstimulation][Just Let It Happen][Cowgirl][Light Degradation][Creampie][Wholesome Ending]",
+    "synopsis": "Your sister is out running errands so her best friend tags along with you to do some last minute christmas shopping. You find out that she's had a crush on you for awhile and she absolutely insists that you share your first time with her.",
+    "duration": "27m 21s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1hq40n3/f4myour_big_sisters_slutty_bestie_takes_you_xmas/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 41,
+    "title": "Your Best Friend's Taller, Older Sister Becomes Your Mommy\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[MD/lb][Gentle FDom][Virgin Listener][Taller Woman][Size Difference][Confession][Romance][Consent Check] [Reassuring][Comforting][Praise][Possessive][Making Out][Nursing Handjob][Nipple Play][Intercrural Sex][Aftercare]",
+    "synopsis": "The listener, a college age boy, is visiting his best friend at his parents' house while in town. Late at night, the listener accidentally walks in on his best friend's hot, tall older sister, the speaker, who he's been crushing on for years naked in the bathroom after she just finished showering. Things escalate more than the two could have imagined!!",
+    "duration": "27m 37s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1ho6bjj/f4mscript_fill_your_best_friends_taller_older/",
+    "scriptAuthor": "u/supermeshbras",
+    "scriptAuthorPage": "https://www.reddit.com/user/supermeshbras/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1ejqn0d/f4m_your_best_friends_taller_older_sister_becomes/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 42,
+    "title": " Watching Your GF at the Pool While Facefucking Her Slutty Mother\ud83d\udca6",
+    "category": "fswitch",
+    "tags": "[FDom to FSub][Cheating][Slutty][Messy][MILF][Cock Worship][Cock-Drunk][HUGE Dick][Bathing Your Balls With Her Tongue][Sloppy][Messy][Voyeur][Cum Fetish][Oral][Blowjob][Deepthroat][Facefuck][Handjob][Cumdump]",
+    "synopsis": "Today is a nice day for a swim, and your girlfriend invites you to her house, so that you two can have a go at her pool. What you didn\u2019t expect is for her mother to also be there, and to look so stunningly hot in that slutty, string bikini.\n\nYou quickly go to your room on the second floor to recompose yourself, but what you didn\u2019t expect was for her to follow you, and to start gagging on your cock on her first opportunity, while you are treated to the beautiful view on her daughter stripping for you, totally unaware of what is happening.",
+    "duration": "29m 35s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1hhhkmi/f4mscript_fill_watching_your_gf_at_the_pool_while/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1fz8zdr/f4mscript_offer_watching_your_gf_at_the_pool/",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 43,
+    "title": "Your Mom's Best Friend Welcomes You Home to Be Her Fucktoy\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Gentle FDom][Older Woman/Younger Man][MILF][Let Me Use You][Begging][BIG TITS][Sloppy Deepthroat][College Aged][Cock Worship][Cowgirl][Good Boys][Light Degradation][Say Please For Me][We Can't Let Your Mom Catch Us][Creampie][OC]",
+    "synopsis": "You are visiting home for a short fall break and your mom's best friend is in the kitchen to greet you when you arrive. You haven't seen each other for months. Before you left for college, you two developed a steamy sexual relationship. Your mom has a lot on her plate and her best friend is there to make things more manageable. She offers to help you get comfortable and settled while your mom is out running errands. She offers you food, but you're hungry for something else.",
+    "duration": "17m 57s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1gi8y49/f4myour_moms_best_friend_welcomes_you_home_to_be/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 44,
+    "title": "Your GF\u2019s Stern Mother Drains You Before The Date\ud83d\udca6",
+    "category": "fdom",
+    "tags": "[Fdom] [MILF] [Older Woman/Younger Man] [I Know Your Kind] [Draining You To Safeguard Her Daughter] [Of Course I\u2019m Not Enjoying This] [Handjob] [Oral] [Titfuck] [Cum On Tits] [Listener Orgasm]",
+    "synopsis": "Your girlfriend\u2019s strict mother knows you\u2019re a bad boy, and knows you only want one thing from dating her daughter. Warning her or warning you off isn\u2019t working, so she\u2019s decided to make sure you\u2019re unable to take advantage of her...by very thoroughly draining all your cum herself! Not that she\u2019s enjoying this, you understand\u2014it\u2019s all for the sake of her daughter. No, honestly!",
+    "duration": "19m 03s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1gfnue9/f4m_script_fill_your_gfs_stern_mother_drains_you/",
+    "scriptAuthor": "u/Icedrake402",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1deieu0/f4m_your_gfs_stern_mother_drains_you_before_the/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 45,
+    "title": "\u2728Pussy Swap: Watch As My Friend\u2019s Pussy Slides Down On Your Cock\u2728 ",
+    "category": "collab",
+    "tags": "[Sequel][Fleshlights][Blowjob][Dirty Talk][Fantasizing][Trading Toys][Nipple Sucking][Nursing Handjob][Face Sitting][Clit Rubbing][Teasing][Toy Creampie][Mutual Orgasm][High Five]",
+    "synopsis": "The insatiable Slutty duo are at it again. Turns out trading molds of their husbands\u2019 cocks wasn\u2019t enough fun. This time they\u2019ve made models of their own pussies and invited their hubbies along for the ride. However, instead of using their own model pussies on their husbands, they swap them and use the other women's. Will their husbands judge their debauchery? Or are they just as slutty as their wives?",
+    "duration": "19m 57s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1gegfow/ff4mscript_fill_pussy_swap_watch_as_my_friends/",
+    "scriptAuthor": "u/SpaceCowboy_1999",
+    "scriptAuthorPage": "https://www.reddit.com/user/SpaceCowboy_1999/",
+    "scriptLink": "",
+    "audioEditor": "u/ElVanquish",
+    "audioEditorPage": "https://www.reddit.com/user/ElVanquish/",
+    "collabPartners": []
+  },
+  {
+    "id": 46,
+    "title": "Making The Mafia Don\u2019s MILFY Wife Your Bondage Slut!",
+    "category": "fsub",
+    "tags": "[MILF][Mafia][Free-Use][Bondage][Enthusiastic FSub][Twist][Willing Speaker][Technically Cheating][Makeout][Blowjob][Deepthroat][FACEFUCK][Throatpie][Sex Swing][Missionary][Doggystyle][Hair Pulling][Spanking][Creampie][Call Me;)]",
+    "synopsis": "You\u2019ve successfully got your bargaining chip. You\u2019ve slipped under the mafia don\u2019s nose and took his wife, tying her up and holding her hostage for ransom. The woman is an innocent party, one you intend to treat well while you wait for the don\u2019s men to drop off the money. However, when she comes to, she has other ideas for how this will go. It\u2019s been a fantasy of hers to be tied up, but her hubby doesn\u2019t experiment much. With you, she feels an opportunity is finally here and she doesn\u2019t intend to let it slip through her fingers. Now if only she can convince you\u2026",
+    "duration": "23m 57s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1fx55wo/f4mscript_fill_making_the_mafia_dons_milfy_wife/",
+    "scriptAuthor": "u/SpaceCowboy_2000",
+    "scriptAuthorPage": "https://www.reddit.com/user/SpaceCowboy_1999/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1cepimr/f4mscript_offer_making_the_mafia_dons_milfy_wife/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 47,
+    "title": "Your MILF Neighbor Wins the Bet, but YOU Win the Prize",
+    "category": "fswitch",
+    "tags": "[FSwitch][MILF][Sweaty][Dirty][Scent-kink][Cunnilingus][Deepthroat][Ball-Sucking][Lick My Ass][ATM][Cum Fetish] [Oral Fixation][MILF][Messy][Facial][Sloppy][Cock Drunk][Rub Your Cock On My Face]",
+    "synopsis": "You are just finishing your running regiment at a local park, when you are approached by a stunningly beautiful woman. You recognize her as your neighbour, but you had no idea she would look (and smell) so hot in sporting gear! She challenges you for a race, and if you win, she is going to show you her \"special spot\". You're unsure if she means somewhere with a great view, or something else....",
+    "duration": "26m 13s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1e5m0tv/f4m_your_milf_neighbor_wins_the_bet_but_you_win/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 48,
+    "title": "Your Best Friend with Benefits Blows Your Mind ",
+    "category": "fdom",
+    "tags": "[femdom] [gentle] to [rough] [handjob] blowjob] [cock sucking/worship] [sloppy] [deepthroat] [facefuck] [throatfuck] [extreme edging] [throatpie] [cum in mouth]",
+    "synopsis": "After cleaning your room, your best friend discovers you've been taking antidepressants. In no time at all, she decides to confront you about it. Eager to comfort and support you through whatever challenges you may be facing. However, there\u2019s a twist\u2026 Ever since you\u2019ve been on them, an unfortunate side effect has occurred: you haven't been able to cum from any form of stimulation whatsoever. Not one to back out of a challenge, your newly christened best friend with benefits decides to take it upon herself to suck you in every which way she can to get you that release you so crave. No matter what it takes.",
+    "duration": "36m 06s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1e38gfq/f4m_your_best_friend_with_benefits_blows_your/",
+    "scriptAuthor": "/ArthurWynne",
+    "scriptAuthorPage": "https://www.reddit.com/user/ArthurWynne/",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 49,
+    "title": " Punishing Your CEO During Her First Ever Livestream",
+    "category": "fswitch",
+    "tags": "[FDom] to [FSub][Daddy][Blackmail][CNC][Rape][Voyeur][Solo Masturbation][Buttplug][Degradation][Rough Face Fucking][Bent Over][Anal][Break Me][Anal Creampie][Roleplay][Multiple Orgasms][Wholesome Ending]",
+    "synopsis": "Your CEO has a dirty little secret no one else knows but you... behind closed doors... She's an adult content creator.... and when she denies your promotion for the last time you finally decide to reveal your knowledge... on the night of her first live stream no less.\n\nDo you have what it takes to fuck her arrogant, cocky attitude into nothing more than a whimpering mess live on camera?",
+    "duration": "33m 21s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1b1g4gz/f4m_punishing_your_ceo_during_her_first_ever/",
+    "scriptAuthor": "u/MyDirtySecr3t",
+    "scriptAuthorPage": "https://www.reddit.com/user/MyDirtySecr3t/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1b0vv9g/f4m_punishing_your_ceo_during_her_first_ever/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 50,
+    "title": "Wait...You Prefer Me Unshaven?",
+    "category": "fdom",
+    "tags": "[Friends to Lovers][Neighbors][First Date][Sweet][Dirty Talk][Jealous][Needy][Nervous At First][Deepthroat][Blowjob][Handjob][Good Boys][Unshaven][Grinding][Missionary][Raw][Cum On My Bush][Hairy Pussy Fetish][Gentle FDom][F Lead]",
+    "synopsis": "Your neighbor arrives before you have time to finish getting ready for the date. As the passion builds and things get heated he senses your hesitation.\n\nTo keep him from blaming himself, you finally reveal the source of your hesitance... that you didn't have time to shave.",
+    "duration": "25m 36s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1992o5u/f4m_waityou_prefer_me_unshaven_script_fillfriends/",
+    "scriptAuthor": "u/MyDirtySecr3t",
+    "scriptAuthorPage": "https://www.reddit.com/user/MyDirtySecr3t/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/11s9m3g/f4m_waityou_prefer_me_unshaven_script_offer/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 51,
+    "title": "Your Bully Is Addicted To Your Ass",
+    "category": "fdom",
+    "tags": "[Rimjob][Fdom][Tomboy][Addicted to ass][Tall woman][On the desk][Fear to get caught][Coercion]so[Rape] [Male ass appreciation][Handjob[Biting][Handjob][College][Bully][Possessive][Spanking][Femdom]",
+    "synopsis": "Your bully brings you to an empty room, and you\u2019re scared to know why. Well, she\u2019s your bully, but she never really hit you or anything\u2026 The most she does is some spanking. The thing she does to \u201cbully you\u201d is eat your ass. With time, you understood that she just loved your ass and that she could spend days with her tongue in your ass. She compliments it,squeezes it, spanks it, and eats it. She is just addicted to your ass. Well, now she will \u201cbully\u201d you again. She tells you to get on all fours on a desk, and she just starts eating your ass. Even if it\u2019s embarrassing to do it there, it\u2019s not like you have a choice. She will eat it until she has enough.",
+    "duration": "23m 44s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/194ife9/f4m_script_fill_your_bully_is_addicted_to_your/",
+    "scriptAuthor": "u/LearnTWL",
+    "scriptAuthorPage": "https://www.reddit.com/user/LearnTWL/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/194ife9/f4m_script_fill_your_bully_is_addicted_to_your/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 52,
+    "title": "Using Your Mom's Best Friend in the Shower and Fucking Her Mindless",
+    "category": "script-offer",
+    "tags": "[FDom] to [Fsub][MILF][Use Me][College Aged][Getting You Clean and Then Dirty Again][Fuck My Face][Deepthroat][Older Woman/Younger Man][Lift My Leg Up][Creampie][L-Bombs][Let\u2019s do this again soon]",
+    "synopsis": "You've got some free time over the weekend so you volunteered to help your mom's best friend paint a spare bedroom in her house. She is extremely grateful and she offers to heat some food for you while you use her shower. She realizes she didn't get you a towel and attempts to get your attention before you start showering. When you open the bathroom door, she is met with your naked body and you're met with an opportunity.",
+    "duration": "",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/190660s/f4m_using_your_moms_best_friend_in_the_shower_and/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 53,
+    "title": "Corporate Cougar Cuddlefucked by the Fire",
+    "category": "fdom",
+    "tags": "[Slowburn][Older Woman][Younger Male][Gentle F Guide][Hot Tub][Handjob][Blowjob][Spooning Sex][Cuddlefuck][Encouraging][Positive][Inexperienced Male][Creampie][Dirty Talk]",
+    "synopsis": "You (listener) are on vacation celebrating your recent college graduation with your parents. You have been bored the entire time as the resort is meant for more mature guests. You wander out of your room, down to the jacuzzi and find an attractive, topless, MILFY executive type. She learns that you've only had one sexual partner in the past, so she invites you to her stately room to help you gain experience.",
+    "duration": "29m 19s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/18wq2vm/f4m_corporate_cougar_cuddlefucked_by_the_fire/",
+    "scriptAuthor": "u/MyDirtySecr3t",
+    "scriptAuthorPage": "https://www.reddit.com/user/MyDirtySecr3t/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/18krhsi/f4m_corporate_cougar_cuddlefucked_by_the_fire/?share_id=8Dihid-HBC8PBEjujet6h&utm_content=1&utm_medium=android_app&utm_name=androidcss&utm_source=share&utm_term=1",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 54,
+    "title": "You\u2019re my Free-use Cock ",
+    "category": "fdom",
+    "tags": "[Fdom] [Msub] [CNC] so [Rape] [Freeuse] [Objectification] [Mild-Degradation] [Oral Fixation] [Cock Hungry] [Blowjob] [Rough] [Deepthroat] [Aggressive Sucking] [Self-Face Fuck] [Overstimulation] [Throatpie] [Cum Swallowing]",
+    "synopsis": "Your workaholic girlfriend returns home after a long, horrid day. Eager to take her stress out on a hapless victim\u2026 You. But her way of unwinding is far more unconventional than most. And it\u2019s your job to meet her every need. Whether you're in the mood to or not.",
+    "duration": "24m 38s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/18bcwgu/f4m_script_fill_youre_my_freeuse_cock_fdom_msub/",
+    "scriptAuthor": "u/ArthurWynne",
+    "scriptAuthorPage": "https://www.reddit.com/user/ArthurWynne/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/11hc4ck/f4m_script_offer_youre_my_freeuse_cock_fdom_msub/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 55,
+    "title": "Mirko Followed You Home!",
+    "category": "fswitch",
+    "tags": "[Fdom] to [Fsub] loses her patience and goes full [Mommydomme][Desperate][Fingering][Cunnilingus][Orgasm Denial][Titjob][Edging] She calls you [Daddy] and you call her [Mommy][Good Boy][Cowgirl][Creampie][Kissing][Aftercare][MHA]",
+    "synopsis": "Sitting in your room, not even a full day after you were taken advantage of by the number five hero, you hear a knock on your bedroom window. Mirko tailed you home and now she's asking to come in. I wonder why..",
+    "duration": "28m 30s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/18649rk/f4m_mirko_followed_you_home_script_fillrape/",
+    "scriptAuthor": "u/thighexecution",
+    "scriptAuthorPage": "https://www.reddit.com/user/thighexecution/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/183fizj/f4m_mirko_followed_you_home_script_offerrape/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 56,
+    "title": "Wanna Grab a Drink? Well, SHE Wants to Grab Your Dick!",
+    "category": "fdom",
+    "tags": "[Fdom][Msub][Tomboy][Strangers To Lovers][Taking You To A Dive Bar][Drinking Alcohol][Alleyway Sex][Cunnilingus][Cowgirl][Creampie][Cock Cleaning][Blowjob][Cum In Mouth][Swallowing][Walking You Home]",
+    "synopsis": "Against your better judgement, you decide to go for a walk in a rough part of town...at night! It's a miracle you haven't been harassed or mugged, and when you spot a muscular woman sitting on a bench, you decide to push your luck even further. She doesn't look like the type to suffer fools...especially fools that randomly hit on her...but who knows? Maybe you're just the thing she's looking for, and she just doesn't know it yet.",
+    "duration": "22m 51s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/17qbgs5/script_fillf4m_wanna_grab_a_drink_well_she_wants/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/17imvgs/script_offerf4m_wanna_grab_a_drink_well_she_wants/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 57,
+    "title": "Knock, Knock, Knock, Trick or Meat!",
+    "category": "fsub",
+    "tags": "[Aggressive Fsub][Slutty][Extremely Horny][Oral fixation][On doorstep][Public][Degradation][Dirty Talk][Blowjob][Deepthroat][Facefuck][Gagging][Sloppy][Choking][Covered in cum][Desperate for cum][Multiple Throatpies][Cum Inflation][In costume]",
+    "synopsis": "It is halloween, and already very late at night. You are getting ready for sleep, when your doorbell rings. Intrigued, you answer the door, and are greeted by a girl dressed in a ghost costume! With such a costume, you wouldn't be able to tell that she was a woman from sight alone, but her costume seems\u2026 sticky and wet, clinging to her body and showing off her curves. And just as you open the door, you hear a enthusiastic voice saying:Trick or Meat! That was a mistake right? Or could it be that she is not there looking for candy?",
+    "duration": "27m 31s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/17kkyax/f4mscript_fill_knock_knock_knock_trick_or_meat/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/17etyi4/f4mscript_offer_knockknockknock_trick_or_meat/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 58,
+    "title": "The Tomboy\u2019s Transformation ",
+    "category": "fswitch",
+    "tags": "[Tomboy] [Body Transformation] [Ass Expansion] [Breast Expansion] [Huge Breasts] [Bursting Out Of Her Clothes] [Breast Play] [Oral] [Nipple Orgasm] [Titfuck] [Assjob] [Seated Sex] [From Behind] [Both Orgasm] [Reassurance] [You Like Me However I Look?]",
+    "synopsis": "Unknown to you your girlfriend has been feeling self-conscious about her flat-chested and lean body, comparing herself unfavourably to the other woman in your life. Getting jealous and self-conscious, she tries an experimental and rather dodgy supplement designed to improve female sexual characteristics. And it works...much better than she could have expected!",
+    "duration": "22m 36s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1776o7h/f4m_the_tomboys_transformation_script_fill_tomboy/",
+    "scriptAuthor": "u/Icedrake402",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/14kp4ca/f4m_the_tomboys_transformation_script_offer/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 59,
+    "title": "You Want to Pass My Class? Come Sit On My Lap First",
+    "category": "script-offer",
+    "tags": "[MDom][Comfort][Grind on my Cock][Fingering][Cunnilingus][Pussy Worship][Eye Contact][Against the Wall][Older Man/Younger Woman][Good Girl][Spanking][Creampie][Pulling Your Panties to the Side]",
+    "synopsis": "You are a graduate school student doing research on effective medication for certain mental disorders. Your boyfriend broke up with you two weeks ago and you have been so distracted that you did poorly on a recent midterm. You go to your professor during his office hours to see what can be done about the grade. Your professor comes up with some unique extra credit work for you that not only raises your grade, but helps you forget about your ex...",
+    "duration": "",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/16vmxd3/m4fscript_offer_you_want_to_pass_my_class_come/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 60,
+    "title": "\"Sir, being aroused is a distraction. You'll have to fuck me until you cum\u2026\"",
+    "category": "fsub",
+    "tags": "[Fsub] [Secretary] [Monstergirl] [Catgirl] [Pulling you aside] [Blowjob] [Deepthroat] [Standing Doggy] [Don't make a mess!] [Facefucking] [Cum Swallowing] [Hold the moan] [Professional Throatpie]",
+    "synopsis": "While at a work event, your catgirl secretary notices that some of the monstergirls in rather luxurious dresses there are causing some\u2026arousal. As this is a serious business event, she knows you need to keep work on the brain. She pulls you aside to take care of your \u2018issue\u2019 in the most efficient way possible.",
+    "duration": "15m 25s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/16qyqyt/f4m_script_fill_sir_being_aroused_is_a/",
+    "scriptAuthor": "u/therealshawnalee",
+    "scriptAuthorPage": "https://www.reddit.com/user/therealshawnalee/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/16nm47f/f4m_script_offer_sir_being_aroused_is_a/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 61,
+    "title": "Wanted Woman",
+    "category": "f4f",
+    "tags": "[Enemies to Lovers] [Yeehawgust] [Historical] [Wild West] [Bounty Hunter] Speaker [Outlaw] Listener [Tied Up] [Arguing] [Campfire] [Wrestling] [Outdoor Sex] [Kissing] [Face Sitting] [Teasing] [Speaker Orgasm] [Denial]",
+    "synopsis": "You (listener) have been on the run from the law for days when you\u2019re finally captured by a famous bounty hunter. She ties you up and sets off to bring you to justice, unfortunately the nearest sheriff\u2019s office is over a day\u2019s ride away and the two of you have to camp out for the night. You manage to convince her to untie you and attempt your daring escape, only for her to tackle you to the ground almost immediately. In a last ditch effort to get away, you lean in for a kiss.",
+    "duration": "15m 02s",
+    "image": "",
+    "link": "https://www.reddit.com/r/GWASapphic/comments/16iimxy/f4f_wanted_woman_script_fill_enemies_to_lovers/",
+    "scriptAuthor": "u/ellamachine",
+    "scriptAuthorPage": "https://www.reddit.com/user/ellamachine/",
+    "scriptLink": "https://www.reddit.com/r/GWASapphic/comments/15t8jmj/f4f_wanted_woman_script_offer_enemies_to_lovers/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 62,
+    "title": "The Morning After, With Your Subby Tomboy Date",
+    "category": "fsub",
+    "tags": "[Fsub][Mdom][Tomboy][Romantic][Making You Breakfast][Interrupting Her][Spanking][Big Cock Mentions][Groping][Breast Play][Doggy Style][Missionary][Begging][Desperate] for a [Creampie][Blowjob][Cum In Mouth][Becoming Exclusive]",
+    "synopsis": "Last night, you went on a date with an amazing girl and things couldn't have gone any better! In fact, you've just woken up next to her in bed...and with how strongly she feels about you, morning sex is a VERY strong possibility! The only question is: will it happen in bed, or somewhere else?",
+    "duration": "20m 48s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/16h1gs7/script_fillf4m_the_morning_after_with_your_subby/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/16elqtj/script_offerf4m_the_morning_after_with_your_subby/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 63,
+    "title": "It isn't ladylike to curse",
+    "category": "f4f",
+    "tags": "[Fsub Speaker] [Heiress] and [Maid] [Virgin Speaker] [Sexual Naivete] [Slow Burn] [Kissing] turns to [Making out] turns to [Bath Sex] [Hold the Moan] [Breastplay] [Fingering]",
+    "synopsis": "You have been working as a maid for the youngest daughter of an influential noble for some time now, and despite your best efforts at remaining professional, you can't help but form something of an infatuation with her. You keep a lid on the feelings, sure they'd result in anything more than losing your job (if not more). However, when you are alone with her one day while washing, she begins to open up about her own feelings, and they change everything.",
+    "duration": "19m 39s",
+    "image": "",
+    "link": "https://www.reddit.com/r/GWASapphic/comments/15y7abw/f4f_it_isnt_ladylike_to_curse_script_fill_fsub/",
+    "scriptAuthor": "u/Miss_Nettles",
+    "scriptAuthorPage": "https://www.reddit.com/user/Miss_Nettles/",
+    "scriptLink": "https://www.reddit.com/r/GWASapphic/comments/15os5q9/f4f_it_isnt_ladylike_to_curse_script_offer_fsub/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 64,
+    "title": "Putting the Office Bully In Her Place On Your First Day ",
+    "category": "script-offer",
+    "tags": "[FDom] to [FSub][Rough Sex][Punish Me][It Hurts a little, Baby][Bent over desk][Hold Me Down][Begging][Spanking][Cunnilingus][Choking][Make Me Your Good Girl][Mean] then kind of [Sweet][Blowjob][Cum On My Tits]",
+    "synopsis": "You started working at a new site in the IT department when you meet the office manager who is tasked with showing you around the office on your first day. Everyone you've met thus far has been warm and friendly, but not her. She doesn't like you and she assumes you were hired based upon your attractive appearance and doesn't realize you that have several years of experience. She makes it very clear that you are not welcomed at this work site. Instead of accepting her mistreatment, you decide to show her that you can be just as brutal...",
+    "duration": "",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/15tpnve/f4mscript_offer_putting_the_office_bully_in_her/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 65,
+    "title": "The Neighborly Thing",
+    "category": "f4f",
+    "tags": "[Neighbors to Lovers] [Milf] [Neighbor] Speaker [Babysitter] Listener [Age Difference] [Late Night] [Tired] [Soft Spoken] [How Can I Repay You?] [Alcohol Use] [Wine] [Mutual Masturbation] [Tribbing] [Listener Orgasm] [Speaker Orgasm]",
+    "synopsis": "You (listener) have been babysitting for your neighbor as she goes through a tough time at work. One evening she comes home especially exhausted and is amazed to find that not only are her kids already asleep, but that you\u2019re refusing payment, insisting that it\u2019s the neighborly thing to do. She\u2019s a little suspicious of that, and after inquiring as to why, she finds out that there may be reason behind your generosity.",
+    "duration": "17m 41s",
+    "image": "",
+    "link": "https://www.reddit.com/r/GWASapphic/comments/15q6itj/f4f_the_neighborly_thing_script_fill_neighbors_to/",
+    "scriptAuthor": "u/ellamachine",
+    "scriptAuthorPage": "https://www.reddit.com/user/ellamachine/",
+    "scriptLink": "https://www.reddit.com/r/GWASapphic/comments/15jgxya/f4f_the_neighborly_thing_script_offer_neighbors/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 66,
+    "title": "Use Me Again Before We Terminate?",
+    "category": "fsub",
+    "tags": "[Encouraging FSub][Therapist/Client][Unethical Relationship][Rough][Teaching You How To Be Assertive][Deepthroat][Face Slapping][Choking][Begging][Self-Degradation][Against the wall][Mating Press][Pound My Pussy][Creampie][Wholesome Ending][OC]",
+    "synopsis": "You've been visiting your therapist for many months and have found the sessions helpful to you. Several weeks ago, while processing a recent break up, you and your therapist's relationship became somewhat complicated. You've since skipped a few sessions, but she's decided that this would be your last session given the progress you've made. You show her just how helpful she's been and she's hopeful that you'll continue to visit her now that you're no longer her client.",
+    "duration": "19m 13s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1543s88/f4m_use_me_again_before_we_terminate_encouraging/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 67,
+    "title": "Your Tall and Sexy Teacher Comforts You",
+    "category": "fdom",
+    "tags": "[Teacher/Student][Older Woman/Younger Man][Adults][Bullying Comfort][Kissing][Let Me Hold You][Healing Your Pain With Her Pussy][Virgin Listener][Big Breasts][Breast Smother][Snuggling][Cowgirl][Your First Time][Creampie]",
+    "synopsis": " You have just finished class, but you have been bullied and are sobbing. Your tall and sexy teacher notices and comes to comfort you. She takes you home with her for snuggles. You can't help but be aroused and she takes your virginity to help you heal.",
+    "duration": "14m 52s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/150ctvp/f4m_your_tall_and_sexy_teacher_comforts_youscript/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/14lpzj5/f4m_your_tall_and_sexy_teacher_comforts_youscript/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 68,
+    "title": "Sucked and Fucked in a Mixed Wrestling Match",
+    "category": "fdom",
+    "tags": "[Fdom][Msub][Rape][Dubious Consent][Pro Wrestling][Strength Difference][Violence][Handjob][Blowjob][Deepthroat][Throatpie][Cowgirl][Choking][Creampie][Pinning You]",
+    "synopsis": "You've heard about her...you've seen what she can do in the ring...and yet you STILL foolishly challenged her to a wrestling match. Very few wrestling fans can even remember a time when she's been defeated, and it certainly wasn't at the hands of a man! What makes you think you'll be any different? She's stronger than you, more experienced than you, and she isn't afraid to get \"creative\" when wearing down her opponents...",
+    "duration": "18m 23s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/14vtkaj/script_fillf4m_sucked_and_fucked_in_a_mixed/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/14ue67y/script_offerf4m_sucked_and_fucked_in_a_mixed/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 69,
+    "title": "Dommy Mafia Boss Teaches You A Lesson in Discipline",
+    "category": "fdom",
+    "tags": "[Rape] [FDom] [Power Dynamic] [Mistress] [Mean] [Yandere Themes] [Gaslighting] [Fearplay] [Threats] [Slapping] [Belt Spanking] [Nail Scratching] [Kissing] [Missionary] [Creampie] [Virgin]",
+    "synopsis": "You've been asked by your Mafia Boss owner to do a simple job: Deliver a briefcase of cash to a client across town. However, you botch the job when you cave to a couple of lowly thieves along the way, but knowing the consequences, you decide to lie and say it was a success. That turns out to be a very big mistake when she finds out. Looks like she'll have to teach you a little lesson in discipline and respect for authority...",
+    "duration": "28m 16s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/14pti62/f4m_script_fill_dommy_mafia_boss_teaches_you_a/",
+    "scriptAuthor": "u/midnights_door",
+    "scriptAuthorPage": "https://www.reddit.com/user/midnights_door/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/14cty80/f4m_script_offer_dommy_mafia_boss_teaches_you_a/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 70,
+    "title": "Prison Rules",
+    "category": "f4f",
+    "tags": "[FDom] [RAPE] [Handcuffs] [Cellmates] [Fear] [Mean] [Mindfuck] [Bitch] [Slut] [Good Girl] [Whispers] [Rough] [Forced] [Struggling] [Coercion] [Fingering] [Penetration] [Dildo] [Facesitting] [Cunnilingus] [Speaker Orgasm] [Mention Of Anal]",
+    "synopsis": "Listener is woken up by her cellmate. She is handcuffed to the bed and forced to have some \"play time\" with the woman.",
+    "duration": "15m 17s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/14nua3c/f4f_script_fill_prison_rules_fdom_rape_handcuffs/",
+    "scriptAuthor": "u/HorcruxesLadyHunter",
+    "scriptAuthorPage": "https://www.reddit.com/user/HorcruxesLadyHunter/",
+    "scriptLink": "https://www.reddit.com/r/GWASapphic/comments/svu722/f4f_script_offer_prison_rules_fdom_rape_handcuffs/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 71,
+    "title": "You Lost The Bet! So I'm Your Mommy Tonight!",
+    "category": "fdom",
+    "tags": "[Gentle Fdom] [NO Incest] [Bondage] [Mommy] [Grinding] [Riding] [Teasing] [Blowjob] [Good Boy] [Loving] [Aftercare] lots of [Tickling] [Kisses] and [L-bombs]",
+    "synopsis": "Your new relationship is going great, but there's one problem. You can't always decide who's in charge in the bed! So you place bets, and whoever wins gets to dom. You've won all the bets so far, but you lost the latest one, a tickle contest.",
+    "duration": "12m 53s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/14jyjo3/f4m_script_fill_you_lost_the_bet_so_im_your_mommy/",
+    "scriptAuthor": "u/Impossible-Draw-6627",
+    "scriptAuthorPage": "https://www.reddit.com/user/Impossible-Draw-6627/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/14hnqtt/f4m_script_offer_you_lost_the_bet_so_im_your/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 72,
+    "title": "Digging Up a Time Capsule With Your Tomboy Best Friend ",
+    "category": "fsub",
+    "tags": "[Friends to lovers] [Tomboy] [Fsub] [Fingering] [Slurpy Blowjob] [Riding you] [Needy] [Sweet] [Wholesome] [Loved you the whole time] [Aftercare] [Together forever] [L-Bombs]",
+    "synopsis": "Your childhood tomboy best friend invites you over her backyard for some camping after you two have just graduated college. It\u2019s been a bit since you\u2019ve seen each other, and she wants to dig up an old time capsule the both of you buried as kids. When you uncover it, you also dig up some old emotions as well\u2026",
+    "duration": "17m 35s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/13xq6o7/f4m_digging_up_a_time_capsule_with_your_tomboy/",
+    "scriptAuthor": "u/bleedingjupiter",
+    "scriptAuthorPage": "https://www.reddit.com/user/bleedingjupiter/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/13wcybx/f4m_digging_up_a_time_capsule_with_your_tomboy/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 73,
+    "title": "Your Prizefighter Girlfriend Needs a \"Good Luck Charm\" for Her Next Match ",
+    "category": "fdom",
+    "tags": "[Fdom][Msub][Tomboy][GFE][\"The Gloves Stay On!\"][Boxing Glove Handjob][Amazon Position][L-Bombs][Creampie][Fighting With Your Cum Inside Her]",
+    "synopsis": "Your girlfriend has been the national league's top-ranked boxer for years now, and it seems like no one will ever dethrone her! So one day, the league issued her a special challenge: spend one night fighting dozens of boxers, one after the other, with only short breaks in-between. If she wins, you and her are set for life! But if she loses, then she can kiss all of her title belts goodbye. She's doing well so far, but it's obvious that \"the gauntlet\" is starting to take its toll. She needs a pick-me-up, something that'll keep her at 100% until she's the last woman standing...",
+    "duration": "9m 19s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/13jlhsn/script_fillf4m_your_prizefighter_girlfriend_needs/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/124yvbl/script_offerf4m_your_prizefighter_girlfriend/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 74,
+    "title": "Swole GF Takes You To Bed For Cuddles After You Study Too Much",
+    "category": "fdom",
+    "tags": "[GFE][Wake Up Sleepyhead!][Shaking You Awake][Kisses][Tall and Muscular][Reprimanding You][Cuddling][Giggles][Fdom][Loving][Fucking The Stress Out Of You][Big Ass][Carrying You To Bed][Cowgirl][Creampie][Aftercare]",
+    "synopsis": "You have been studying really hard for an upcoming test, so hard you fell asleep. You are shaken awake by your swole and loving girlfriend. She reprimands you for \u201cunsafe studying\u201d and carries you to bed. You cuddle and you are unavoidably aroused by your muscular girlfriend. She notices and does the responsible thing: fuck your stress out of you!",
+    "duration": "11m 01s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/13gvi1v/f4m_swole_gf_takes_you_to_bed_for_cuddles_after/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1377kmq/f4m_swole_gf_takes_you_to_bed_for_cuddles_after/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 75,
+    "title": "Made Into a Sweat-Rag by the Gym Tomboy Bully",
+    "category": "fdom",
+    "tags": "[RAPE][Dubcon][Mean Fdom][Tomboy][Sweaty][Dirty][Degradation][Be my sweat-rag][Clean me up][Scent-kink][Cunnilingus][Oral][Blowjob][Anal][ATM][Cum fetish][Orgasms for all]",
+    "synopsis": "You are just another customer at the local gym. Minding your business and getting in shape. However you regularly forget to clean the equipment you use, and that makes the local Gym bully very angry at you.\n\nIt would not have been a problem if she reminded you of it calmly, but after she threatens you, you decide to show her who is the boss.\n\nAfter a short fight, turns out she is indeed the boss here, and you are just a welp. But things aren't about to end like that. You made her angry, and when she is angry, she gets horny. How about she makes an example out of you?",
+    "duration": "35m 19s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/12v5btn/f4mscript_fill_made_into_a_sweatrag_by_the_gym/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/12tdtvm/f4mscript_offer_made_into_a_sweatrag_by_the_gym/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 76,
+    "title": "Since We're Stuck On This Plane Together, We Might As Well Fuck, Right?",
+    "category": "fsub",
+    "tags": "[FSub] [Improv][Mile High Club] [Bathroom Sex] [Strangers] [Whimpering Subby Mess] [Whining] [Fuck My Pussy, then My Ass] [Begging You to Let me Cum] [Blowjob] [Riding] [Anal Creampie]",
+    "synopsis": "You are on your way home after your vacation and the stranger seated next to you reveals that she really wants to fuck you.",
+    "duration": "17m 18s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/12pt1sq/f4m_since_were_stuck_on_this_plane_together_we/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 77,
+    "title": "A Smooth-Talkin\u2019, High Falootin\u2019 Gunslinger Sets Her Sights on YOU!",
+    "category": "fdom",
+    "tags": "[Fdom][Msub][Role Reversal][Tomboy][Wild West][Aggressive Flirting][Slapping Your Butt][Rape][Dubcon][Getting You Drunk][Princess Carry][Outercourse][Knee Grinding][Amazon Position][Cowgirl][Two Creampies]",
+    "synopsis": "Late at night, a cowgirl leaves her rented room and heads downstairs into a saloon, with only one thing on her mind: finding a man who's up for a little \"toss in the hay\". But not just ANY man, no...it's gotta be the right one. And as luck would have it, her eyes soon fell upon you! She's not about to let this golden opportunity slip by, and so she makes her move...",
+    "duration": "15m 00s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/12o7t44/script_fillf4m_a_smoothtalkin_high_falootin/",
+    "scriptAuthor": "u/fluff-cunningham",
+    "scriptAuthorPage": "https://www.reddit.com/user/fluff-cunningham/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/12ivnh3/script_offerf4m_a_smoothtalkin_high_falootin/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 78,
+    "title": "Your Bi Tomboy Roommate Wants To Make You Feel Better ",
+    "category": "fdom",
+    "tags": " [Fdom] [Msub] [Kind Of An Asshole] [Cute] [Annoyed] [Friends To Lovers] [I\u2019ve Been So Obvious] [Kissing] [Dry Humping] [Hand Job] [Check In] [Deep Throat] [Grinding] [Mutual Orgasm] [Cream Pie] [Aftercare] [Praise]",
+    "synopsis": "A cute friends to lovers plot about your bi tomboy roommate, who wants to make you feel better after a bad night.",
+    "duration": "22m 31s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/12bk1yy/f4m_script_fill_your_bi_tomboy_roommate_wants_to/",
+    "scriptAuthor": "u/Kexxie_",
+    "scriptAuthorPage": "https://www.reddit.com/user/Kexxie_/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/12a06nw/f4m_your_bi_tomboy_roommate_wants_to_make_you/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 79,
+    "title": "Movie Night with your GF turns into loving suckfest ",
+    "category": "fswitch",
+    "tags": "[GFE][Fswitch][Romantic to Dirty][Under Blanket] Focus on [Scent-play][Oral fixation][Pussy Worship][Ass Worship][Cock worship][Deepthroat][Facefuck][Teasing][Kissing][Cum Fetish]Lots of [Orgasms][Degradation]",
+    "synopsis": "Your girlfriend arrives at home after a particularly bad day. She is tired, but grateful that at least the rest of the night is for you two to spend together. You decide to set up up a surprise movie night for fun and she loves the idea! She starts reminiscing on how cute you are, how the first kiss between you two happened, and how much you two are alike. This, in particular makes her way hornier than you expected, but you are happy to once again indulge with her in every dirty fantasy you two share, isn't it?",
+    "duration": "37m 41s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1231b23/f4mscript_fill_movie_night_with_your_gf_turns/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/11zv74k/f4mscript_offer_movie_night_with_your_gf_turns/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 80,
+    "title": "Snuggletime With Cop Mommy Becomes Something Much More",
+    "category": "fdom",
+    "tags": "[Milf Cop Series Finale][GFE][Milf][Bigger/Stronger Woman][Snugglefucking][Starting a Family][Breeding][Mommy Domme][Older Woman/Younger Man][Muscular Woman][Settling Down With You][Pet Names]",
+    "synopsis": "You have been going strong with your Milf cop girlfriend for several months now. The two of you are having snuggle time on a weekend. She tells you she wants to settle down with you, that\u2019s right, she wants to start a family! You can scarcely believe it, you\u2019ve dreamed of being a father. You love her more than anything and you snugglefuck a baby into your Milf police officer girlfriend.",
+    "duration": "13m 33s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11zokff/f4m_script_fill_snuggletime_with_cop_mommy/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://scriptbin.works/u/Brilliant_Yak_4923/f4m-snuggletime-with-cop-mommy-becomes-something",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 81,
+    "title": "Using Your Mom's Best Friend in the Shower and Fucking Her Mindless",
+    "category": "fswitch",
+    "tags": "[FDom] to [Fsub][MILF][Use Me][College Aged][Getting You Clean and Then Dirty Again][Fuck My Face][Deepthroat][Older Woman/Younger Man][Forbidden][Shower Sex][Lift My Leg Up][creampie][L-Bombs][Let\u2019s do this again, soon][OC]",
+    "synopsis": "You've got some free time over the weekend so you volunteered to help your mom's best friend paint a spare bedroom in her house. She is extremely grateful and she offers to heat some food for you while you use her shower. She realizes she didn't get you a towel and attempts to get your attention before you start showering. When you open the bathroom door, she is met with your naked body and you're met with an opportunity.",
+    "duration": "19m 02s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11vvy5p/f4m_using_your_moms_best_friend_in_the_shower_and/",
+    "scriptAuthor": "",
+    "scriptAuthorPage": "",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 82,
+    "title": "Are You Really Just My Daughter\u2019s Flatmate, Young Man?",
+    "category": "fdom",
+    "tags": "[MILF] [FWB\u2019s Mother] [No Cheating] [Casual] [Quickie] [Risk of Discovery] [The Secret Is Out] [Oral] [Cunnilingus] [Against Wall] [From Behind] [Both Orgasm] [Creampie] [Two Endings] [Nothing To See Here] or [Caught]",
+    "synopsis": "Being both flatmates and friends-with-benefits is a good arrangement...except when her mother comes over! You\u2019ve managed to keep your relationship secret and pose as \u201cjust good friends\u201d, at least as far as you know. But her mother is about to reveal that you\u2019ve been nowhere as discreet as you thought you were being...and also that she\u2019d like a piece of the action!",
+    "duration": "22m 00s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11s7l54/f4m_are_you_really_just_my_daughters_flatmate/",
+    "scriptAuthor": "u/Icedrake402\n\n",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/11p04t7/f4m_are_you_really_just_my_daughters_flatmate/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 83,
+    "title": "Helping Your Cop MILF Girlfriend De-stress",
+    "category": "fdom",
+    "tags": "[GFE][Bigger and Stronger Woman][Stressed Out][Massaging Her][Mommy Domme][Muscular Woman][MILF][Older Woman/Younger Man][Pet Names][Couch Sex][Pronebone][Creampie]",
+    "synopsis": "It is 3 weeks after your first time with your cop Milf neighbor. She is now your GF and comes home one day stressed out. As she sits down, you ask if there's anything you can do. She asks you to give her a massage. You begin to massage her neck, and her back, and your hands end up massaging her breasts. You apologize, but she just smiles and lays down for you. She tells you to fuck the stress out of her, and of course, you do it. You fuck your muscular cop Milf GF pronebone on the couch.",
+    "duration": "13m 46s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11me8wi/f4m_helping_your_cop_milf_girlfriend_destress/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/11l6b9o/f4m_helping_your_cop_milf_girlfriend/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 84,
+    "title": "Five Nights at Fang's and Tail's",
+    "category": "collab",
+    "tags": "[CYOA][Monstergirl][Hellhound][Inari/9-tailed fox][Griffon][Bunny girl][Fdom][Milking][Rape][Tailjob][Wing hug][Touch fluffy tail][Script Fill]",
+    "synopsis": "The one thing that continues to evolve constantly in an advanced society is the adult entertainment industry. More complex than the mind itself are the various fantasies that lie within and new ways to arouse people are being discovered. One of such experiments is a porn series simply known as \u201cNightguard.\u201d The premise is, for legal purposes, coincidentally based on the popular game \u201cFive Nights at Freddy\u2019s.\u201d The rules of the game are simple. A single man is placed in a room and tasked to manage a limited supply of power as he defends against four aggressive monster girls. To keep things fair and the ratings up the girls are limited in movement and each given a specific set of directions to stop them from just rushing the contestant. While the Danuki who started the show claims that everyone involved consented, some of the reactions from the nightguard are very genuine for what is essentially a high-budget porno.",
+    "duration": "32m 30s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11kh5uf/ffff4m_five_nights_at_fangs_and_tails/",
+    "scriptAuthor": "u/TheTakenCatking",
+    "scriptAuthorPage": "https://www.reddit.com/user/TheTakenCatking/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/1195ywn/ffff4m_script_offer_five_nights_at_fangs_and/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": [
+      {
+        "name": "u/trapped_whimpers",
+        "link": "https://www.reddit.com/user/trapped_whimpers/"
+      },
+      {
+        "name": "u/WldflowerPhoenix",
+        "link": "https://www.reddit.com/user/WldflowerPhoenix/"
+      },
+      {
+        "name": "u/Lillithmorningstar",
+        "link": "https://www.reddit.com/user/Lillithmorningstarr/"
+      },
+      {
+        "name": "u/sabinewintersaudio",
+        "link": "https://www.reddit.com/user/sabinewintersaudio/"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "title": "You avoided cumming for too long, and the Suckslut Syndicate is here to collect",
+    "category": "collab",
+    "tags": "[Fdom][Fsub][Tied to a chair][Rape][Possessive][Blowjob][Deepthroat][Facefucking][Throatpie] [Cum Swapping][Multiple Orgasms][Machine Milking][Cumplay][Your cum is ours, got it?",
+    "synopsis": "He\u2019s gone quite a time not masturbating, and avoided all temptation. However, in Cum City, dues are owed, and the Suckslut Syndicate comes breaking down his door. They own his cum, and it\u2019s time to pay up.",
+    "duration": "28m 08s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11eodgw/fff4mscript_fill_you_avoided_cumming_for_too_long/",
+    "scriptAuthor": "u/therealshawnalee\n",
+    "scriptAuthorPage": "https://www.reddit.com/user/therealshawnalee/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/z7wdna/fff4m_script_offer_you_avoided_cumming_for_too/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": [
+      {
+        "name": "u/WldflowerPhoenix",
+        "link": "https://www.reddit.com/user/WldflowerPhoenix/"
+      },
+      {
+        "name": "u/Lily-Danger",
+        "link": "https://www.reddit.com/user/Lily-Danger/"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "title": "Flirty College Professor Fucks You On The Class Trip",
+    "category": "fdom",
+    "tags": "[Fdom][Msub][Age Difference][Shy Guy][Good Boy][Bus][Public][Handjob][Whispering][Kissing][Hotel][Late Night Hookup][Stealth Sex][Blowjob][Deepthroat][Breast Sucking][Cowgirl Position][Multiple Creampies]",
+    "synopsis": "On the bus during a class field trip, you end up dozing off. When you wake up, you are very quickly reminded that your seatmate this entire time has been none other than your hot, curvy, professor. She seems to enjoy sitting next to you. Like... a lot.",
+    "duration": "27m 57s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/11blqed/f4m_flirty_college_professor_fucks_you_on_the/",
+    "scriptAuthor": "u/Shmoopy-Hoopy",
+    "scriptAuthorPage": "https://www.reddit.com/user/Shmoopy-Hoopy/",
+    "scriptLink": "https://scriptbin.works/u/Shmoopy-Hoopy/f4m-flirty-college-professor-fucks-you-on-the",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 87,
+    "title": "The BEST Kind of Exercise With Your Tomboy BFF",
+    "category": "fswitch",
+    "tags": "[Fdom] to [Fsub][Friends to Lovers][Buttplug][Use All My Holes][Downward Dog][Pretzel Pose][Ass Worship][Pussy Worship][Sweet][Sweaty] [Tied Up][Legs Above Head][Cock Cleaning][You're My New Partner Now]",
+    "synopsis": "It is a lazy weekend for you, just laying back and taking it easy with nothing planned at all. That is, until your best friend gives you a call. Turns out her yoga partner can't show today and she really needs someone to help her with some new positions. Since you are doing nothing, you accept and go to her place. After all, what are friends for? If only you knew what dirty plans she has for you in mind...",
+    "duration": "31m 39s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/1104k9d/f4mscript_fill_the_best_kind_of_exercise_with/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 88,
+    "title": "Your Muscular Former Bully Crashes At Your House",
+    "category": "fdom",
+    "tags": "[Your High School Bully][Can You Forgive Me, Dork?][Sorry For Intruding][Enemies to Lovers][Your First Time][Kisses][Muscular Woman][Big Ass][Making It Up To You][Revenge Fuck Me][Spanking][Creampie][Bent Over Couch]",
+    "synopsis": "You are living alone at home when you hear a knock on your door. You are stunned to see your former highschool bully and she's in trouble. She's sorry for intruding, but she was recently in a car accident and needed somewhere to go. You take care of her injuries and she admits you loves you. She decides to make it up to you by letting you revenge fuck her.",
+    "duration": "12m 25s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/10y306e/f4m_your_muscular_former_bully_crashes_at_your/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/10vd8ku/f4m_your_muscular_former_bully_crashes_at_your/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 89,
+    "title": " Medusa, Queen of L\u00e2mias Wants a Servant, But Finds a Lover.",
+    "category": "fdom",
+    "tags": "[Fdom][Monster Girl][L\u00e2mia][Snake Girl][Enemies to Lovers][Closed Eyes][Slow-Burn][Caring][Long Tongue][Tight \"Hugs\"][Coiling][Kissing][Scent][Oral][Breathplay][Blowjob][Deepthroat][Tailjob][Creampie][Aftercare]",
+    "synopsis": "Medusa, Queen of the L\u00e2mias had a bad reputation. A monster of equal beauty and danger, that had slain countless heroes that dared to enter her domain, with nothing but a look from her petrifying eyes. Spurned by your desire for adventure, you take upon yourself the quest to destroy that vile beast. You have a plan, you could fight her while looking at her through the reflection of your shield, a way to bypass her magic!\n\nProblem is, your strategy fails in the heat of battle, she is much faster then you imagined, and quickly you find yourself defeated and in her deathly embrace. Strangely, she decides to spare you, and wants only to speak with you instead, her soft and enchanting voice explains the error of your ways and the tragedy of her exiled life. She is only someone is search of company in her solitude, and you are given the option to ease her sorrow...",
+    "duration": "34m 43s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/10th1k0/f4mscript_fill_medusa_queen_of_l%C3%A2mias_wants_a/",
+    "scriptAuthor": "u/Isapeth",
+    "scriptAuthorPage": "https://www.reddit.com/user/Isapeth/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/10l8o7u/f4mscript_offer_medusa_queen_of_l%C3%A2mias_wants_a/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 90,
+    "title": "Movie Date With Milf Neighbor\u2026 and She\u2019s a Cop!?",
+    "category": "fdom",
+    "tags": "[Bigger and Stronger Woman][MommyDomme][Milf][Msub][Younger Man/Older Woman][Kissing][Muscular Woman][Smol Guy][Carrying You To Bed][Taking Your Virginity][Pet Names][Possessive][Good Boys][Riding You][Creampie]",
+    "synopsis": "You are at your Milf neighbor\u2019s house on a movie date. You just watched a romantic movie and are sharing a kiss when she reveals something to you\u2026 she\u2019s a police officer! She promises to always protect her good boy and you are very turned on by her possessiveness and her body. You\u2019ve never had sex before, but you really want her tonight. She smiles and carries you off to bed for your first time.",
+    "duration": "16m 11s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/10oo61a/f4m_movie_date_with_milf_neighbor_and_shes_a/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/10odkkh/f4m_movie_date_with_milf_neighbor_and_shes_a/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 91,
+    "title": "This Lesbian Prefers \u201cStraight\u201d Girls",
+    "category": "f4f",
+    "tags": "[Adults] [Seduction] [Orientation Play] [Sexy Persuasion] [You Can\u2019t Seduce Me, I\u2019m Straight] [Prove It] [Fingering] [Oral] [Both Orgasm] [Multiple Endings] [So Is Spaghetti Until It Gets Wet]",
+    "synopsis": "The speaker is a lesbian woman who claims she prefers straight girls\u2014or to be more accurate, girls who are ALMOST entirely straight. She loves the challenge of finding that chink in their armour and seductively persuading them to give lesbian love a try. The listener is sceptical that any of this would work on her (she\u2019s totally and utterly straight, you see, no ifs or buts, no really!), but accepts ten minutes for this woman to try and work her charms on her, confident it\u2019ll have no effect whatsoever.",
+    "duration": "26m 00s",
+    "image": "",
+    "link": "https://www.reddit.com/r/GWASapphic/comments/10knj7g/f4f_this_lesbian_prefers_straight_girls_script/",
+    "scriptAuthor": "u/Icedrake402",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/GWASapphic/comments/10fkc0d/f4f_this_lesbian_prefers_straight_girls_script/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 92,
+    "title": "Low-Ranking Orc Finally Captures a Mate ",
+    "category": "fdom",
+    "tags": "[Fdom] [Fantasy] [Orc] [Muscular Woman] [Kidnapping] and [Dubcon] so [Rape] [Bondage] [Possessive] [Claiming You] [Size Difference] [Strength Difference] [Cowgirl] [Creampie]",
+    "synopsis": "You are an alchemist's apprentice that is on his way home when you notice a few gold coins that were left in the road. It turns out that it's a trap! When you are hoisted up in the air by a rope, an orc woman pops out of the bushes. After gagging and binding you, she takes you back to her village and explains your new life. You are her mate now, no matter how you feel about it.",
+    "duration": "20m 26s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/10i7kpq/f4m_lowranking_orc_finally_captures_a_mate_script/",
+    "scriptAuthor": "u/gabthley94",
+    "scriptAuthorPage": "https://www.reddit.com/user/gabthley94/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/10c3dk4/f4m_lowranking_orc_finally_captures_a_mate_script/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 93,
+    "title": "Your Sexy Boss Confesses Her Love To You",
+    "category": "fdom",
+    "tags": "[Praise] [Possessive] [Big Ass] [Older Woman/Younger Man][Mistress][Public Sex][Your First Time][Kissing][Teasing][FDom][Cowgirl][Fucking On Her Desk][She Wants Your Cock][Creampie][Good Boy][Don\u2019t you DARE hold the moan!]",
+    "synopsis": "You are a young man who works at a powerful corporation. Your boss calls you to her office to talk. She praises you as her favorite employee and then kisses you suddenly. She loves you and one thing leads to another and she takes your virginity.",
+    "duration": "11m 58s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/10e1feo/f4m_your_sexy_boss_confesses_her_love_to_you/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/RavenBranwensgoodboy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/10a8yrc/f4m_your_sexy_boss_confesses_her_love_to/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 94,
+    "title": " Mirko Takes Her Payment For Saving You! ",
+    "category": "fdom",
+    "tags": "[Fdom][Rape] because noncon, mild [Orgasm Control][Cowgirl] or should I say [Bunny Girl][Handjob][Blowjob][Creampie] Multiple listener orgasms [Stronger Woman][Shy Listener][Gentle] to [Rough][Tomboy] a little [Mean][MHA]",
+    "synopsis": "You've just been rescued from an attack by none other than Rumi \"Mirko\" Usagiyama. Still a little frazzled yet eternally grateful, you ask what you could ever do to repay her. She has a few ideas in mind, surely you won't mind...I mean...she did just save your life after all.",
+    "duration": "17m 09s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/102q4h9/f4m_mirko_takes_her_payment_for_saving_you_script/",
+    "scriptAuthor": "u/thighexecution",
+    "scriptAuthorPage": "https://www.reddit.com/user/thighexecution/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/zk9sf7/f4m_mirko_takes_her_payment_for_saving_you_script/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 95,
+    "title": " Hitting on the Hellhound at the Bar!",
+    "category": "fdom",
+    "tags": "[Fdom][Kissing][Aphrodsiac] Multiple listener and speaker orgasms [Monstergirl][69] so [Blowjob][Cunnilingus][Cowgirl] a little [Tsundere][Rough] with some [Good Boys] at the end [Aftercare][Sleep Aid] and [Rape] just to be safe.",
+    "synopsis": "One night at the bar, you notice a hellhound sitting all by herself. You make a few attempts to get her attention to little affect. You, however, are no quitter and make one last ditch effort which does garner a response, but when she drags you out of the bar by your shirt collar you realize you may have bitten off more than you can chew.",
+    "duration": "27m 04s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/101bl3i/f4m_hitting_on_the_hellhound_at_the_bar_script/",
+    "scriptAuthor": "u/thighexecution",
+    "scriptAuthorPage": "https://www.reddit.com/user/thighexecution/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/zudq15/f4m_hitting_on_the_hellhound_at_the_bar_script/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 96,
+    "title": "Girl Finds Out The Boy She\u2019s Always Bullied Is Her Submissive Secret Admirer",
+    "category": "fdom",
+    "tags": "[Fdom] [Choking] [Slapping] mentions of [Abandonment] [Nursing Handjob] [Boobies] [Cowgirl][Creampie] [Mean] to [Caring] [Tsundere] to [Possessive] [College]",
+    "synopsis": "The speaker (a kinda popular girl ice queen) has been bullying the listener since the start of university. Constantly calling him names, pushing him down, usual bully stuff. But recently, she started getting letters and gifts from a \u201csecret admirer.\u201d Today, she found another gift and a letter. She recognized the handwriting from a homework assignment she made the listener write for her. So she storms over to the listener\u2019s house intent on\u2014if maybe not killing him\u2014at least maiming him. Buuuuttt maybe she had some repressed feelings of her own. (:<",
+    "duration": "23m 24s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/zwztkf/f4m_girl_finds_out_the_boy_shes_always_bullied_is/",
+    "scriptAuthor": "u/Mentally-ill-loner",
+    "scriptAuthorPage": "https://www.reddit.com/user/Mentally-ill-loner/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/yyco8w/f4mgirl_finds_out_the_boys_shes_always_bullied_is/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 97,
+    "title": "Good Boys Get Lap Dances",
+    "category": "fdom",
+    "tags": "[GFE][Gentle Fdom][Good Boy][Pet Names][Mommy-Dom][L-Bombs][Kissing][Yoga Pants][Lapdance]Lots of[Teasing][Can't Touch Until Told][Handjob][Assjob][Couch Sex][Reverse Cowgirl][Spanking][Edging][Doggystyle][Creampie]",
+    "synopsis": "",
+    "duration": "23m 36s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/zu056c/f4m_good_boys_get_lap_dances_script_fillgfegentle/",
+    "scriptAuthor": "u/Shmoopy-Hoopy",
+    "scriptAuthorPage": "https://www.reddit.com/user/Shmoopy-Hoopy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/zsbuba/f4m_good_boys_get_lapdances_script_offergfegentle/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 98,
+    "title": "Rescued From The Storm By Your Cruel GF\u2019s Mom",
+    "category": "fdom",
+    "tags": "[Blizzard][GF\u2019s Mom][Older Woman/Younger Man][Don't consider it cheating][Kisses][Good Boy][Running Away][Toxic Relationship][Taking care of you][Snuggling for warmth][Revenge Fuck][Creampie]",
+    "synopsis": "You are in a toxic relationship with your GF that has gotten so bad you run away. You got caught in a blizzard and wake up to the face of your GF\u2019s mom. She is beautiful and has been taking care of you. She is so sorry about how you\u2019ve been treated that she wants you to fuck her as revenge on her daughter while you snuggle for warmth.",
+    "duration": "13m 39s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/zr8g97/f4m_rescued_from_the_storm_by_your_cruel_gfs/",
+    "scriptAuthor": "u/RavenBranwensgoodboy",
+    "scriptAuthorPage": "https://www.reddit.com/user/Shmoopy-Hoopy/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/zp5fxh/f4m_rescued_from_the_storm_by_your_cruel_gfs/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 99,
+    "title": "Your Best Friend Is Getting Married, But His Mom Is Free",
+    "category": "fdom",
+    "tags": "[Older Woman] [Younger Man] [MILF] [Teenage Fantasy Comes True] [Sneaking Around] [Kinda Cheating] [Hotel Sex] [Borrowing The Honeymoon Suite] [Oral] [Titfuck] [Cowgirl] [From Behind] [Creampie]",
+    "synopsis": "One of the groom's childhood friends hooks up with the groom's mother (his teenage fantasy) at the wedding. She's getting divorced, and is eager to make up for lost time and get some revenge on her husband. When she sees who the best man is, all the times he was obviously attracted to her when he was in high school come flooding back, and she decides to waste no time...and she does have a key to the honeymoon suite, after all.",
+    "duration": "27m 12s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/zlhkxp/f4m_your_best_friend_is_getting_married_but_his/",
+    "scriptAuthor": "u/Icedrake402",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/zjaa9z/f4m_your_best_friend_is_getting_married_but_his/",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  },
+  {
+    "id": 100,
+    "title": "Accidentally Blackmailing Your Boss",
+    "category": "fsub",
+    "tags": "[Adults] [Accidental Mdom Listener] [Fsub Speaker] [Power Bottom] [Unintended Blackmail] [CNC] so [Rape] [Drunk Flirting] in [Flashback] [Office Setting] [Lingerie] [From Behind] [Over Desk] [Up Against Glass] [NO Condom] so, [Creampie]",
+    "synopsis": "At the office party, your sexy (but very reserved and professional) boss had a bit too much to drink and, when you admitted your romantic frustrations, she got a bit more forward and candid about her proposed solution than you expected, and then passed out on the couch before it could go any further. When you broach the subject, privately in her office, you hoped to draw a line under this awkward incident and go back to being just colleagues.\n\nBut she jumps to an entirely different conclusion about your intentions, despite all your protests to the contrary. She seems determined against all reason to believe you're blackmailing her, so certain that one might suspect repressed desires coming out...",
+    "duration": "20m 02s",
+    "image": "",
+    "link": "https://www.reddit.com/r/gonewildaudio/comments/ytswpp/f4m_accidentally_blackmailing_your_boss_script/",
+    "scriptAuthor": "u/Icedrake402",
+    "scriptAuthorPage": "https://www.reddit.com/user/Icedrake402/",
+    "scriptLink": "https://www.reddit.com/r/gonewildaudio/comments/ysoa3f/f4m_accidentally_blackmailing_your_boss_script/?utm_source=share&utm_medium=ios_app&utm_name=iossmf",
+    "audioEditor": "",
+    "audioEditorPage": "",
+    "collabPartners": []
+  }
+];
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let currentView = 3;
+        let currentFontSize = 16;
+        let currentFont = 'default';
+
+        function verifyAge(isAdult) {
+            if (isAdult) { localStorage.setItem('ageVerified', 'true'); document.getElementById('ageModal').classList.add('hidden'); }
+            else { window.location.href = 'https://www.google.com'; }
+        }
+        function checkAgeVerification() { if (localStorage.getItem('ageVerified') === 'true') document.getElementById('ageModal').classList.add('hidden'); }
+        function toggleSettings() { document.getElementById('settingsPanel').classList.toggle('open'); document.getElementById('settingsOverlay').classList.toggle('open'); }
+        function adjustFontSize(delta) {
+            currentFontSize = Math.min(32, Math.max(12, currentFontSize + delta));
+            document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+            document.getElementById('fontSizeValue').textContent = currentFontSize + 'px';
+            localStorage.setItem('fontSize', currentFontSize);
+        }
+        function setFont(fontType) {
+            currentFont = fontType;
+            document.body.className = 'font-' + fontType;
+            document.querySelectorAll('.font-option').forEach(btn => btn.classList.toggle('active', btn.dataset.font === fontType));
+            localStorage.setItem('fontType', fontType);
+        }
+        function loadSettings() {
+            const savedFontSize = localStorage.getItem('fontSize');
+            const savedFontType = localStorage.getItem('fontType');
+            const savedView = localStorage.getItem('viewMode');
+            if (savedFontSize) { currentFontSize = parseInt(savedFontSize); document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px'); document.getElementById('fontSizeValue').textContent = currentFontSize + 'px'; }
+            if (savedFontType) setFont(savedFontType);
+            if (savedView) { currentView = parseInt(savedView); updateViewMode(currentView); }
+        }
+        function updateViewMode(view) {
+            currentView = view;
+            document.getElementById('cardsGrid').className = 'cards-grid view-' + view;
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.toggle('active', parseInt(btn.dataset.view) === view));
+            localStorage.setItem('viewMode', view);
+        }
+        function filterAudios() {
+            let filtered = AUDIOS_DATA;
+            if (currentCategory !== 'all') filtered = filtered.filter(a => a.category === currentCategory);
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                filtered = filtered.filter(a => a.title.toLowerCase().includes(searchLower) || a.tags.toLowerCase().includes(searchLower) || a.synopsis.toLowerCase().includes(searchLower));
+            }
+            return filtered;
+        }
+        function updateCounts() {
+            document.getElementById('count-all').textContent = AUDIOS_DATA.length;
+            Object.keys(CONFIG.categories).forEach(cat => { 
+                if (cat !== 'all') { 
+                    const el = document.getElementById('count-' + cat); 
+                    if (el) el.textContent = AUDIOS_DATA.filter(a => a.category === cat).length; 
+                } 
+            });
+        }
+        function parseTags(tagString) {
+            if (!tagString) return [];
+            return tagString.match(/\[([^\]]+)\]/g)?.map(t => t.slice(1, -1)) || [];
+        }
+        function buildCreditsHtml(audio) {
+            let credits = [];
+            
+            // Script author
+            if (audio.scriptAuthor) {
+                let row = '<div class="credit-pill"><span class="credit-label">📝 Script by:</span> ';
+                if (audio.scriptAuthorPage) {
+                    row += '<a href="' + audio.scriptAuthorPage + '" target="_blank" rel="noopener noreferrer" class="credit-link">' + audio.scriptAuthor + '</a>';
+                } else {
+                    row += '<span>' + audio.scriptAuthor + '</span>';
+                }
+                if (audio.scriptLink) {
+                    row += ' <a href="' + audio.scriptLink + '" target="_blank" rel="noopener noreferrer" class="credit-link">(📜 script)</a>';
+                }
+                row += '</div>';
+                credits.push(row);
+            }
+            
+            // Audio editor
+            if (audio.audioEditor) {
+                let row = '<div class="credit-pill"><span class="credit-label">🎧 Edited by:</span> ';
+                if (audio.audioEditorPage) {
+                    row += '<a href="' + audio.audioEditorPage + '" target="_blank" rel="noopener noreferrer" class="credit-link">' + audio.audioEditor + '</a>';
+                } else {
+                    row += '<span>' + audio.audioEditor + '</span>';
+                }
+                row += '</div>';
+                credits.push(row);
+            }
+            
+            // Collab partners
+            if (audio.collabPartners && audio.collabPartners.length > 0) {
+                let row = '<div class="credit-pill"><span class="credit-label">🎙️ Featuring:</span> <span class="collab-partners">';
+                row += audio.collabPartners.map((p, i) => {
+                    let link = p.link ? '<a href="' + p.link + '" target="_blank" rel="noopener noreferrer" class="credit-link">' + p.name + '</a>' : p.name;
+                    return link + (i < audio.collabPartners.length - 1 ? ', ' : '');
+                }).join('');
+                row += '</span></div>';
+                credits.push(row);
+            }
+            
+            if (credits.length === 0) return '';
+            return '<div class="card-credits">' + credits.join('') + '</div>';
+        }
+        function createCard(audio) {
+            const imageContent = audio.image ? '<img src="' + audio.image + '" alt="' + audio.title + '" class="card-image" loading="lazy">' : '<div class="card-image-placeholder">🎧</div>';
+            const tags = parseTags(audio.tags);
+            const maxVisibleTags = 4;
+            const hasMoreTags = tags.length > maxVisibleTags;
+            const visibleTags = tags.slice(0, maxVisibleTags);
+            const hiddenTags = tags.slice(maxVisibleTags);
+            
+            let tagsHtml = visibleTags.map(tag => '<span class="tag">' + tag + '</span>').join('');
+            if (hasMoreTags) {
+                tagsHtml += '<span class="tag-expand-btn" onclick="event.preventDefault(); event.stopPropagation(); toggleTags(this);">+' + hiddenTags.length + ' more</span>';
+                tagsHtml += '<span class="hidden-tags" style="display:none;">' + hiddenTags.map(tag => '<span class="tag">' + tag + '</span>').join('') + '</span>';
+            }
+            
+            const categoryDisplay = CONFIG.categories[audio.category]?.title || audio.category;
+            const creditsHtml = buildCreditsHtml(audio);
+            
+            return '<div class="card" data-link="' + audio.link + '" onclick="handleCardClick(event, this)">' +
+                '<div class="card-image-wrapper">' + imageContent + 
+                '<span class="card-category-badge">' + (CONFIG.categories[audio.category]?.icon || '') + ' ' + categoryDisplay + '</span>' + 
+                (audio.duration ? '<span class="card-duration">' + audio.duration + '</span>' : '') + 
+                '<div class="card-play-overlay"><div class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div></div>' +
+                '</div>' +
+                '<div class="card-content">' +
+                '<h3 class="card-title">' + audio.title + '</h3>' +
+                creditsHtml +
+                '<div class="card-tags">' + tagsHtml + '</div>' +
+                '<p class="card-synopsis">' + audio.synopsis + '</p>' +
+                '</div></div>';
+        }
+        function toggleTags(btn) {
+            const hiddenTags = btn.nextElementSibling;
+            const isExpanded = hiddenTags.style.display !== 'none';
+            if (isExpanded) {
+                hiddenTags.style.display = 'none';
+                btn.textContent = '+' + hiddenTags.querySelectorAll('.tag').length + ' more';
+            } else {
+                hiddenTags.style.display = 'inline';
+                btn.textContent = '− less';
+            }
+        }
+        function handleCardClick(event, card) {
+            // Don't navigate if clicking on credit links, tags, or expand button
+            if (event.target.closest('.credit-link') || event.target.closest('.tag') || event.target.closest('.tag-expand-btn')) {
+                return;
+            }
+            const link = card.dataset.link;
+            if (link) {
+                window.open(link, '_blank', 'noopener,noreferrer');
+            }
+        }
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const filtered = filterAudios();
+            document.getElementById('resultsCount').textContent = filtered.length;
+            if (filtered.length === 0) { grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🍙</div><h3 class="empty-title">No audios found</h3><p class="empty-text">Try adjusting your search or category filter</p></div>'; return; }
+            grid.innerHTML = filtered.map(createCard).join('');
+        }
+        function initEventListeners() {
+            document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => { 
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); 
+                item.classList.add('active'); 
+                currentCategory = item.dataset.category; 
+                renderCards(); 
+            }));
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => { currentSearch = e.target.value; renderCards(); }, 300); });
+            document.querySelectorAll('.view-btn').forEach(btn => btn.addEventListener('click', () => updateViewMode(parseInt(btn.dataset.view))));
+            document.getElementById('cardsGrid').addEventListener('click', (e) => { 
+                if (e.target.classList.contains('tag')) { 
+                    e.preventDefault(); 
+                    e.stopPropagation(); 
+                    document.getElementById('searchInput').value = e.target.textContent; 
+                    currentSearch = e.target.textContent; 
+                    renderCards(); 
+                } 
+            });
+        }
+        function init() { checkAgeVerification(); loadSettings(); updateCounts(); renderCards(); initEventListeners(); }
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
