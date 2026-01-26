@@ -500,9 +500,9 @@
                         <a href="${audio.patreonLink}" target="_blank" class="link-btn link-btn-patreon" onclick="event.stopPropagation()">▶ Patreon</a>
                     </div>`;
             } else if (hasReddit) {
-                return `<div class="card-links"><a href="${audio.redditLink}" target="_blank" class="link-btn link-btn-single" onclick="event.stopPropagation()">▶ Listen on Reddit</a></div>`;
+                return `<div class="card-links"><a href="${audio.redditLink}" target="_blank" class="link-btn link-btn-reddit" onclick="event.stopPropagation()">▶ Listen on Reddit</a></div>`;
             } else if (hasPatreon) {
-                return `<div class="card-links"><a href="${audio.patreonLink}" target="_blank" class="link-btn link-btn-single" onclick="event.stopPropagation()">▶ Listen on Patreon</a></div>`;
+                return `<div class="card-links"><a href="${audio.patreonLink}" target="_blank" class="link-btn link-btn-patreon" onclick="event.stopPropagation()">▶ Listen on Patreon</a></div>`;
             }
             return '';
         }
