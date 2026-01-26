@@ -169,6 +169,11 @@
         .load-more-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .load-more-info { color: var(--text-light); font-size: 0.9rem; margin-top: 0.8rem; }
         
+        /* Related Results Separator */
+        .related-separator { grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem; padding: 1rem 0; margin: 0.5rem 0; }
+        .related-separator-line { flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--salmon-pale), transparent); }
+        .related-separator-text { color: var(--salmon-deep); font-size: 0.9rem; font-weight: 600; white-space: nowrap; padding: 0.4rem 1rem; background: var(--blush-light); border-radius: 20px; border: 1px solid var(--salmon-pale); }
+        
         /* Empty State */
         .empty-state { text-align: center; padding: 3rem; color: var(--text-light); grid-column: 1 / -1; }
         .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
@@ -296,7 +301,128 @@
                 sfw: { title: 'SFW', icon: '☁️' },
                 'script-offer': { title: 'Script Offer', icon: '📝' }
             },
-            itemsPerPage: 60
+            itemsPerPage: 60,
+            // Related tags mapping - semantically similar tags
+            relatedTags: {
+                // Oral
+                'blowjob': ['deepthroat', 'facefuck', 'facefucking', 'throatpie', 'oralfixation', 'cockworship', 'ballsucking', 'sloppy', 'gagging', 'throatfuck', 'cockcleaning'],
+                'deepthroat': ['blowjob', 'facefuck', 'facefucking', 'throatpie', 'gagging', 'throatfuck', 'oralfixation', 'sloppy'],
+                'facefuck': ['deepthroat', 'blowjob', 'facefucking', 'throatpie', 'gagging', 'rough', 'throatfuck'],
+                'facefucking': ['facefuck', 'deepthroat', 'blowjob', 'throatpie', 'gagging', 'rough'],
+                'throatpie': ['deepthroat', 'blowjob', 'facefuck', 'cuminmouth', 'creampie'],
+                'throatfuck': ['deepthroat', 'facefuck', 'blowjob', 'gagging', 'rough'],
+                'oralfixation': ['blowjob', 'deepthroat', 'cockworship', 'cockhungry'],
+                'cockworship': ['blowjob', 'oralfixation', 'handjob', 'ballsucking', 'cockhungry', 'cockcleaning'],
+                'ballsucking': ['blowjob', 'cockworship', 'handjob'],
+                
+                // Handjob related
+                'handjob': ['cockworship', 'ballsucking', 'edging', 'teasing'],
+                'titjob': ['bigtits', 'breastplay', 'cumonmytits'],
+                
+                // Positions
+                'cowgirl': ['riding', 'ridingyou', 'doggystyle', 'missionary', 'pronebone'],
+                'doggystyle': ['cowgirl', 'bentover', 'pronebone', 'missionary', 'rough'],
+                'missionary': ['cowgirl', 'doggystyle', 'gentle', 'kissing'],
+                'pronebone': ['doggystyle', 'bentover', 'rough', 'anal'],
+                'bentover': ['doggystyle', 'pronebone', 'againstthewall', 'rough'],
+                'againstthewall': ['bentover', 'rough', 'publicsex', 'semipublic'],
+                'ridingyou': ['cowgirl', 'riding', 'grinding'],
+                
+                // Creampie/cum
+                'creampie': ['breeding', 'cuminside', 'multiplecrampies', 'nocondom', 'impregnation'],
+                'cuminmouth': ['throatpie', 'blowjob', 'facial', 'cumfetish', 'swallowing'],
+                'cumonmyface': ['facial', 'cumfetish', 'blowjob', 'cuminmouth'],
+                'cumonmytits': ['titjob', 'bigtits', 'cumfetish'],
+                'cumfetish': ['creampie', 'cuminmouth', 'cumonmyface', 'cumplay'],
+                'cumplay': ['cumfetish', 'sloppy', 'messy'],
+                
+                // Femdom
+                'fdom': ['gentlefdom', 'meanfdom', 'mommydomme', 'femdom', 'dominant', 'goodboy'],
+                'gentlefdom': ['fdom', 'gentle', 'mommydomme', 'goodboy', 'praise'],
+                'meanfdom': ['fdom', 'degradation', 'humiliation', 'rough'],
+                'mommydomme': ['fdom', 'gentlefdom', 'milf', 'goodboy', 'praise'],
+                'femdom': ['fdom', 'dominant', 'gentlefdom', 'meanfdom'],
+                
+                // Fsub
+                'fsub': ['aggressivefsub', 'sluttyfsub', 'submissive', 'begging', 'selfdegradation'],
+                'aggressivefsub': ['fsub', 'sluttyfsub', 'begging', 'desperate', 'needy'],
+                'sluttyfsub': ['fsub', 'aggressivefsub', 'selfdegradation', 'begging'],
+                
+                // Degradation
+                'selfdegradation': ['degradation', 'lightdegradation', 'humiliation', 'fsub', 'sluttyfsub'],
+                'lightdegradation': ['selfdegradation', 'degradation', 'teasing'],
+                'degradation': ['selfdegradation', 'lightdegradation', 'humiliation', 'meanfdom'],
+                
+                // Praise/affection
+                'goodboy': ['praise', 'petnames', 'gentle', 'fdom', 'gentlefdom', 'mommydomme'],
+                'praise': ['goodboy', 'petnames', 'gentle', 'affirmation'],
+                'petnames': ['goodboy', 'praise', 'gentle', 'romantic'],
+                'babyboy': ['goodboy', 'petnames', 'gentle', 'mommydomme'],
+                'lbombs': ['romantic', 'kissing', 'gentle', 'friendstolovers', 'confession'],
+                
+                // Rough
+                'rough': ['roughsex', 'facefuck', 'doggystyle', 'hatefucking', 'aggressive'],
+                'roughsex': ['rough', 'hatefucking', 'aggressive', 'facefuck'],
+                'hatefucking': ['rough', 'roughsex', 'enemiestolovers', 'angry'],
+                
+                // Gentle/romantic
+                'gentle': ['kissing', 'romantic', 'lbombs', 'cuddlefuck', 'missionary', 'sensual'],
+                'kissing': ['gentle', 'romantic', 'makingout', 'lbombs', 'passionate'],
+                'makingout': ['kissing', 'gentle', 'romantic', 'grinding'],
+                'cuddlefuck': ['gentle', 'romantic', 'lazy', 'morningsex', 'spooning'],
+                
+                // Relationship dynamics
+                'friendstolovers': ['strangerstolovers', 'enemiestolovers', 'confession', 'romantic', 'lbombs'],
+                'enemiestolovers': ['friendstolovers', 'strangerstolovers', 'hatefucking', 'tsundere'],
+                'strangerstolovers': ['friendstolovers', 'enemiestolovers', 'hookup', 'onenight'],
+                
+                // Public/risky
+                'semipublic': ['almostcaught', 'holdthemoan', 'carsex', 'publicsex', 'risky'],
+                'almostcaught': ['semipublic', 'holdthemoan', 'risky', 'publicsex'],
+                'holdthemoan': ['semipublic', 'almostcaught', 'quiet', 'risky'],
+                'carsex': ['semipublic', 'almostcaught', 'publicsex'],
+                
+                // Body
+                'bigtits': ['breastplay', 'titsucking', 'titjob', 'cumonmytits', 'hugebreasts'],
+                'breastplay': ['bigtits', 'titsucking', 'nippleplay'],
+                'titsucking': ['bigtits', 'breastplay', 'nippleplay'],
+                'bigass': ['fatass', 'assjob', 'thicc'],
+                
+                // Age/MILF
+                'milf': ['olderwomanyoungerman', 'mommydomme', 'cougar', 'mature'],
+                'olderwomanyoungerman': ['milf', 'cougar', 'mature', 'agedifference'],
+                
+                // Orgasm
+                'multipleorgasms': ['overstimulation', 'mutualorgasm', 'orgasmcontrol'],
+                'mutualorgasm': ['multipleorgasms', 'speakerorgasm', 'listenerorgasm'],
+                'speakerorgasm': ['mutualorgasm', 'listenerorgasm', 'realorgasm'],
+                'listenerorgasm': ['mutualorgasm', 'speakerorgasm', 'guidedmasturbation'],
+                'overstimulation': ['multipleorgasms', 'sensitive', 'toomuch'],
+                
+                // Teasing
+                'teasing': ['edging', 'denial', 'grinding', 'playful'],
+                'edging': ['teasing', 'denial', 'orgasmcontrol', 'handjob'],
+                'grinding': ['teasing', 'lapdance', 'dryhumping', 'foreplay'],
+                'lapdance': ['grinding', 'teasing', 'stripper'],
+                
+                // Virgin
+                'virginlistener': ['firsttime', 'inexperienced', 'nervous', 'gentle'],
+                'virginspeaker': ['firsttime', 'inexperienced', 'nervous'],
+                
+                // Other kinks
+                'facesitting': ['cunnilingus', 'faceriding', 'smothering', 'worship'],
+                'cunnilingus': ['facesitting', 'oral', 'worship', 'eating out'],
+                'fingering': ['foreplay', 'teasing', 'handjob', 'masturbation'],
+                'scentkink': ['scentplay', 'panties', 'musk'],
+                'scentplay': ['scentkink', 'panties', 'musk'],
+                'spitplay': ['sloppy', 'messy', 'degradation'],
+                'faceslapping': ['rough', 'degradation', 'dominant'],
+                'begging': ['desperate', 'needy', 'fsub', 'pleading'],
+                'freeuse': ['consent', 'objectification', 'available'],
+                'dubcon': ['reluctant', 'persuasion', 'hesitant'],
+                'monstergirl': ['fantasy', 'supernatural', 'nonhuman'],
+                'sleepaid': ['asmr', 'relaxing', 'gentle', 'comfort'],
+            }
         };
 
         let AUDIOS_DATA = [];
@@ -387,6 +513,25 @@
             });
         }
 
+        // Normalize a tag for lookup in relatedTags map
+        function normalizeTagKey(tag) {
+            return tag.toLowerCase().replace(/[\s\-\/]/g, '');
+        }
+        
+        // Get related tags for a search term
+        function getRelatedTags(searchTerm) {
+            const normalized = normalizeTagKey(searchTerm);
+            return CONFIG.relatedTags[normalized] || [];
+        }
+        
+        // Check if audio matches a tag (normalized comparison)
+        function audioHasTag(audio, tagToFind) {
+            if (!audio.tags) return false;
+            const tagsNormalized = audio.tags.toLowerCase().replace(/[\s\-\/]/g, '');
+            const searchNormalized = normalizeTagKey(tagToFind);
+            return tagsNormalized.includes(searchNormalized);
+        }
+
         function filterAudios() {
             let filtered = [...AUDIOS_DATA];
             
@@ -395,16 +540,9 @@
                 const hasReddit = !!a.redditLink;
                 const hasPatreon = !!a.patreonLink;
                 
-                // If both toggles are off, show nothing
                 if (!showReddit && !showPatreon) return false;
-                
-                // If both toggles are on, show everything
                 if (showReddit && showPatreon) return true;
-                
-                // If only Reddit is on, show audios that have Reddit links
                 if (showReddit && !showPatreon) return hasReddit;
-                
-                // If only Patreon is on, show audios that have Patreon links
                 if (!showReddit && showPatreon) return hasPatreon;
                 
                 return true;
@@ -416,25 +554,60 @@
             
             if (currentSearch) {
                 const search = currentSearch.toLowerCase();
-                const searchNormalized = search.replace(/[\s\-]/g, '');
-                filtered = filtered.filter(a => {
+                const searchNormalized = search.replace(/[\s\-\/]/g, '');
+                
+                // Get related tags
+                const relatedTags = getRelatedTags(currentSearch);
+                
+                // Separate into exact matches and related matches
+                const exactMatches = [];
+                const relatedMatches = [];
+                
+                filtered.forEach(a => {
                     const titleMatch = a.title.toLowerCase().includes(search);
                     const synopsisMatch = a.synopsis.toLowerCase().includes(search);
-                    // Normalize tags for comparison
                     const tagsLower = a.tags.toLowerCase();
-                    const tagsNormalized = tagsLower.replace(/[\s\-]/g, '');
-                    const tagMatch = tagsLower.includes(search) || tagsNormalized.includes(searchNormalized);
-                    return titleMatch || synopsisMatch || tagMatch;
+                    const tagsNormalized = tagsLower.replace(/[\s\-\/]/g, '');
+                    const exactTagMatch = tagsLower.includes(search) || tagsNormalized.includes(searchNormalized);
+                    
+                    if (titleMatch || synopsisMatch || exactTagMatch) {
+                        a._matchType = 'exact';
+                        exactMatches.push(a);
+                    } else if (relatedTags.length > 0) {
+                        // Check for related tag matches
+                        for (const relatedTag of relatedTags) {
+                            if (audioHasTag(a, relatedTag)) {
+                                a._matchType = 'related';
+                                a._matchedRelatedTag = relatedTag;
+                                relatedMatches.push(a);
+                                break;
+                            }
+                        }
+                    }
                 });
+                
+                // Combine: exact first, then related
+                filtered = [...exactMatches, ...relatedMatches];
             }
             
-            // Sort
-            if (currentSort === 'newest') {
-                filtered.sort((a, b) => (b.datePosted || '').localeCompare(a.datePosted || ''));
-            } else if (currentSort === 'oldest') {
-                filtered.sort((a, b) => (a.datePosted || '').localeCompare(b.datePosted || ''));
-            } else if (currentSort === 'title') {
-                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            // Sort (but keep exact/related grouping if searching)
+            if (!currentSearch) {
+                if (currentSort === 'newest') {
+                    filtered.sort((a, b) => (b.datePosted || '').localeCompare(a.datePosted || ''));
+                } else if (currentSort === 'oldest') {
+                    filtered.sort((a, b) => (a.datePosted || '').localeCompare(b.datePosted || ''));
+                } else if (currentSort === 'title') {
+                    filtered.sort((a, b) => a.title.localeCompare(b.title));
+                }
+            } else {
+                // When searching, sort within each group
+                const sortFn = currentSort === 'newest' ? (a, b) => (b.datePosted || '').localeCompare(a.datePosted || '') :
+                               currentSort === 'oldest' ? (a, b) => (a.datePosted || '').localeCompare(b.datePosted || '') :
+                               (a, b) => a.title.localeCompare(b.title);
+                
+                const exact = filtered.filter(a => a._matchType === 'exact').sort(sortFn);
+                const related = filtered.filter(a => a._matchType === 'related').sort(sortFn);
+                filtered = [...exact, ...related];
             }
             
             return filtered;
@@ -574,12 +747,45 @@
             if (displayedCount === 0 && filteredAudios.length === 0) {
                 grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🍙</div><h3 class="empty-title">No audios found</h3><p>Try adjusting your search or category</p></div>';
             } else {
-                grid.innerHTML += toShow.map(createCard).join('');
+                // Check if we need to add a separator for related results
+                let html = '';
+                let separatorAdded = grid.querySelector('.related-separator') !== null;
+                
+                toShow.forEach((audio, index) => {
+                    const globalIndex = displayedCount + index;
+                    
+                    // Add separator before first related result
+                    if (!separatorAdded && audio._matchType === 'related') {
+                        // Check if previous item was exact or this is first related
+                        const prevAudio = globalIndex > 0 ? filteredAudios[globalIndex - 1] : null;
+                        if (!prevAudio || prevAudio._matchType === 'exact') {
+                            const exactCount = filteredAudios.filter(a => a._matchType === 'exact').length;
+                            const relatedCount = filteredAudios.filter(a => a._matchType === 'related').length;
+                            html += `<div class="related-separator">
+                                <div class="related-separator-line"></div>
+                                <span class="related-separator-text">✨ ${relatedCount} related results</span>
+                                <div class="related-separator-line"></div>
+                            </div>`;
+                            separatorAdded = true;
+                        }
+                    }
+                    html += createCard(audio);
+                });
+                
+                grid.innerHTML += html;
             }
             
             displayedCount += toShow.length;
             
-            document.getElementById('resultsCount').textContent = filteredAudios.length;
+            // Update results count with exact/related breakdown if searching
+            const exactCount = filteredAudios.filter(a => a._matchType === 'exact').length;
+            const relatedCount = filteredAudios.filter(a => a._matchType === 'related').length;
+            
+            if (currentSearch && relatedCount > 0) {
+                document.getElementById('resultsCount').textContent = `${exactCount} + ${relatedCount} related`;
+            } else {
+                document.getElementById('resultsCount').textContent = filteredAudios.length;
+            }
             
             const remaining = filteredAudios.length - displayedCount;
             const loadMoreBtn = document.getElementById('loadMoreBtn');
