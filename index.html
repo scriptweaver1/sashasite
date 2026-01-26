@@ -84,6 +84,18 @@
         .font-option:hover { border-color: var(--salmon-pale); }
         .font-option.active { background: var(--salmon-pale); border-color: var(--salmon-pink); }
         
+        /* Platform Toggle */
+        .platform-toggles { display: flex; flex-direction: column; gap: 0.6rem; }
+        .platform-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; }
+        .platform-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-dark); }
+        .platform-icon { width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: bold; }
+        .platform-icon.reddit { background: #ff4500; }
+        .platform-icon.patreon { background: #e13d3d; }
+        .toggle-switch { position: relative; width: 44px; height: 24px; background: var(--salmon-pale); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; }
+        .toggle-switch.active { background: var(--salmon-pink); }
+        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .toggle-switch.active::after { left: 22px; }
+        
         /* Main Content */
         .main-content { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
         
@@ -140,9 +152,9 @@
         .card-links { display: flex; gap: 0.5em; margin-top: auto; padding-top: 0.5em; }
         .link-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.4em; padding: 0.6em 1em; border-radius: 20px; font-size: 0.8em; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
         .link-btn-reddit { background: #ff4500; color: white; }
-        .link-btn-reddit:hover { background: #e03d00; transform: translateY(-2px); }
-        .link-btn-patreon { background: #f96854; color: white; }
-        .link-btn-patreon:hover { background: #e85a47; transform: translateY(-2px); }
+        .link-btn-reddit:hover { background: #e03d00; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4); }
+        .link-btn-patreon { background: #e13d3d; color: white; }
+        .link-btn-patreon:hover { background: #c42f2f; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225, 61, 61, 0.4); }
         .link-btn-single { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: white; }
         .link-btn-single:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--glow-salmon); }
         
@@ -227,6 +239,25 @@
                 <button class="font-option" data-font="accessible" onclick="setFont('accessible')">Atkinson Hyperlegible</button>
             </div>
         </div>
+        <div class="settings-section">
+            <h4>Show Platforms</h4>
+            <div class="platform-toggles">
+                <div class="platform-toggle">
+                    <span class="platform-label">
+                        <span class="platform-icon reddit">R</span>
+                        Reddit Audios
+                    </span>
+                    <div class="toggle-switch active" id="toggleReddit" onclick="togglePlatform('reddit')"></div>
+                </div>
+                <div class="platform-toggle">
+                    <span class="platform-label">
+                        <span class="platform-icon patreon">P</span>
+                        Patreon Audios
+                    </span>
+                    <div class="toggle-switch active" id="togglePatreon" onclick="togglePlatform('patreon')"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <main class="main-content">
@@ -270,6 +301,8 @@
         let currentSort = 'newest';
         let displayedCount = 0;
         let filteredAudios = [];
+        let showReddit = true;
+        let showPatreon = true;
 
         // Load data
         async function loadData() {
@@ -302,11 +335,27 @@
             document.querySelectorAll('.font-option').forEach(btn => btn.classList.toggle('active', btn.dataset.font === fontType));
             localStorage.setItem('fontType', fontType);
         }
+        function togglePlatform(platform) {
+            if (platform === 'reddit') {
+                showReddit = !showReddit;
+                document.getElementById('toggleReddit').classList.toggle('active', showReddit);
+                localStorage.setItem('showReddit', showReddit);
+            } else {
+                showPatreon = !showPatreon;
+                document.getElementById('togglePatreon').classList.toggle('active', showPatreon);
+                localStorage.setItem('showPatreon', showPatreon);
+            }
+            resetAndRender();
+        }
         function loadSettings() {
             const savedFontSize = localStorage.getItem('fontSize');
             const savedFontType = localStorage.getItem('fontType');
+            const savedShowReddit = localStorage.getItem('showReddit');
+            const savedShowPatreon = localStorage.getItem('showPatreon');
             if (savedFontSize) { currentFontSize = parseInt(savedFontSize); document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px'); document.getElementById('fontSizeValue').textContent = currentFontSize + 'px'; }
             if (savedFontType) setFont(savedFontType);
+            if (savedShowReddit !== null) { showReddit = savedShowReddit === 'true'; document.getElementById('toggleReddit').classList.toggle('active', showReddit); }
+            if (savedShowPatreon !== null) { showPatreon = savedShowPatreon === 'true'; document.getElementById('togglePatreon').classList.toggle('active', showPatreon); }
         }
 
         function buildNav() {
@@ -336,6 +385,26 @@
 
         function filterAudios() {
             let filtered = [...AUDIOS_DATA];
+            
+            // Platform filter
+            filtered = filtered.filter(a => {
+                const hasReddit = !!a.redditLink;
+                const hasPatreon = !!a.patreonLink;
+                
+                // If both toggles are off, show nothing
+                if (!showReddit && !showPatreon) return false;
+                
+                // If both toggles are on, show everything
+                if (showReddit && showPatreon) return true;
+                
+                // If only Reddit is on, show audios that have Reddit links
+                if (showReddit && !showPatreon) return hasReddit;
+                
+                // If only Patreon is on, show audios that have Patreon links
+                if (!showReddit && showPatreon) return hasPatreon;
+                
+                return true;
+            });
             
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(a => a.category === currentCategory);
