@@ -416,11 +416,16 @@
             
             if (currentSearch) {
                 const search = currentSearch.toLowerCase();
-                filtered = filtered.filter(a => 
-                    a.title.toLowerCase().includes(search) || 
-                    a.tags.toLowerCase().includes(search) || 
-                    a.synopsis.toLowerCase().includes(search)
-                );
+                const searchNormalized = search.replace(/[\s\-]/g, '');
+                filtered = filtered.filter(a => {
+                    const titleMatch = a.title.toLowerCase().includes(search);
+                    const synopsisMatch = a.synopsis.toLowerCase().includes(search);
+                    // Normalize tags for comparison
+                    const tagsLower = a.tags.toLowerCase();
+                    const tagsNormalized = tagsLower.replace(/[\s\-]/g, '');
+                    const tagMatch = tagsLower.includes(search) || tagsNormalized.includes(searchNormalized);
+                    return titleMatch || synopsisMatch || tagMatch;
+                });
             }
             
             // Sort
