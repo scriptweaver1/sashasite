@@ -113,8 +113,9 @@
         .controls-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem; }
         .results-info { color: var(--text-medium); font-size: 0.9rem; }
         .results-count { font-weight: 700; color: var(--salmon-deep); }
-        .sort-select { padding: 0.5rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 15px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.85rem; cursor: pointer; }
-        .sort-select:focus { outline: none; border-color: var(--salmon-pink); }
+        .controls-right { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+        .sort-select, .duration-select { padding: 0.5rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 15px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.85rem; cursor: pointer; }
+        .sort-select:focus, .duration-select:focus { outline: none; border-color: var(--salmon-pink); }
         
         /* Cards Grid */
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
@@ -275,11 +276,22 @@
         </nav>
         <div class="controls-bar">
             <div class="results-info">Showing <span class="results-count" id="resultsCount">0</span> audios</div>
-            <select class="sort-select" id="sortSelect" onchange="handleSort()">
-                <option value="newest">Newest First</option>
-                <option value="oldest">Oldest First</option>
-                <option value="title">Title A-Z</option>
-            </select>
+            <div class="controls-right">
+                <select class="duration-select" id="durationSelect" onchange="handleDurationFilter()">
+                    <option value="all">Any Duration</option>
+                    <option value="0-10">Under 10 min</option>
+                    <option value="10-20">10-20 min</option>
+                    <option value="20-30">20-30 min</option>
+                    <option value="30+">30+ min</option>
+                </select>
+                <select class="sort-select" id="sortSelect" onchange="handleSort()">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">Title A-Z</option>
+                    <option value="shortest">Shortest First</option>
+                    <option value="longest">Longest First</option>
+                </select>
+            </div>
         </div>
         <div class="cards-grid" id="cardsGrid"></div>
         <div class="load-more-container" id="loadMoreContainer">
@@ -429,6 +441,7 @@
         let currentCategory = 'all';
         let currentSearch = '';
         let currentSort = 'newest';
+        let currentDuration = 'all';
         let displayedCount = 0;
         let filteredAudios = [];
         let showReddit = true;
@@ -518,6 +531,31 @@
             return tag.toLowerCase().replace(/[\s\-\/]/g, '');
         }
         
+        // Parse duration string to minutes (e.g., "27m 57s" -> 27.95)
+        function parseDuration(durationStr) {
+            if (!durationStr) return 0;
+            
+            let minutes = 0;
+            let seconds = 0;
+            
+            // Match patterns like "27m 57s", "27m", "5m 30s", "1h 20m 30s"
+            const hourMatch = durationStr.match(/(\d+)\s*h/i);
+            const minMatch = durationStr.match(/(\d+)\s*m/i);
+            const secMatch = durationStr.match(/(\d+)\s*s/i);
+            
+            if (hourMatch) minutes += parseInt(hourMatch[1]) * 60;
+            if (minMatch) minutes += parseInt(minMatch[1]);
+            if (secMatch) seconds = parseInt(secMatch[1]);
+            
+            return minutes + (seconds / 60);
+        }
+        
+        // Handle duration filter change
+        function handleDurationFilter() {
+            currentDuration = document.getElementById('durationSelect').value;
+            resetAndRender();
+        }
+        
         // Get related tags for a search term
         function getRelatedTags(searchTerm) {
             const normalized = normalizeTagKey(searchTerm);
@@ -547,6 +585,18 @@
                 
                 return true;
             });
+            
+            // Duration filter
+            if (currentDuration !== 'all') {
+                filtered = filtered.filter(a => {
+                    const mins = parseDuration(a.duration);
+                    if (currentDuration === '0-10') return mins > 0 && mins < 10;
+                    if (currentDuration === '10-20') return mins >= 10 && mins < 20;
+                    if (currentDuration === '20-30') return mins >= 20 && mins < 30;
+                    if (currentDuration === '30+') return mins >= 30;
+                    return true;
+                });
+            }
             
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(a => a.category === currentCategory);
@@ -590,21 +640,24 @@
                 filtered = [...exactMatches, ...relatedMatches];
             }
             
+            // Sort function based on current sort
+            const getSortFn = () => {
+                switch (currentSort) {
+                    case 'newest': return (a, b) => (b.datePosted || '').localeCompare(a.datePosted || '');
+                    case 'oldest': return (a, b) => (a.datePosted || '').localeCompare(b.datePosted || '');
+                    case 'title': return (a, b) => a.title.localeCompare(b.title);
+                    case 'shortest': return (a, b) => parseDuration(a.duration) - parseDuration(b.duration);
+                    case 'longest': return (a, b) => parseDuration(b.duration) - parseDuration(a.duration);
+                    default: return (a, b) => 0;
+                }
+            };
+            
             // Sort (but keep exact/related grouping if searching)
             if (!currentSearch) {
-                if (currentSort === 'newest') {
-                    filtered.sort((a, b) => (b.datePosted || '').localeCompare(a.datePosted || ''));
-                } else if (currentSort === 'oldest') {
-                    filtered.sort((a, b) => (a.datePosted || '').localeCompare(b.datePosted || ''));
-                } else if (currentSort === 'title') {
-                    filtered.sort((a, b) => a.title.localeCompare(b.title));
-                }
+                filtered.sort(getSortFn());
             } else {
                 // When searching, sort within each group
-                const sortFn = currentSort === 'newest' ? (a, b) => (b.datePosted || '').localeCompare(a.datePosted || '') :
-                               currentSort === 'oldest' ? (a, b) => (a.datePosted || '').localeCompare(b.datePosted || '') :
-                               (a, b) => a.title.localeCompare(b.title);
-                
+                const sortFn = getSortFn();
                 const exact = filtered.filter(a => a._matchType === 'exact').sort(sortFn);
                 const related = filtered.filter(a => a._matchType === 'related').sort(sortFn);
                 filtered = [...exact, ...related];
