@@ -26,15 +26,40 @@
             --font-body: 'Zen Maru Gothic', sans-serif;
             --font-size-base: 16px;
         }
+        
+        /* Dark Mode */
+        body.dark-mode {
+            --pure-white: #1a1a1a;
+            --cream-white: #121212;
+            --blush-light: #1e1515;
+            --blush-medium: #251a1a;
+            --salmon-pale: #3d2a2a;
+            --salmon-light: #5a3a3a;
+            --salmon-pink: #c27a6a;
+            --salmon-medium: #d4847a;
+            --salmon-deep: #e08080;
+            --text-dark: #e8e0dc;
+            --text-medium: #b8a8a0;
+            --text-light: #8a7a72;
+            --glow-salmon: rgba(192, 122, 106, 0.3);
+        }
+        body.dark-mode .background-image { opacity: 0.03; }
+        body.dark-mode::before { background: linear-gradient(180deg, rgba(18,18,18,0.98) 0%, rgba(26,26,26,0.95) 50%, rgba(18,18,18,0.98) 100%); }
+        body.dark-mode .age-modal { background: linear-gradient(145deg, #1a1a1a, #251a1a); }
+        body.dark-mode .header { background: rgba(26,26,26,0.95); }
+        body.dark-mode .search-input { background: #1a1a1a; color: var(--text-dark); }
+        body.dark-mode .card { background: #1a1a1a; }
+        body.dark-mode .settings-panel { background: #1a1a1a; }
+        
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { font-size: var(--font-size-base); scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--cream-white); color: var(--text-dark); min-height: 100vh; line-height: 1.6; }
+        body { font-family: var(--font-body); background: var(--cream-white); color: var(--text-dark); min-height: 100vh; line-height: 1.6; transition: background 0.3s ease, color 0.3s ease; }
         body.font-default { --font-body: 'Zen Maru Gothic', sans-serif; }
         body.font-serif { --font-body: 'Shippori Mincho', serif; }
         body.font-accessible { --font-body: 'Atkinson Hyperlegible', sans-serif; }
         
-        .background-image { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('background.jpg'); background-size: cover; background-position: center; opacity: 0.08; z-index: -2; }
-        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(255,245,243,0.95) 0%, rgba(253,251,249,0.9) 50%, rgba(255,239,236,0.95) 100%); pointer-events: none; z-index: -1; }
+        .background-image { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('background.jpg'); background-size: cover; background-position: center; opacity: 0.08; z-index: -2; transition: opacity 0.3s ease; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(255,245,243,0.95) 0%, rgba(253,251,249,0.9) 50%, rgba(255,239,236,0.95) 100%); pointer-events: none; z-index: -1; transition: background 0.3s ease; }
         
         /* Age Modal */
         .age-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74, 63, 58, 0.97); z-index: 10000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
@@ -51,22 +76,28 @@
         .age-btn-deny:hover { border-color: var(--salmon-pink); }
         
         /* Header */
-        .header { padding: 1.5rem 2rem; border-bottom: 1px solid rgba(232, 160, 145, 0.2); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .header { padding: 1.5rem 2rem; border-bottom: 1px solid rgba(232, 160, 145, 0.2); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; transition: background 0.3s ease; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-        .logo { display: flex; align-items: center; gap: 0.8rem; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; }
         .logo-icon { font-size: 2rem; }
         .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--salmon-deep), var(--salmon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .header-controls { display: flex; gap: 0.8rem; align-items: center; }
+        .header-controls { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
         .search-container { position: relative; }
-        .search-input { padding: 0.7rem 1rem 0.7rem 2.5rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.9rem; width: 250px; transition: all 0.3s ease; }
-        .search-input:focus { outline: none; border-color: var(--salmon-pink); box-shadow: 0 0 15px var(--glow-salmon); width: 300px; }
+        .search-input { padding: 0.7rem 1rem 0.7rem 2.5rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.9rem; width: 280px; transition: all 0.3s ease; }
+        .search-input:focus { outline: none; border-color: var(--salmon-pink); box-shadow: 0 0 15px var(--glow-salmon); width: 320px; }
+        .search-input::placeholder { color: var(--text-light); }
         .search-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--salmon-pink); width: 16px; height: 16px; }
-        .settings-btn { display: flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 20px; color: var(--salmon-deep); font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; }
-        .settings-btn:hover { background: var(--blush-light); border-color: var(--salmon-pink); }
-        .settings-btn svg { width: 16px; height: 16px; }
+        .search-hint { position: absolute; top: 100%; left: 0; right: 0; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 12px; padding: 0.6rem 0.8rem; margin-top: 0.3rem; font-size: 0.75rem; color: var(--text-light); display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; }
+        .search-input:focus + .search-hint { display: block; }
+        .header-btn { display: flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 20px; color: var(--salmon-deep); font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-body); }
+        .header-btn:hover { background: var(--blush-light); border-color: var(--salmon-pink); }
+        .header-btn svg { width: 16px; height: 16px; }
+        .header-btn.active { background: var(--salmon-pink); border-color: var(--salmon-deep); color: white; }
+        .random-btn { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: white; border-color: var(--salmon-deep); }
+        .random-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--glow-salmon); background: linear-gradient(135deg, var(--salmon-deep), var(--salmon-pink)); }
         
         /* Settings Panel */
-        .settings-panel { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: var(--pure-white); border-left: 2px solid var(--salmon-pale); z-index: 1000; padding: 1.5rem; transition: right 0.3s ease; overflow-y: auto; }
+        .settings-panel { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: var(--pure-white); border-left: 2px solid var(--salmon-pale); z-index: 1000; padding: 1.5rem; transition: right 0.3s ease, background 0.3s ease; overflow-y: auto; }
         .settings-panel.open { right: 0; }
         .settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(74, 63, 58, 0.3); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
         .settings-overlay.open { opacity: 1; visibility: visible; }
@@ -80,9 +111,17 @@
         .font-size-btn:hover { background: var(--salmon-pink); color: var(--pure-white); }
         .font-size-value { flex: 1; text-align: center; font-weight: 600; }
         .font-options { display: flex; flex-direction: column; gap: 0.4rem; }
-        .font-option { padding: 0.6rem 0.8rem; background: var(--blush-light); border: 2px solid transparent; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; text-align: left; font-size: 0.9rem; }
+        .font-option { padding: 0.6rem 0.8rem; background: var(--blush-light); border: 2px solid transparent; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; text-align: left; font-size: 0.9rem; color: var(--text-dark); }
         .font-option:hover { border-color: var(--salmon-pale); }
         .font-option.active { background: var(--salmon-pale); border-color: var(--salmon-pink); }
+        .setting-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; }
+        .setting-toggle-label { font-size: 0.9rem; color: var(--text-dark); }
+        .setting-switch { position: relative; width: 44px; height: 24px; background: var(--salmon-pale); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; }
+        .setting-switch.active { background: var(--salmon-pink); }
+        .setting-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .setting-switch.active::after { left: 22px; }
+        .keyboard-shortcuts { font-size: 0.8rem; color: var(--text-light); line-height: 1.8; }
+        .keyboard-shortcuts kbd { background: var(--blush-medium); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.75rem; border: 1px solid var(--salmon-pale); }
         
         /* Main Content */
         .main-content { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
@@ -110,9 +149,14 @@
         .platform-toggle-item.active { border-color: var(--salmon-pink); }
         .platform-toggle-item.reddit.active { background: rgba(255, 69, 0, 0.1); }
         .platform-toggle-item.patreon.active { background: rgba(225, 61, 61, 0.1); }
+        .platform-toggle-item.favorites { }
+        .platform-toggle-item.favorites.active { background: rgba(255, 182, 193, 0.2); border-color: #ff6b8a; }
+        .platform-toggle-item.favorites .nav-toggle-switch { background: #ffb6c1; }
+        .platform-toggle-item.favorites.active .nav-toggle-switch { background: #ff6b8a; }
         .platform-icon-small { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: bold; }
         .platform-icon-small.reddit { background: #ff4500; }
         .platform-icon-small.patreon { background: #e13d3d; }
+        .platform-icon-small.heart { background: #ff6b8a; font-size: 0.8rem; }
         .platform-toggle-item .nav-toggle-switch { width: 32px; height: 18px; }
         .platform-toggle-item .nav-toggle-switch::after { width: 14px; height: 14px; }
         .platform-toggle-item.active .nav-toggle-switch::after { left: 16px; }
@@ -123,20 +167,43 @@
         
         /* Controls Bar */
         .controls-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem; }
-        .results-info { color: var(--text-medium); font-size: 0.9rem; }
+        .results-info { color: var(--text-medium); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
         .results-count { font-weight: 700; color: var(--salmon-deep); }
+        .results-duration { color: var(--text-light); font-size: 0.85rem; }
         .controls-right { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-        .sort-select, .duration-select { padding: 0.5rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 15px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.85rem; cursor: pointer; }
-        .sort-select:focus, .duration-select:focus { outline: none; border-color: var(--salmon-pink); }
-        
+        .control-select { padding: 0.5rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 15px; color: var(--text-dark); font-family: var(--font-body); font-size: 0.85rem; cursor: pointer; }
+        .control-select:focus { outline: none; border-color: var(--salmon-pink); }
+        .view-toggle { display: flex; border: 2px solid var(--salmon-pale); border-radius: 15px; overflow: hidden; }
+        .view-toggle-btn { padding: 0.5rem 0.8rem; background: var(--pure-white); border: none; color: var(--text-medium); cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem; }
+        .view-toggle-btn.active { background: var(--salmon-pink); color: white; }
+        .view-toggle-btn:hover:not(.active) { background: var(--blush-light); }
+
         /* Cards Grid */
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
+        .cards-grid.compact { grid-template-columns: 1fr; gap: 0.5rem; }
         
-        /* Text-focused Card Design */
-        .card { background: var(--pure-white); border-radius: 12px; padding: 1.2em; border: 2px solid var(--salmon-pale); box-shadow: 0 2px 10px rgba(194, 93, 93, 0.06); transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; gap: 0.8em; }
+        /* Card Design */
+        .card { background: var(--pure-white); border-radius: 12px; padding: 1.2em; border: 2px solid var(--salmon-pale); box-shadow: 0 2px 10px rgba(194, 93, 93, 0.06); transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; gap: 0.8em; position: relative; }
         .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(194, 93, 93, 0.12); border-color: var(--salmon-pink); }
+        .card.focused { outline: 3px solid var(--salmon-deep); outline-offset: 2px; }
         
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8em; }
+        /* Compact Card */
+        .cards-grid.compact .card { flex-direction: row; align-items: center; padding: 0.8em 1em; gap: 1em; }
+        .cards-grid.compact .card-header { flex: 1; min-width: 0; }
+        .cards-grid.compact .card-title { font-size: 0.95em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .cards-grid.compact .card-meta { flex-direction: row; gap: 0.5em; }
+        .cards-grid.compact .card-credits, .cards-grid.compact .card-tags, .cards-grid.compact .card-synopsis { display: none; }
+        .cards-grid.compact .card-links { margin-top: 0; padding-top: 0; flex-shrink: 0; }
+        .cards-grid.compact .card-links .link-btn { padding: 0.4em 0.8em; font-size: 0.75em; }
+        
+        /* Favorite Button */
+        .favorite-btn { position: absolute; top: 0.8em; right: 0.8em; width: 32px; height: 32px; border-radius: 50%; background: var(--blush-light); border: 2px solid var(--salmon-pale); color: var(--salmon-pale); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 1rem; z-index: 5; }
+        .favorite-btn:hover { background: #fff0f3; border-color: #ff6b8a; color: #ff6b8a; transform: scale(1.1); }
+        .favorite-btn.active { background: #ff6b8a; border-color: #ff6b8a; color: white; }
+        .cards-grid.compact .favorite-btn { position: static; width: 28px; height: 28px; font-size: 0.9rem; flex-shrink: 0; }
+        
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8em; padding-right: 2.5em; }
+        .cards-grid.compact .card-header { padding-right: 0; }
         .card-title { font-family: var(--font-display); font-size: 1.05em; font-weight: 600; color: var(--text-dark); line-height: 1.4; flex: 1; }
         .card-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3em; flex-shrink: 0; }
         .card-category { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: var(--pure-white); padding: 0.25em 0.6em; border-radius: 12px; font-size: 0.7em; font-weight: 600; white-space: nowrap; }
@@ -172,8 +239,6 @@
         .link-btn-reddit:hover { background: #e03d00; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4); }
         .link-btn-patreon { background: #e13d3d; color: white; }
         .link-btn-patreon:hover { background: #c42f2f; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(225, 61, 61, 0.4); }
-        .link-btn-single { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: white; }
-        .link-btn-single:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--glow-salmon); }
         
         /* Load More */
         .load-more-container { text-align: center; margin-top: 2rem; }
@@ -192,6 +257,14 @@
         .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
         .empty-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--text-medium); margin-bottom: 0.5rem; }
         
+        /* Back to Top Button */
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); color: white; border: none; cursor: pointer; font-size: 1.5rem; box-shadow: 0 4px 15px var(--glow-salmon); transition: all 0.3s ease; opacity: 0; visibility: hidden; z-index: 99; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px var(--glow-salmon); }
+        
+        /* Keyboard focus indicator */
+        .keyboard-nav .card:focus { outline: 3px solid var(--salmon-deep); outline-offset: 2px; }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-content { flex-direction: column; align-items: stretch; }
@@ -200,6 +273,7 @@
             .search-input:focus { width: 100%; }
             .cards-grid { grid-template-columns: 1fr; }
             .logo { justify-content: center; }
+            .back-to-top { bottom: 1rem; right: 1rem; width: 44px; height: 44px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -220,16 +294,22 @@
 
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <div class="logo" onclick="resetFilters()">
                 <span class="logo-icon">🍣</span>
                 <span class="logo-text">Sashimi's Audio Masterlist</span>
             </div>
             <div class="header-controls">
                 <div class="search-container">
                     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                    <input type="text" class="search-input" id="searchInput" placeholder="Search audios, tags...">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search... (use + for AND, - to exclude)">
+                    <div class="search-hint">
+                        <strong>Tips:</strong> "tag1 + tag2" for multiple • "-tag" to exclude • Click tags to search
+                    </div>
                 </div>
-                <button class="settings-btn" onclick="toggleSettings()">
+                <button class="header-btn random-btn" onclick="randomAudio()" title="Random audio (R)">
+                    🎲 Random
+                </button>
+                <button class="header-btn" id="settingsBtn" onclick="toggleSettings()" title="Settings (S)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     Settings
                 </button>
@@ -244,6 +324,13 @@
             <button class="settings-close" onclick="toggleSettings()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
+        </div>
+        <div class="settings-section">
+            <h4>Appearance</h4>
+            <div class="setting-toggle">
+                <span class="setting-toggle-label">Dark Mode</span>
+                <div class="setting-switch" id="darkModeToggle" onclick="toggleDarkMode()"></div>
+            </div>
         </div>
         <div class="settings-section">
             <h4>Font Size</h4>
@@ -261,6 +348,21 @@
                 <button class="font-option" data-font="accessible" onclick="setFont('accessible')">Atkinson Hyperlegible</button>
             </div>
         </div>
+        <div class="settings-section">
+            <h4>Keyboard Shortcuts</h4>
+            <div class="keyboard-shortcuts">
+                <kbd>/</kbd> Focus search<br>
+                <kbd>R</kbd> Random audio<br>
+                <kbd>S</kbd> Toggle settings<br>
+                <kbd>D</kbd> Toggle dark mode<br>
+                <kbd>F</kbd> Toggle favorites filter<br>
+                <kbd>1-5</kbd> View modes / Duration<br>
+                <kbd>↑↓</kbd> Navigate cards<br>
+                <kbd>Enter</kbd> Open selected<br>
+                <kbd>H</kbd> Favorite selected<br>
+                <kbd>Esc</kbd> Clear / Close
+            </div>
+        </div>
     </div>
 
     <main class="main-content">
@@ -268,22 +370,32 @@
             <div class="nav-grid" id="navGrid"></div>
         </nav>
         <div class="controls-bar">
-            <div class="results-info">Showing <span class="results-count" id="resultsCount">0</span> audios</div>
+            <div class="results-info">
+                <span>Showing <span class="results-count" id="resultsCount">0</span> audios</span>
+                <span class="results-duration" id="resultsDuration"></span>
+            </div>
             <div class="controls-right">
-                <select class="duration-select" id="durationSelect" onchange="handleDurationFilter()">
+                <select class="control-select" id="authorSelect" onchange="handleAuthorFilter()">
+                    <option value="all">All Authors</option>
+                </select>
+                <select class="control-select" id="durationSelect" onchange="handleDurationFilter()">
                     <option value="all">Any Duration</option>
                     <option value="0-10">Under 10 min</option>
                     <option value="10-20">10-20 min</option>
                     <option value="20-30">20-30 min</option>
                     <option value="30+">30+ min</option>
                 </select>
-                <select class="sort-select" id="sortSelect" onchange="handleSort()">
+                <select class="control-select" id="sortSelect" onchange="handleSort()">
                     <option value="newest">Newest First</option>
                     <option value="oldest">Oldest First</option>
                     <option value="title">Title A-Z</option>
                     <option value="shortest">Shortest First</option>
                     <option value="longest">Longest First</option>
                 </select>
+                <div class="view-toggle">
+                    <button class="view-toggle-btn active" data-view="grid" onclick="setView('grid')" title="Grid view">▦</button>
+                    <button class="view-toggle-btn" data-view="compact" onclick="setView('compact')" title="Compact view">☰</button>
+                </div>
             </div>
         </div>
         <div class="cards-grid" id="cardsGrid"></div>
@@ -292,6 +404,8 @@
             <p class="load-more-info" id="loadMoreInfo"></p>
         </div>
     </main>
+    
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">↑</button>
 
     <script>
         const CONFIG = {
@@ -307,9 +421,7 @@
                 'script-offer': { title: 'Script Offer', icon: '📝' }
             },
             itemsPerPage: 60,
-            // Related tags mapping - semantically similar tags
             relatedTags: {
-                // Oral
                 'blowjob': ['deepthroat', 'facefuck', 'facefucking', 'throatpie', 'oralfixation', 'cockworship', 'ballsucking', 'sloppy', 'gagging', 'throatfuck', 'cockcleaning'],
                 'deepthroat': ['blowjob', 'facefuck', 'facefucking', 'throatpie', 'gagging', 'throatfuck', 'oralfixation', 'sloppy'],
                 'facefuck': ['deepthroat', 'blowjob', 'facefucking', 'throatpie', 'gagging', 'rough', 'throatfuck'],
@@ -319,12 +431,8 @@
                 'oralfixation': ['blowjob', 'deepthroat', 'cockworship', 'cockhungry'],
                 'cockworship': ['blowjob', 'oralfixation', 'handjob', 'ballsucking', 'cockhungry', 'cockcleaning'],
                 'ballsucking': ['blowjob', 'cockworship', 'handjob'],
-                
-                // Handjob related
                 'handjob': ['cockworship', 'ballsucking', 'edging', 'teasing'],
                 'titjob': ['bigtits', 'breastplay', 'cumonmytits'],
-                
-                // Positions
                 'cowgirl': ['riding', 'ridingyou', 'doggystyle', 'missionary', 'pronebone'],
                 'doggystyle': ['cowgirl', 'bentover', 'pronebone', 'missionary', 'rough'],
                 'missionary': ['cowgirl', 'doggystyle', 'gentle', 'kissing'],
@@ -332,91 +440,61 @@
                 'bentover': ['doggystyle', 'pronebone', 'againstthewall', 'rough'],
                 'againstthewall': ['bentover', 'rough', 'publicsex', 'semipublic'],
                 'ridingyou': ['cowgirl', 'riding', 'grinding'],
-                
-                // Creampie/cum
                 'creampie': ['breeding', 'cuminside', 'multiplecrampies', 'nocondom', 'impregnation'],
                 'cuminmouth': ['throatpie', 'blowjob', 'facial', 'cumfetish', 'swallowing'],
                 'cumonmyface': ['facial', 'cumfetish', 'blowjob', 'cuminmouth'],
                 'cumonmytits': ['titjob', 'bigtits', 'cumfetish'],
                 'cumfetish': ['creampie', 'cuminmouth', 'cumonmyface', 'cumplay'],
                 'cumplay': ['cumfetish', 'sloppy', 'messy'],
-                
-                // Femdom
                 'fdom': ['gentlefdom', 'meanfdom', 'mommydomme', 'femdom', 'dominant', 'goodboy'],
                 'gentlefdom': ['fdom', 'gentle', 'mommydomme', 'goodboy', 'praise'],
                 'meanfdom': ['fdom', 'degradation', 'humiliation', 'rough'],
                 'mommydomme': ['fdom', 'gentlefdom', 'milf', 'goodboy', 'praise'],
                 'femdom': ['fdom', 'dominant', 'gentlefdom', 'meanfdom'],
-                
-                // Fsub
                 'fsub': ['aggressivefsub', 'sluttyfsub', 'submissive', 'begging', 'selfdegradation'],
                 'aggressivefsub': ['fsub', 'sluttyfsub', 'begging', 'desperate', 'needy'],
                 'sluttyfsub': ['fsub', 'aggressivefsub', 'selfdegradation', 'begging'],
-                
-                // Degradation
                 'selfdegradation': ['degradation', 'lightdegradation', 'humiliation', 'fsub', 'sluttyfsub'],
                 'lightdegradation': ['selfdegradation', 'degradation', 'teasing'],
                 'degradation': ['selfdegradation', 'lightdegradation', 'humiliation', 'meanfdom'],
-                
-                // Praise/affection
                 'goodboy': ['praise', 'petnames', 'gentle', 'fdom', 'gentlefdom', 'mommydomme'],
                 'praise': ['goodboy', 'petnames', 'gentle', 'affirmation'],
                 'petnames': ['goodboy', 'praise', 'gentle', 'romantic'],
                 'babyboy': ['goodboy', 'petnames', 'gentle', 'mommydomme'],
                 'lbombs': ['romantic', 'kissing', 'gentle', 'friendstolovers', 'confession'],
-                
-                // Rough
                 'rough': ['roughsex', 'facefuck', 'doggystyle', 'hatefucking', 'aggressive'],
                 'roughsex': ['rough', 'hatefucking', 'aggressive', 'facefuck'],
                 'hatefucking': ['rough', 'roughsex', 'enemiestolovers', 'angry'],
-                
-                // Gentle/romantic
                 'gentle': ['kissing', 'romantic', 'lbombs', 'cuddlefuck', 'missionary', 'sensual'],
                 'kissing': ['gentle', 'romantic', 'makingout', 'lbombs', 'passionate'],
                 'makingout': ['kissing', 'gentle', 'romantic', 'grinding'],
                 'cuddlefuck': ['gentle', 'romantic', 'lazy', 'morningsex', 'spooning'],
-                
-                // Relationship dynamics
                 'friendstolovers': ['strangerstolovers', 'enemiestolovers', 'confession', 'romantic', 'lbombs'],
                 'enemiestolovers': ['friendstolovers', 'strangerstolovers', 'hatefucking', 'tsundere'],
                 'strangerstolovers': ['friendstolovers', 'enemiestolovers', 'hookup', 'onenight'],
-                
-                // Public/risky
                 'semipublic': ['almostcaught', 'holdthemoan', 'carsex', 'publicsex', 'risky'],
                 'almostcaught': ['semipublic', 'holdthemoan', 'risky', 'publicsex'],
                 'holdthemoan': ['semipublic', 'almostcaught', 'quiet', 'risky'],
                 'carsex': ['semipublic', 'almostcaught', 'publicsex'],
-                
-                // Body
                 'bigtits': ['breastplay', 'titsucking', 'titjob', 'cumonmytits', 'hugebreasts'],
                 'breastplay': ['bigtits', 'titsucking', 'nippleplay'],
                 'titsucking': ['bigtits', 'breastplay', 'nippleplay'],
                 'bigass': ['fatass', 'assjob', 'thicc'],
-                
-                // Age/MILF
                 'milf': ['olderwomanyoungerman', 'mommydomme', 'cougar', 'mature'],
                 'olderwomanyoungerman': ['milf', 'cougar', 'mature', 'agedifference'],
-                
-                // Orgasm
                 'multipleorgasms': ['overstimulation', 'mutualorgasm', 'orgasmcontrol'],
                 'mutualorgasm': ['multipleorgasms', 'speakerorgasm', 'listenerorgasm'],
                 'speakerorgasm': ['mutualorgasm', 'listenerorgasm', 'realorgasm'],
                 'listenerorgasm': ['mutualorgasm', 'speakerorgasm', 'guidedmasturbation'],
                 'overstimulation': ['multipleorgasms', 'sensitive', 'toomuch'],
-                
-                // Teasing
                 'teasing': ['edging', 'denial', 'grinding', 'playful'],
                 'edging': ['teasing', 'denial', 'orgasmcontrol', 'handjob'],
                 'grinding': ['teasing', 'lapdance', 'dryhumping', 'foreplay'],
                 'lapdance': ['grinding', 'teasing', 'stripper'],
-                
-                // Virgin
                 'virginlistener': ['firsttime', 'inexperienced', 'nervous', 'gentle'],
                 'virginspeaker': ['firsttime', 'inexperienced', 'nervous'],
-                
-                // Other kinks
                 'facesitting': ['cunnilingus', 'faceriding', 'smothering', 'worship'],
-                'cunnilingus': ['facesitting', 'oral', 'worship', 'eating out'],
+                'cunnilingus': ['facesitting', 'oral', 'worship'],
                 'fingering': ['foreplay', 'teasing', 'handjob', 'masturbation'],
                 'scentkink': ['scentplay', 'panties', 'musk'],
                 'scentplay': ['scentkink', 'panties', 'musk'],
@@ -434,22 +512,81 @@
         let currentSearch = '';
         let currentSort = 'newest';
         let currentDuration = 'all';
+        let currentAuthor = 'all';
+        let currentView = 'grid';
         let displayedCount = 0;
         let filteredAudios = [];
         let showReddit = true;
         let showPatreon = true;
+        let showFavoritesOnly = false;
         let activeCategories = new Set(['all']);
+        let favorites = new Set();
+        let darkMode = false;
+        let focusedCardIndex = -1;
 
         // Load data
         async function loadData() {
             try {
                 const response = await fetch('audios.json');
                 AUDIOS_DATA = await response.json();
+                buildAuthorSelect();
                 init();
+                loadFromURL();
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('cardsGrid').innerHTML = '<div class="empty-state"><div class="empty-icon">❌</div><h3 class="empty-title">Error loading data</h3></div>';
             }
+        }
+
+        // URL State Management
+        function updateURL() {
+            const params = new URLSearchParams();
+            if (currentSearch) params.set('q', currentSearch);
+            if (currentSort !== 'newest') params.set('sort', currentSort);
+            if (currentDuration !== 'all') params.set('duration', currentDuration);
+            if (currentAuthor !== 'all') params.set('author', currentAuthor);
+            if (currentView !== 'grid') params.set('view', currentView);
+            if (!showReddit) params.set('reddit', '0');
+            if (!showPatreon) params.set('patreon', '0');
+            if (showFavoritesOnly) params.set('favorites', '1');
+            if (!activeCategories.has('all')) params.set('categories', [...activeCategories].join(','));
+            
+            const newURL = params.toString() ? `${window.location.pathname}?${params}` : window.location.pathname;
+            history.replaceState(null, '', newURL);
+        }
+
+        function loadFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            
+            if (params.has('q')) {
+                currentSearch = params.get('q');
+                document.getElementById('searchInput').value = currentSearch;
+            }
+            if (params.has('sort')) {
+                currentSort = params.get('sort');
+                document.getElementById('sortSelect').value = currentSort;
+            }
+            if (params.has('duration')) {
+                currentDuration = params.get('duration');
+                document.getElementById('durationSelect').value = currentDuration;
+            }
+            if (params.has('author')) {
+                currentAuthor = params.get('author');
+                document.getElementById('authorSelect').value = currentAuthor;
+            }
+            if (params.has('view')) {
+                currentView = params.get('view');
+                setView(currentView, false);
+            }
+            if (params.has('reddit')) showReddit = params.get('reddit') !== '0';
+            if (params.has('patreon')) showPatreon = params.get('patreon') !== '0';
+            if (params.has('favorites')) showFavoritesOnly = params.get('favorites') === '1';
+            if (params.has('categories')) {
+                activeCategories = new Set(params.get('categories').split(','));
+            }
+            
+            buildNav();
+            resetAndRender();
         }
 
         function verifyAge(isAdult) {
@@ -457,7 +594,18 @@
             else { window.location.href = 'https://www.google.com'; }
         }
         function checkAgeVerification() { if (localStorage.getItem('ageVerified') === 'true') document.getElementById('ageModal').classList.add('hidden'); }
-        function toggleSettings() { document.getElementById('settingsPanel').classList.toggle('open'); document.getElementById('settingsOverlay').classList.toggle('open'); }
+        function toggleSettings() { 
+            document.getElementById('settingsPanel').classList.toggle('open'); 
+            document.getElementById('settingsOverlay').classList.toggle('open'); 
+        }
+
+        // Dark Mode
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode', darkMode);
+            document.getElementById('darkModeToggle').classList.toggle('active', darkMode);
+            localStorage.setItem('darkMode', darkMode);
+        }
 
         let currentFontSize = 16;
         function adjustFontSize(delta) {
@@ -467,45 +615,123 @@
             localStorage.setItem('fontSize', currentFontSize);
         }
         function setFont(fontType) {
-            document.body.className = 'font-' + fontType;
+            document.body.classList.remove('font-default', 'font-serif', 'font-accessible');
+            document.body.classList.add('font-' + fontType);
             document.querySelectorAll('.font-option').forEach(btn => btn.classList.toggle('active', btn.dataset.font === fontType));
             localStorage.setItem('fontType', fontType);
         }
+
+        // View Mode
+        function setView(view, update = true) {
+            currentView = view;
+            document.getElementById('cardsGrid').classList.toggle('compact', view === 'compact');
+            document.querySelectorAll('.view-toggle-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.view === view));
+            localStorage.setItem('viewMode', view);
+            if (update) updateURL();
+        }
+
+        // Favorites
+        function loadFavorites() {
+            const saved = localStorage.getItem('favorites');
+            if (saved) favorites = new Set(JSON.parse(saved));
+        }
+        function saveFavorites() {
+            localStorage.setItem('favorites', JSON.stringify([...favorites]));
+        }
+        function toggleFavorite(id, event) {
+            if (event) event.stopPropagation();
+            if (favorites.has(id)) favorites.delete(id);
+            else favorites.add(id);
+            saveFavorites();
+            
+            const btn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+            if (btn) btn.classList.toggle('active', favorites.has(id));
+            
+            // Update nav count
+            buildNav();
+            
+            // If showing favorites only and unfavorited, re-render
+            if (showFavoritesOnly) resetAndRender();
+        }
+        function toggleFavoritesFilter() {
+            showFavoritesOnly = !showFavoritesOnly;
+            document.querySelector('.platform-toggle-item.favorites')?.classList.toggle('active', showFavoritesOnly);
+            resetAndRender();
+            updateURL();
+        }
+
         function togglePlatform(platform) {
             if (platform === 'reddit') {
                 showReddit = !showReddit;
                 document.querySelector('.platform-toggle-item.reddit').classList.toggle('active', showReddit);
                 localStorage.setItem('showReddit', showReddit);
-            } else {
+            } else if (platform === 'patreon') {
                 showPatreon = !showPatreon;
                 document.querySelector('.platform-toggle-item.patreon').classList.toggle('active', showPatreon);
                 localStorage.setItem('showPatreon', showPatreon);
             }
             resetAndRender();
+            updateURL();
         }
+        
         function loadSettings() {
             const savedFontSize = localStorage.getItem('fontSize');
             const savedFontType = localStorage.getItem('fontType');
             const savedShowReddit = localStorage.getItem('showReddit');
             const savedShowPatreon = localStorage.getItem('showPatreon');
+            const savedDarkMode = localStorage.getItem('darkMode');
+            const savedView = localStorage.getItem('viewMode');
+            
             if (savedFontSize) { currentFontSize = parseInt(savedFontSize); document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px'); document.getElementById('fontSizeValue').textContent = currentFontSize + 'px'; }
             if (savedFontType) setFont(savedFontType);
-            if (savedShowReddit !== null) { showReddit = savedShowReddit === 'true'; }
-            if (savedShowPatreon !== null) { showPatreon = savedShowPatreon === 'true'; }
+            if (savedShowReddit !== null) showReddit = savedShowReddit === 'true';
+            if (savedShowPatreon !== null) showPatreon = savedShowPatreon === 'true';
+            if (savedDarkMode === 'true') { darkMode = true; document.body.classList.add('dark-mode'); document.getElementById('darkModeToggle').classList.add('active'); }
+            if (savedView) setView(savedView, false);
+            
+            loadFavorites();
+        }
+
+        // Author filter
+        function buildAuthorSelect() {
+            const authors = new Map();
+            AUDIOS_DATA.forEach(a => {
+                if (a.scriptAuthor) {
+                    const name = a.scriptAuthor.trim();
+                    authors.set(name, (authors.get(name) || 0) + 1);
+                }
+            });
+            
+            const sortedAuthors = [...authors.entries()].sort((a, b) => b[1] - a[1]);
+            const select = document.getElementById('authorSelect');
+            select.innerHTML = '<option value="all">All Authors</option>' + 
+                sortedAuthors.map(([name, count]) => `<option value="${name}">${name} (${count})</option>`).join('');
+        }
+        
+        function handleAuthorFilter() {
+            currentAuthor = document.getElementById('authorSelect').value;
+            resetAndRender();
+            updateURL();
         }
 
         function buildNav() {
             const counts = { all: AUDIOS_DATA.length };
             AUDIOS_DATA.forEach(a => { counts[a.category] = (counts[a.category] || 0) + 1; });
             
-            // Count platform distribution
             const redditCount = AUDIOS_DATA.filter(a => a.redditLink).length;
             const patreonCount = AUDIOS_DATA.filter(a => a.patreonLink).length;
+            const favCount = favorites.size;
             
             const navGrid = document.getElementById('navGrid');
             
-            // Build platform toggles
             let html = `
+                <div class="platform-toggle-item favorites ${showFavoritesOnly ? 'active' : ''}" onclick="toggleFavoritesFilter()">
+                    <span class="platform-icon-small heart">♥</span>
+                    <span class="nav-toggle-label">Favorites</span>
+                    <span class="nav-toggle-count">${favCount}</span>
+                    <div class="nav-toggle-switch"></div>
+                </div>
+                <div class="nav-divider"></div>
                 <div class="platform-toggle-item reddit ${showReddit ? 'active' : ''}" onclick="togglePlatform('reddit')">
                     <span class="platform-icon-small reddit">R</span>
                     <span class="nav-toggle-label">Reddit</span>
@@ -521,11 +747,10 @@
                 <div class="nav-divider"></div>
             `;
             
-            // Build category toggles
             html += Object.entries(CONFIG.categories)
                 .filter(([key]) => key === 'all' || counts[key])
                 .map(([key, val]) => `
-                    <div class="nav-toggle ${activeCategories.has(key) ? 'active' : ''}" data-category="${key}" onclick="toggleCategory('${key}')">
+                    <div class="nav-toggle ${activeCategories.has(key) || (activeCategories.has('all') && key === 'all') ? 'active' : ''}" data-category="${key}" onclick="toggleCategory('${key}')">
                         <span class="nav-toggle-icon">${val.icon}</span>
                         <span class="nav-toggle-label">${val.title}</span>
                         <span class="nav-toggle-count">${counts[key] || 0}</span>
@@ -538,83 +763,46 @@
         
         function toggleCategory(category) {
             if (category === 'all') {
-                // If clicking "All", turn it on and turn others off (or vice versa)
                 if (activeCategories.has('all')) {
-                    // Turn off all
                     activeCategories.clear();
                 } else {
-                    // Turn on all (just the 'all' flag)
                     activeCategories.clear();
                     activeCategories.add('all');
                 }
             } else {
-                // Remove 'all' if it was set
                 activeCategories.delete('all');
-                
-                // Toggle this specific category
                 if (activeCategories.has(category)) {
                     activeCategories.delete(category);
                 } else {
                     activeCategories.add(category);
                 }
-                
-                // If no categories selected, default to 'all'
                 if (activeCategories.size === 0) {
                     activeCategories.add('all');
                 }
             }
             
-            // Update UI
             document.querySelectorAll('.nav-toggle').forEach(el => {
                 const cat = el.dataset.category;
                 el.classList.toggle('active', activeCategories.has(cat) || (activeCategories.has('all') && cat === 'all'));
             });
             
-            // Special case: if 'all' is active, show all toggles as active
             if (activeCategories.has('all')) {
                 document.querySelectorAll('.nav-toggle').forEach(el => el.classList.add('active'));
             }
             
             resetAndRender();
+            updateURL();
         }
 
-        // Normalize a tag for lookup in relatedTags map
         function normalizeTagKey(tag) {
             return tag.toLowerCase().replace(/[\s\-\/]/g, '');
         }
         
-        // Parse duration string to minutes (e.g., "27m 57s" -> 27.95)
-        function parseDuration(durationStr) {
-            if (!durationStr) return 0;
-            
-            let minutes = 0;
-            let seconds = 0;
-            
-            // Match patterns like "27m 57s", "27m", "5m 30s", "1h 20m 30s"
-            const hourMatch = durationStr.match(/(\d+)\s*h/i);
-            const minMatch = durationStr.match(/(\d+)\s*m/i);
-            const secMatch = durationStr.match(/(\d+)\s*s/i);
-            
-            if (hourMatch) minutes += parseInt(hourMatch[1]) * 60;
-            if (minMatch) minutes += parseInt(minMatch[1]);
-            if (secMatch) seconds = parseInt(secMatch[1]);
-            
-            return minutes + (seconds / 60);
-        }
-        
-        // Handle duration filter change
-        function handleDurationFilter() {
-            currentDuration = document.getElementById('durationSelect').value;
-            resetAndRender();
-        }
-        
-        // Get related tags for a search term
         function getRelatedTags(searchTerm) {
             const normalized = normalizeTagKey(searchTerm);
             return CONFIG.relatedTags[normalized] || [];
         }
         
-        // Check if audio matches a tag (normalized comparison)
         function audioHasTag(audio, tagToFind) {
             if (!audio.tags) return false;
             const tagsNormalized = audio.tags.toLowerCase().replace(/[\s\-\/]/g, '');
@@ -622,19 +810,117 @@
             return tagsNormalized.includes(searchNormalized);
         }
 
+        function parseDuration(durationStr) {
+            if (!durationStr) return 0;
+            let minutes = 0, seconds = 0;
+            const hourMatch = durationStr.match(/(\d+)\s*h/i);
+            const minMatch = durationStr.match(/(\d+)\s*m/i);
+            const secMatch = durationStr.match(/(\d+)\s*s/i);
+            if (hourMatch) minutes += parseInt(hourMatch[1]) * 60;
+            if (minMatch) minutes += parseInt(minMatch[1]);
+            if (secMatch) seconds = parseInt(secMatch[1]);
+            return minutes + (seconds / 60);
+        }
+        
+        function formatTotalDuration(minutes) {
+            const hours = Math.floor(minutes / 60);
+            const mins = Math.round(minutes % 60);
+            if (hours > 0) return `${hours}h ${mins}m total`;
+            return `${mins}m total`;
+        }
+
+        function handleDurationFilter() {
+            currentDuration = document.getElementById('durationSelect').value;
+            resetAndRender();
+            updateURL();
+        }
+
+        function handleSort() {
+            currentSort = document.getElementById('sortSelect').value;
+            resetAndRender();
+            updateURL();
+        }
+
+        // Advanced search parsing
+        function parseSearch(searchStr) {
+            const result = { include: [], exclude: [], andGroups: [] };
+            if (!searchStr.trim()) return result;
+            
+            // Check for + (AND) syntax
+            if (searchStr.includes('+')) {
+                const parts = searchStr.split('+').map(s => s.trim()).filter(Boolean);
+                parts.forEach(part => {
+                    if (part.startsWith('-')) {
+                        result.exclude.push(part.slice(1).toLowerCase());
+                    } else {
+                        result.andGroups.push(part.toLowerCase());
+                    }
+                });
+            } else {
+                // Simple search with possible exclusions
+                const terms = searchStr.split(/\s+/);
+                terms.forEach(term => {
+                    if (term.startsWith('-') && term.length > 1) {
+                        result.exclude.push(term.slice(1).toLowerCase());
+                    } else if (term) {
+                        result.include.push(term.toLowerCase());
+                    }
+                });
+            }
+            
+            return result;
+        }
+
+        function audioMatchesSearch(audio, searchObj) {
+            const title = audio.title.toLowerCase();
+            const synopsis = audio.synopsis.toLowerCase();
+            const tagsLower = audio.tags.toLowerCase();
+            const tagsNorm = tagsLower.replace(/[\s\-\/]/g, '');
+            const allText = `${title} ${synopsis} ${tagsLower} ${tagsNorm}`;
+            
+            // Check exclusions first
+            for (const exclude of searchObj.exclude) {
+                const excludeNorm = exclude.replace(/[\s\-\/]/g, '');
+                if (allText.includes(exclude) || allText.includes(excludeNorm)) {
+                    return false;
+                }
+            }
+            
+            // AND groups - all must match
+            if (searchObj.andGroups.length > 0) {
+                return searchObj.andGroups.every(term => {
+                    const termNorm = term.replace(/[\s\-\/]/g, '');
+                    return allText.includes(term) || allText.includes(termNorm);
+                });
+            }
+            
+            // Simple include - any must match
+            if (searchObj.include.length > 0) {
+                return searchObj.include.some(term => {
+                    const termNorm = term.replace(/[\s\-\/]/g, '');
+                    return allText.includes(term) || allText.includes(termNorm);
+                });
+            }
+            
+            return true;
+        }
+
         function filterAudios() {
             let filtered = [...AUDIOS_DATA];
+            
+            // Favorites filter
+            if (showFavoritesOnly) {
+                filtered = filtered.filter(a => favorites.has(a.id));
+            }
             
             // Platform filter
             filtered = filtered.filter(a => {
                 const hasReddit = !!a.redditLink;
                 const hasPatreon = !!a.patreonLink;
-                
                 if (!showReddit && !showPatreon) return false;
                 if (showReddit && showPatreon) return true;
                 if (showReddit && !showPatreon) return hasReddit;
                 if (!showReddit && showPatreon) return hasPatreon;
-                
                 return true;
             });
             
@@ -650,34 +936,30 @@
                 });
             }
             
+            // Author filter
+            if (currentAuthor !== 'all') {
+                filtered = filtered.filter(a => a.scriptAuthor && a.scriptAuthor.trim() === currentAuthor);
+            }
+            
             // Category filter
             if (!activeCategories.has('all')) {
                 filtered = filtered.filter(a => activeCategories.has(a.category));
             }
             
+            // Search filter with advanced parsing
             if (currentSearch) {
-                const search = currentSearch.toLowerCase();
-                const searchNormalized = search.replace(/[\s\-\/]/g, '');
+                const searchObj = parseSearch(currentSearch);
+                const relatedTags = searchObj.andGroups.length > 0 ? getRelatedTags(searchObj.andGroups[0]) : 
+                                   searchObj.include.length > 0 ? getRelatedTags(searchObj.include.join(' ')) : [];
                 
-                // Get related tags
-                const relatedTags = getRelatedTags(currentSearch);
-                
-                // Separate into exact matches and related matches
                 const exactMatches = [];
                 const relatedMatches = [];
                 
                 filtered.forEach(a => {
-                    const titleMatch = a.title.toLowerCase().includes(search);
-                    const synopsisMatch = a.synopsis.toLowerCase().includes(search);
-                    const tagsLower = a.tags.toLowerCase();
-                    const tagsNormalized = tagsLower.replace(/[\s\-\/]/g, '');
-                    const exactTagMatch = tagsLower.includes(search) || tagsNormalized.includes(searchNormalized);
-                    
-                    if (titleMatch || synopsisMatch || exactTagMatch) {
+                    if (audioMatchesSearch(a, searchObj)) {
                         a._matchType = 'exact';
                         exactMatches.push(a);
-                    } else if (relatedTags.length > 0) {
-                        // Check for related tag matches
+                    } else if (relatedTags.length > 0 && searchObj.exclude.length === 0) {
                         for (const relatedTag of relatedTags) {
                             if (audioHasTag(a, relatedTag)) {
                                 a._matchType = 'related';
@@ -689,11 +971,10 @@
                     }
                 });
                 
-                // Combine: exact first, then related
                 filtered = [...exactMatches, ...relatedMatches];
             }
             
-            // Sort function based on current sort
+            // Sort
             const getSortFn = () => {
                 switch (currentSort) {
                     case 'newest': return (a, b) => (b.datePosted || '').localeCompare(a.datePosted || '');
@@ -701,15 +982,13 @@
                     case 'title': return (a, b) => a.title.localeCompare(b.title);
                     case 'shortest': return (a, b) => parseDuration(a.duration) - parseDuration(b.duration);
                     case 'longest': return (a, b) => parseDuration(b.duration) - parseDuration(a.duration);
-                    default: return (a, b) => 0;
+                    default: return () => 0;
                 }
             };
             
-            // Sort (but keep exact/related grouping if searching)
             if (!currentSearch) {
                 filtered.sort(getSortFn());
             } else {
-                // When searching, sort within each group
                 const sortFn = getSortFn();
                 const exact = filtered.filter(a => a._matchType === 'exact').sort(sortFn);
                 const related = filtered.filter(a => a._matchType === 'related').sort(sortFn);
@@ -733,7 +1012,6 @@
 
         function buildCreditsHtml(audio) {
             let credits = [];
-            
             if (audio.scriptAuthor) {
                 let html = '<div class="credit-pill"><span class="credit-label">📝</span> ';
                 html += audio.scriptAuthorPage ? `<a href="${audio.scriptAuthorPage}" target="_blank" class="credit-link" onclick="event.stopPropagation()">${audio.scriptAuthor}</a>` : audio.scriptAuthor;
@@ -741,52 +1019,43 @@
                 html += '</div>';
                 credits.push(html);
             }
-            
             if (audio.audioEditor) {
                 let html = '<div class="credit-pill"><span class="credit-label">🎧</span> ';
                 html += audio.audioEditorPage ? `<a href="${audio.audioEditorPage}" target="_blank" class="credit-link" onclick="event.stopPropagation()">${audio.audioEditor}</a>` : audio.audioEditor;
                 html += '</div>';
                 credits.push(html);
             }
-            
             if (audio.collabPartners?.length) {
                 let html = '<div class="credit-pill"><span class="credit-label">🎙️</span> ';
                 html += audio.collabPartners.map(p => p.link ? `<a href="${p.link}" target="_blank" class="credit-link" onclick="event.stopPropagation()">${p.name}</a>` : p.name).join(', ');
                 html += '</div>';
                 credits.push(html);
             }
-            
             return credits.length ? `<div class="card-credits">${credits.join('')}</div>` : '';
         }
 
         function buildTagsHtml(audio) {
             const tags = parseTags(audio.tags);
             if (!tags.length) return '';
-            
             const maxVisible = 4;
             const visible = tags.slice(0, maxVisible);
             const hidden = tags.slice(maxVisible);
-            
             let html = visible.map(t => `<span class="tag">${t}</span>`).join('');
-            
             if (hidden.length) {
                 html += `<button class="tag-expand-btn" onclick="event.stopPropagation(); toggleTags(this)">+${hidden.length}</button>`;
                 html += `<span class="hidden-tags">${hidden.map(t => `<span class="tag">${t}</span>`).join('')}</span>`;
             }
-            
             return `<div class="card-tags">${html}</div>`;
         }
 
         function buildLinksHtml(audio) {
             const hasReddit = !!audio.redditLink;
             const hasPatreon = !!audio.patreonLink;
-            
             if (hasReddit && hasPatreon) {
-                return `
-                    <div class="card-links">
-                        <a href="${audio.redditLink}" target="_blank" class="link-btn link-btn-reddit" onclick="event.stopPropagation()">▶ Reddit</a>
-                        <a href="${audio.patreonLink}" target="_blank" class="link-btn link-btn-patreon" onclick="event.stopPropagation()">▶ Patreon</a>
-                    </div>`;
+                return `<div class="card-links">
+                    <a href="${audio.redditLink}" target="_blank" class="link-btn link-btn-reddit" onclick="event.stopPropagation()">▶ Reddit</a>
+                    <a href="${audio.patreonLink}" target="_blank" class="link-btn link-btn-patreon" onclick="event.stopPropagation()">▶ Patreon</a>
+                </div>`;
             } else if (hasReddit) {
                 return `<div class="card-links"><a href="${audio.redditLink}" target="_blank" class="link-btn link-btn-reddit" onclick="event.stopPropagation()">▶ Listen on Reddit</a></div>`;
             } else if (hasPatreon) {
@@ -798,9 +1067,13 @@
         function createCard(audio) {
             const categoryInfo = CONFIG.categories[audio.category] || { title: audio.category, icon: '🎧' };
             const needsExpand = audio.synopsis && audio.synopsis.length > 150;
+            const isFav = favorites.has(audio.id);
             
             return `
-                <div class="card" data-link="${audio.redditLink || audio.patreonLink}">
+                <div class="card" data-id="${audio.id}" data-link="${audio.redditLink || audio.patreonLink}" tabindex="0">
+                    <button class="favorite-btn ${isFav ? 'active' : ''}" data-id="${audio.id}" onclick="toggleFavorite(${audio.id}, event)" title="Add to favorites (H)">
+                        ${isFav ? '♥' : '♡'}
+                    </button>
                     <div class="card-header">
                         <h3 class="card-title">${audio.title}</h3>
                         <div class="card-meta">
@@ -834,15 +1107,11 @@
             btn.textContent = isShowing ? `+${hidden.querySelectorAll('.tag').length}` : '−';
         }
 
-        function handleSort() {
-            currentSort = document.getElementById('sortSelect').value;
-            resetAndRender();
-        }
-
         function resetAndRender() {
             displayedCount = 0;
             filteredAudios = filterAudios();
             document.getElementById('cardsGrid').innerHTML = '';
+            focusedCardIndex = -1;
             loadMore();
         }
 
@@ -851,21 +1120,16 @@
             const toShow = filteredAudios.slice(displayedCount, displayedCount + CONFIG.itemsPerPage);
             
             if (displayedCount === 0 && filteredAudios.length === 0) {
-                grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🍙</div><h3 class="empty-title">No audios found</h3><p>Try adjusting your search or category</p></div>';
+                grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🍙</div><h3 class="empty-title">No audios found</h3><p>Try adjusting your filters or search</p></div>';
             } else {
-                // Check if we need to add a separator for related results
                 let html = '';
                 let separatorAdded = grid.querySelector('.related-separator') !== null;
                 
                 toShow.forEach((audio, index) => {
                     const globalIndex = displayedCount + index;
-                    
-                    // Add separator before first related result
                     if (!separatorAdded && audio._matchType === 'related') {
-                        // Check if previous item was exact or this is first related
                         const prevAudio = globalIndex > 0 ? filteredAudios[globalIndex - 1] : null;
                         if (!prevAudio || prevAudio._matchType === 'exact') {
-                            const exactCount = filteredAudios.filter(a => a._matchType === 'exact').length;
                             const relatedCount = filteredAudios.filter(a => a._matchType === 'related').length;
                             html += `<div class="related-separator">
                                 <div class="related-separator-line"></div>
@@ -877,13 +1141,12 @@
                     }
                     html += createCard(audio);
                 });
-                
                 grid.innerHTML += html;
             }
             
             displayedCount += toShow.length;
             
-            // Update results count with exact/related breakdown if searching
+            // Update counts
             const exactCount = filteredAudios.filter(a => a._matchType === 'exact').length;
             const relatedCount = filteredAudios.filter(a => a._matchType === 'related').length;
             
@@ -893,6 +1156,11 @@
                 document.getElementById('resultsCount').textContent = filteredAudios.length;
             }
             
+            // Total duration
+            const totalMinutes = filteredAudios.reduce((sum, a) => sum + parseDuration(a.duration), 0);
+            document.getElementById('resultsDuration').textContent = totalMinutes > 0 ? `• ${formatTotalDuration(totalMinutes)}` : '';
+            
+            // Load more button
             const remaining = filteredAudios.length - displayedCount;
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             const loadMoreInfo = document.getElementById('loadMoreInfo');
@@ -907,6 +1175,122 @@
             }
         }
 
+        // Random audio
+        function randomAudio() {
+            if (filteredAudios.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * filteredAudios.length);
+            const audio = filteredAudios[randomIndex];
+            const link = audio.redditLink || audio.patreonLink;
+            if (link) window.open(link, '_blank');
+        }
+
+        // Reset filters
+        function resetFilters() {
+            currentSearch = '';
+            currentSort = 'newest';
+            currentDuration = 'all';
+            currentAuthor = 'all';
+            showReddit = true;
+            showPatreon = true;
+            showFavoritesOnly = false;
+            activeCategories = new Set(['all']);
+            
+            document.getElementById('searchInput').value = '';
+            document.getElementById('sortSelect').value = 'newest';
+            document.getElementById('durationSelect').value = 'all';
+            document.getElementById('authorSelect').value = 'all';
+            
+            buildNav();
+            resetAndRender();
+            updateURL();
+        }
+
+        // Back to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        // Keyboard navigation
+        function initKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                // Don't trigger if typing in input
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    if (e.key === 'Escape') {
+                        e.target.blur();
+                        document.getElementById('searchInput').value = '';
+                        currentSearch = '';
+                        resetAndRender();
+                    }
+                    return;
+                }
+                
+                const cards = document.querySelectorAll('.card');
+                
+                switch(e.key.toLowerCase()) {
+                    case '/':
+                        e.preventDefault();
+                        document.getElementById('searchInput').focus();
+                        break;
+                    case 'r':
+                        randomAudio();
+                        break;
+                    case 's':
+                        toggleSettings();
+                        break;
+                    case 'd':
+                        toggleDarkMode();
+                        break;
+                    case 'f':
+                        toggleFavoritesFilter();
+                        break;
+                    case 'escape':
+                        if (document.getElementById('settingsPanel').classList.contains('open')) {
+                            toggleSettings();
+                        } else {
+                            focusedCardIndex = -1;
+                            cards.forEach(c => c.classList.remove('focused'));
+                        }
+                        break;
+                    case 'arrowdown':
+                        e.preventDefault();
+                        focusedCardIndex = Math.min(focusedCardIndex + 1, cards.length - 1);
+                        updateCardFocus(cards);
+                        break;
+                    case 'arrowup':
+                        e.preventDefault();
+                        focusedCardIndex = Math.max(focusedCardIndex - 1, 0);
+                        updateCardFocus(cards);
+                        break;
+                    case 'enter':
+                        if (focusedCardIndex >= 0 && cards[focusedCardIndex]) {
+                            const link = cards[focusedCardIndex].dataset.link;
+                            if (link) window.open(link, '_blank');
+                        }
+                        break;
+                    case 'h':
+                        if (focusedCardIndex >= 0 && cards[focusedCardIndex]) {
+                            const id = parseInt(cards[focusedCardIndex].dataset.id);
+                            toggleFavorite(id);
+                        }
+                        break;
+                }
+            });
+        }
+        
+        function updateCardFocus(cards) {
+            cards.forEach((c, i) => {
+                c.classList.toggle('focused', i === focusedCardIndex);
+                if (i === focusedCardIndex) {
+                    c.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+
         function initSearch() {
             const searchInput = document.getElementById('searchInput');
             let timeout;
@@ -915,20 +1299,26 @@
                 timeout = setTimeout(() => {
                     currentSearch = e.target.value;
                     resetAndRender();
+                    updateURL();
                 }, 300);
             });
             
             document.getElementById('cardsGrid').addEventListener('click', (e) => {
-                // Handle tag clicks - search by tag
                 if (e.target.classList.contains('tag')) {
                     e.stopPropagation();
-                    searchInput.value = e.target.textContent;
-                    currentSearch = e.target.textContent;
+                    const tagText = e.target.textContent;
+                    // If shift+click, add to search with +
+                    if (e.shiftKey && currentSearch) {
+                        searchInput.value = currentSearch + ' + ' + tagText;
+                    } else {
+                        searchInput.value = tagText;
+                    }
+                    currentSearch = searchInput.value;
                     resetAndRender();
+                    updateURL();
                     return;
                 }
                 
-                // Handle card clicks - open link (but not if clicking buttons/links/toggles)
                 const card = e.target.closest('.card');
                 if (card && !e.target.closest('a') && !e.target.closest('button')) {
                     const link = card.dataset.link;
@@ -942,11 +1332,12 @@
             loadSettings();
             buildNav();
             initSearch();
+            initKeyboard();
             resetAndRender();
         }
 
-        // Start loading
         loadData();
     </script>
+
 </body>
 </html>
