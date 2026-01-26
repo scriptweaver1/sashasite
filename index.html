@@ -147,6 +147,10 @@
         
         /* Synopsis */
         .card-synopsis { color: var(--text-medium); font-size: 0.82em; line-height: 1.5; }
+        .card-synopsis-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-synopsis-text.expanded { display: block; -webkit-line-clamp: unset; }
+        .synopsis-toggle { background: none; border: none; color: var(--salmon-deep); font-size: 0.8em; font-weight: 600; cursor: pointer; padding: 0.3em 0; margin-top: 0.3em; }
+        .synopsis-toggle:hover { text-decoration: underline; }
         
         /* Link Buttons */
         .card-links { display: flex; gap: 0.5em; margin-top: auto; padding-top: 0.5em; }
@@ -509,9 +513,10 @@
 
         function createCard(audio) {
             const categoryInfo = CONFIG.categories[audio.category] || { title: audio.category, icon: '🎧' };
+            const needsExpand = audio.synopsis && audio.synopsis.length > 150;
             
             return `
-                <div class="card" onclick="handleCardClick('${audio.redditLink || audio.patreonLink}')">
+                <div class="card" data-link="${audio.redditLink || audio.patreonLink}">
                     <div class="card-header">
                         <h3 class="card-title">${audio.title}</h3>
                         <div class="card-meta">
@@ -522,9 +527,20 @@
                     </div>
                     ${buildCreditsHtml(audio)}
                     ${buildTagsHtml(audio)}
-                    ${audio.synopsis ? `<p class="card-synopsis">${audio.synopsis.substring(0, 200)}${audio.synopsis.length > 200 ? '...' : ''}</p>` : ''}
+                    ${audio.synopsis ? `
+                        <div class="card-synopsis">
+                            <p class="card-synopsis-text">${audio.synopsis}</p>
+                            ${needsExpand ? `<button class="synopsis-toggle" onclick="event.stopPropagation(); toggleSynopsis(this)">Show more</button>` : ''}
+                        </div>
+                    ` : ''}
                     ${buildLinksHtml(audio)}
                 </div>`;
+        }
+
+        function toggleSynopsis(btn) {
+            const textEl = btn.previousElementSibling;
+            const isExpanded = textEl.classList.toggle('expanded');
+            btn.textContent = isExpanded ? 'Show less' : 'Show more';
         }
 
         function toggleTags(btn) {
@@ -532,10 +548,6 @@
             const isShowing = hidden.classList.contains('show');
             hidden.classList.toggle('show');
             btn.textContent = isShowing ? `+${hidden.querySelectorAll('.tag').length}` : '−';
-        }
-
-        function handleCardClick(link) {
-            if (link) window.open(link, '_blank');
         }
 
         function handleSort() {
@@ -590,11 +602,20 @@
             });
             
             document.getElementById('cardsGrid').addEventListener('click', (e) => {
+                // Handle tag clicks - search by tag
                 if (e.target.classList.contains('tag')) {
                     e.stopPropagation();
                     searchInput.value = e.target.textContent;
                     currentSearch = e.target.textContent;
                     resetAndRender();
+                    return;
+                }
+                
+                // Handle card clicks - open link (but not if clicking buttons/links/toggles)
+                const card = e.target.closest('.card');
+                if (card && !e.target.closest('a') && !e.target.closest('button')) {
+                    const link = card.dataset.link;
+                    if (link) window.open(link, '_blank');
                 }
             });
         }
