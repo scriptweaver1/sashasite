@@ -84,30 +84,42 @@
         .font-option:hover { border-color: var(--salmon-pale); }
         .font-option.active { background: var(--salmon-pale); border-color: var(--salmon-pink); }
         
-        /* Platform Toggle */
-        .platform-toggles { display: flex; flex-direction: column; gap: 0.6rem; }
-        .platform-toggle { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; }
-        .platform-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-dark); }
-        .platform-icon { width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: bold; }
-        .platform-icon.reddit { background: #ff4500; }
-        .platform-icon.patreon { background: #e13d3d; }
-        .toggle-switch { position: relative; width: 44px; height: 24px; background: var(--salmon-pale); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; }
-        .toggle-switch.active { background: var(--salmon-pink); }
-        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: white; border-radius: 50%; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .toggle-switch.active::after { left: 22px; }
-        
         /* Main Content */
         .main-content { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
         
         /* Navigation */
-        .nav-section { margin-bottom: 1.5rem; overflow-x: auto; }
-        .nav-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
-        .nav-item { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 20px; cursor: pointer; transition: all 0.3s ease; color: var(--text-medium); font-size: 0.85rem; white-space: nowrap; }
-        .nav-item:hover { border-color: var(--salmon-pink); color: var(--salmon-deep); }
-        .nav-item.active { background: linear-gradient(135deg, var(--salmon-pink), var(--salmon-deep)); border-color: var(--salmon-deep); color: var(--pure-white); }
-        .nav-icon { font-size: 1rem; }
-        .nav-count { font-size: 0.7rem; padding: 0.15rem 0.4rem; background: rgba(194, 93, 93, 0.15); border-radius: 8px; }
-        .nav-item.active .nav-count { background: rgba(255, 255, 255, 0.25); }
+        .nav-section { margin-bottom: 1.5rem; }
+        .nav-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+        .nav-toggle { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; cursor: pointer; transition: all 0.3s ease; user-select: none; }
+        .nav-toggle:hover { border-color: var(--salmon-pink); }
+        .nav-toggle.active { background: var(--blush-light); border-color: var(--salmon-pink); }
+        .nav-toggle-icon { font-size: 1rem; }
+        .nav-toggle-label { font-size: 0.85rem; color: var(--text-medium); white-space: nowrap; }
+        .nav-toggle.active .nav-toggle-label { color: var(--text-dark); font-weight: 500; }
+        .nav-toggle-count { font-size: 0.7rem; padding: 0.15rem 0.45rem; background: rgba(194, 93, 93, 0.15); border-radius: 8px; color: var(--text-medium); }
+        .nav-toggle.active .nav-toggle-count { background: var(--salmon-pink); color: white; }
+        .nav-toggle-switch { position: relative; width: 36px; height: 20px; background: var(--salmon-pale); border-radius: 10px; transition: all 0.3s ease; flex-shrink: 0; }
+        .nav-toggle.active .nav-toggle-switch { background: var(--salmon-pink); }
+        .nav-toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: white; border-radius: 50%; transition: all 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .nav-toggle.active .nav-toggle-switch::after { left: 18px; }
+        .nav-divider { width: 1px; height: 28px; background: var(--salmon-pale); margin: 0 0.3rem; }
+        
+        /* Platform toggles */
+        .platform-toggle-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; background: var(--pure-white); border: 2px solid var(--salmon-pale); border-radius: 25px; cursor: pointer; transition: all 0.3s ease; user-select: none; }
+        .platform-toggle-item:hover { border-color: var(--salmon-pink); }
+        .platform-toggle-item.active { border-color: var(--salmon-pink); }
+        .platform-toggle-item.reddit.active { background: rgba(255, 69, 0, 0.1); }
+        .platform-toggle-item.patreon.active { background: rgba(225, 61, 61, 0.1); }
+        .platform-icon-small { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: bold; }
+        .platform-icon-small.reddit { background: #ff4500; }
+        .platform-icon-small.patreon { background: #e13d3d; }
+        .platform-toggle-item .nav-toggle-switch { width: 32px; height: 18px; }
+        .platform-toggle-item .nav-toggle-switch::after { width: 14px; height: 14px; }
+        .platform-toggle-item.active .nav-toggle-switch::after { left: 16px; }
+        .platform-toggle-item.reddit .nav-toggle-switch { background: #ffcbb8; }
+        .platform-toggle-item.reddit.active .nav-toggle-switch { background: #ff4500; }
+        .platform-toggle-item.patreon .nav-toggle-switch { background: #ffccc8; }
+        .platform-toggle-item.patreon.active .nav-toggle-switch { background: #e13d3d; }
         
         /* Controls Bar */
         .controls-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem; }
@@ -249,30 +261,11 @@
                 <button class="font-option" data-font="accessible" onclick="setFont('accessible')">Atkinson Hyperlegible</button>
             </div>
         </div>
-        <div class="settings-section">
-            <h4>Show Platforms</h4>
-            <div class="platform-toggles">
-                <div class="platform-toggle">
-                    <span class="platform-label">
-                        <span class="platform-icon reddit">R</span>
-                        Reddit Audios
-                    </span>
-                    <div class="toggle-switch active" id="toggleReddit" onclick="togglePlatform('reddit')"></div>
-                </div>
-                <div class="platform-toggle">
-                    <span class="platform-label">
-                        <span class="platform-icon patreon">P</span>
-                        Patreon Audios
-                    </span>
-                    <div class="toggle-switch active" id="togglePatreon" onclick="togglePlatform('patreon')"></div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <main class="main-content">
         <nav class="nav-section">
-            <ul class="nav-list" id="navList"></ul>
+            <div class="nav-grid" id="navGrid"></div>
         </nav>
         <div class="controls-bar">
             <div class="results-info">Showing <span class="results-count" id="resultsCount">0</span> audios</div>
@@ -438,7 +431,6 @@
         };
 
         let AUDIOS_DATA = [];
-        let currentCategory = 'all';
         let currentSearch = '';
         let currentSort = 'newest';
         let currentDuration = 'all';
@@ -446,6 +438,7 @@
         let filteredAudios = [];
         let showReddit = true;
         let showPatreon = true;
+        let activeCategories = new Set(['all']);
 
         // Load data
         async function loadData() {
@@ -481,11 +474,11 @@
         function togglePlatform(platform) {
             if (platform === 'reddit') {
                 showReddit = !showReddit;
-                document.getElementById('toggleReddit').classList.toggle('active', showReddit);
+                document.querySelector('.platform-toggle-item.reddit').classList.toggle('active', showReddit);
                 localStorage.setItem('showReddit', showReddit);
             } else {
                 showPatreon = !showPatreon;
-                document.getElementById('togglePatreon').classList.toggle('active', showPatreon);
+                document.querySelector('.platform-toggle-item.patreon').classList.toggle('active', showPatreon);
                 localStorage.setItem('showPatreon', showPatreon);
             }
             resetAndRender();
@@ -497,33 +490,92 @@
             const savedShowPatreon = localStorage.getItem('showPatreon');
             if (savedFontSize) { currentFontSize = parseInt(savedFontSize); document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px'); document.getElementById('fontSizeValue').textContent = currentFontSize + 'px'; }
             if (savedFontType) setFont(savedFontType);
-            if (savedShowReddit !== null) { showReddit = savedShowReddit === 'true'; document.getElementById('toggleReddit').classList.toggle('active', showReddit); }
-            if (savedShowPatreon !== null) { showPatreon = savedShowPatreon === 'true'; document.getElementById('togglePatreon').classList.toggle('active', showPatreon); }
+            if (savedShowReddit !== null) { showReddit = savedShowReddit === 'true'; }
+            if (savedShowPatreon !== null) { showPatreon = savedShowPatreon === 'true'; }
         }
 
         function buildNav() {
             const counts = { all: AUDIOS_DATA.length };
             AUDIOS_DATA.forEach(a => { counts[a.category] = (counts[a.category] || 0) + 1; });
             
-            const navList = document.getElementById('navList');
-            navList.innerHTML = Object.entries(CONFIG.categories)
+            // Count platform distribution
+            const redditCount = AUDIOS_DATA.filter(a => a.redditLink).length;
+            const patreonCount = AUDIOS_DATA.filter(a => a.patreonLink).length;
+            
+            const navGrid = document.getElementById('navGrid');
+            
+            // Build platform toggles
+            let html = `
+                <div class="platform-toggle-item reddit ${showReddit ? 'active' : ''}" onclick="togglePlatform('reddit')">
+                    <span class="platform-icon-small reddit">R</span>
+                    <span class="nav-toggle-label">Reddit</span>
+                    <span class="nav-toggle-count">${redditCount}</span>
+                    <div class="nav-toggle-switch"></div>
+                </div>
+                <div class="platform-toggle-item patreon ${showPatreon ? 'active' : ''}" onclick="togglePlatform('patreon')">
+                    <span class="platform-icon-small patreon">P</span>
+                    <span class="nav-toggle-label">Patreon</span>
+                    <span class="nav-toggle-count">${patreonCount}</span>
+                    <div class="nav-toggle-switch"></div>
+                </div>
+                <div class="nav-divider"></div>
+            `;
+            
+            // Build category toggles
+            html += Object.entries(CONFIG.categories)
                 .filter(([key]) => key === 'all' || counts[key])
                 .map(([key, val]) => `
-                    <li class="nav-item ${key === 'all' ? 'active' : ''}" data-category="${key}">
-                        <span class="nav-icon">${val.icon}</span>
-                        <span>${val.title}</span>
-                        <span class="nav-count">${counts[key] || 0}</span>
-                    </li>
+                    <div class="nav-toggle ${activeCategories.has(key) ? 'active' : ''}" data-category="${key}" onclick="toggleCategory('${key}')">
+                        <span class="nav-toggle-icon">${val.icon}</span>
+                        <span class="nav-toggle-label">${val.title}</span>
+                        <span class="nav-toggle-count">${counts[key] || 0}</span>
+                        <div class="nav-toggle-switch"></div>
+                    </div>
                 `).join('');
             
-            navList.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    navList.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                    currentCategory = item.dataset.category;
-                    resetAndRender();
-                });
+            navGrid.innerHTML = html;
+        }
+        
+        function toggleCategory(category) {
+            if (category === 'all') {
+                // If clicking "All", turn it on and turn others off (or vice versa)
+                if (activeCategories.has('all')) {
+                    // Turn off all
+                    activeCategories.clear();
+                } else {
+                    // Turn on all (just the 'all' flag)
+                    activeCategories.clear();
+                    activeCategories.add('all');
+                }
+            } else {
+                // Remove 'all' if it was set
+                activeCategories.delete('all');
+                
+                // Toggle this specific category
+                if (activeCategories.has(category)) {
+                    activeCategories.delete(category);
+                } else {
+                    activeCategories.add(category);
+                }
+                
+                // If no categories selected, default to 'all'
+                if (activeCategories.size === 0) {
+                    activeCategories.add('all');
+                }
+            }
+            
+            // Update UI
+            document.querySelectorAll('.nav-toggle').forEach(el => {
+                const cat = el.dataset.category;
+                el.classList.toggle('active', activeCategories.has(cat) || (activeCategories.has('all') && cat === 'all'));
             });
+            
+            // Special case: if 'all' is active, show all toggles as active
+            if (activeCategories.has('all')) {
+                document.querySelectorAll('.nav-toggle').forEach(el => el.classList.add('active'));
+            }
+            
+            resetAndRender();
         }
 
         // Normalize a tag for lookup in relatedTags map
@@ -598,8 +650,9 @@
                 });
             }
             
-            if (currentCategory !== 'all') {
-                filtered = filtered.filter(a => a.category === currentCategory);
+            // Category filter
+            if (!activeCategories.has('all')) {
+                filtered = filtered.filter(a => activeCategories.has(a.category));
             }
             
             if (currentSearch) {
