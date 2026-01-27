@@ -69,7 +69,9 @@
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .logo { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; }
         .logo-icon { font-size: 2rem; }
-        .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-titles { display: flex; flex-direction: column; gap: 0; }
+        .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .logo-subtitle { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em; }
         .header-controls { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
         .search-container { position: relative; flex: 1; max-width: 320px; min-width: 0; }
         .search-input { padding: 0.7rem 1rem 0.7rem 2.5rem; background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 25px; color: var(--text-light); font-family: var(--font-body); font-size: 0.9rem; width: 100%; max-width: 100%; transition: all 0.3s ease; box-sizing: border-box; }
@@ -313,7 +315,10 @@
         <div class="header-content">
             <div class="logo" onclick="resetFilters()">
                 <span class="logo-icon">🍣</span>
-                <span class="logo-text">House of Seduction</span>
+                <div class="logo-titles">
+                    <span class="logo-text">House of Seduction</span>
+                    <span class="logo-subtitle">Sashimi's audio masterlist</span>
+                </div>
             </div>
             <div class="header-controls">
                 <div class="search-container">
