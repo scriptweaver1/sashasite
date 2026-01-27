@@ -216,10 +216,10 @@
         .credit-name { color: var(--accent-purple); }
         
         /* Tags */
-        .card-tags { display: flex; flex-wrap: wrap; gap: 0.3em; }
-        .tag { background: var(--bg-medium); color: var(--accent-purple); padding: 0.2em 0.5em; border-radius: 10px; font-size: 0.68em; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s ease; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4em; align-items: flex-start; }
+        .tag { background: var(--bg-medium); color: var(--accent-purple); padding: 0.3em 0.6em; border-radius: 10px; font-size: 0.68em; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s ease; white-space: nowrap; display: inline-block; }
         .tag:hover { background: var(--accent-purple); color: white; border-color: var(--accent-purple); }
-        .tag-expand-btn { background: var(--accent-purple); color: white; padding: 0.2em 0.5em; border-radius: 10px; font-size: 0.68em; font-weight: 600; border: none; cursor: pointer; }
+        .tag-expand-btn { background: var(--accent-purple); color: white; padding: 0.3em 0.6em; border-radius: 10px; font-size: 0.68em; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; }
         .hidden-tags { display: none; }
         .hidden-tags.show { display: inline; }
         
