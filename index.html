@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sashimi's Audio Masterlist</title>
+    <title>House of Seduction</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
@@ -262,6 +262,11 @@
         /* Keyboard focus indicator */
         .keyboard-nav .card:focus { outline: 3px solid var(--accent-pink); outline-offset: 2px; }
         
+        /* Footer */
+        .site-footer { text-align: center; padding: 2rem 1rem; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85em; }
+        .site-footer a { color: var(--accent-purple); text-decoration: none; transition: color 0.3s ease; }
+        .site-footer a:hover { color: var(--accent-pink); text-decoration: underline; }
+        
         /* Responsive */
         @media (max-width: 768px) {
             html, body { overflow-x: hidden; }
@@ -308,7 +313,7 @@
         <div class="header-content">
             <div class="logo" onclick="resetFilters()">
                 <span class="logo-icon">🍣</span>
-                <span class="logo-text">Sashimi's Audio Masterlist</span>
+                <span class="logo-text">House of Seduction</span>
             </div>
             <div class="header-controls">
                 <div class="search-container">
@@ -418,6 +423,10 @@
     </main>
     
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">↑</button>
+
+    <footer class="site-footer">
+        <p>Site made by <a href="https://www.reddit.com/user/The-Scriptweaver/" target="_blank">u/The-Scriptweaver</a></p>
+    </footer>
 
     <script>
         const CONFIG = {
