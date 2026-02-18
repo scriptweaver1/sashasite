@@ -14,36 +14,53 @@ from collections import Counter
 # ============================================
 # CONFIGURE THESE URLs FROM YOUR GOOGLE SHEET
 # ============================================
-REDDIT_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGQ_95RZSlRZtRysMG6Nh1vB5pG93R-mbU6WaoMF2Ci0aB8EMjrWrLsx1mDmGesj1gSLBs2TjSfQPk/pubhtml"
-PATREON_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj5CXHi3my2A5n1THsopOz4jh9x3rLJu3mLaEtHGjR8_9cFOG2NzYEuvwPBEJmwKZsZi9XPepwiaXr/pubhtml"
+REDDIT_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyRAJt0veFVXHIuaes_Fq9-KBNA006b0kgdPneyW-gyIGqB_y1m6ub0DMSoI38NyM9MCn74oGP-Xzv/pub?output=csv"
+PATREON_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTb1Ch0Y8kXTN_zoH_3yaQDTiA2eIzh7tEfxO9Ao3d7qdK6kc_-IFDZcjbtgRsbPSQgIohJkmWs_3ig/pub?output=csv"
 # ============================================
 
 def fetch_csv(url):
     """Fetch CSV from Google Sheets published URL"""
-    with urllib.request.urlopen(url) as response:
-        content = response.read().decode('utf-8')
-        reader = csv.DictReader(content.splitlines())
-        return list(reader)
+    print(f"Fetching: {url[:60]}...")
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=30) as response:
+            content = response.read().decode('utf-8')
+            reader = csv.DictReader(content.splitlines())
+            rows = list(reader)
+            print(f"  Found {len(rows)} rows")
+            if rows:
+                print(f"  Columns: {list(rows[0].keys())}")
+            return rows
+    except Exception as e:
+        print(f"  ERROR fetching: {e}")
+        return []
 
 def clean(val):
-    """Clean cell value"""
-    if not val or str(val).strip().lower() in ['x', 'nan', '']:
+    """Clean cell value - treat 'x', 'X', empty, 'nan' as empty"""
+    if val is None:
         return ''
-    return str(val).strip()
+    val = str(val).strip()
+    if val.lower() in ['x', 'nan', '', 'none']:
+        return ''
+    return val
 
 def parse_date(date_val):
     """Parse various date formats to YYYY-MM-DD"""
-    if not date_val or not str(date_val).strip():
+    if not date_val:
         return ''
     
-    date_str = str(date_val).strip()
+    date_str = clean(date_val)
+    if not date_str:
+        return ''
     
+    # Try different formats
     formats = [
         '%Y-%m-%d %H:%M:%S',
         '%Y-%m-%d',
         '%d/%m/%Y',
         '%d/%m/%y',
         '%m/%d/%Y',
+        '%m/%d/%y',
     ]
     
     for fmt in formats:
@@ -53,14 +70,19 @@ def parse_date(date_val):
         except:
             continue
     
+    # Return first 10 chars if nothing worked
     return date_str[:10] if len(date_str) >= 10 else date_str
 
 def normalize_tag_key(tag):
     """Normalize tag for comparison"""
-    return re.sub(r'[\s\-]', '', tag.lower().strip())
+    return re.sub(r'[\s\-/]', '', tag.lower().strip())
 
 def normalize_tags(tag_string):
     """Normalize all tags in a tag string"""
+    if not tag_string:
+        return ''
+    
+    tag_string = clean(tag_string)
     if not tag_string:
         return ''
     
@@ -103,10 +125,9 @@ def normalize_tags(tag_string):
 
 def normalize_author(author):
     """Normalize script author names"""
+    author = clean(author)
     if not author:
         return 'OC (Original Content)'
-    
-    author = author.strip()
     
     # Author corrections
     replacements = {
@@ -122,35 +143,51 @@ def normalize_author(author):
         'u/StankyTofu': 'u/StankyTofu25',
     }
     
-    return replacements.get(author, author) if author else 'OC (Original Content)'
+    return replacements.get(author, author)
+
+def get_column(row, *possible_names):
+    """Get value from row trying multiple possible column names"""
+    for name in possible_names:
+        if name in row:
+            return row[name]
+        # Try with/without trailing space
+        if name.strip() in row:
+            return row[name.strip()]
+        if name + ' ' in row:
+            return row[name + ' ']
+    return ''
 
 def extract_audio(row, source):
     """Extract audio data from a row"""
-    link = clean(row.get('link', ''))
+    link = clean(get_column(row, 'link'))
+    
+    # Determine platform from link
+    is_reddit = 'reddit.com' in link.lower() if link else False
+    is_patreon = 'patreon.com' in link.lower() if link else False
     
     audio = {
-        'title': clean(row.get('title', '')),
-        'category': clean(row.get('category', '')).lower().replace(' ', '-'),
-        'tags': normalize_tags(clean(row.get('tags', ''))),
-        'synopsis': clean(row.get('synopsis', '')),
-        'duration': clean(row.get('duration', '')),
-        'image': clean(row.get('image', '')),
-        'redditLink': link if 'reddit.com' in link.lower() else '',
-        'patreonLink': link if 'patreon.com' in link.lower() else '',
-        'scriptAuthor': normalize_author(clean(row.get('script author', ''))),
-        'scriptAuthorPage': clean(row.get('script author page', '')),
-        'scriptLink': clean(row.get('script link', '')),
-        'audioEditor': clean(row.get('audio editor ', '') or row.get('audio editor', '')),
-        'audioEditorPage': clean(row.get('audio editor page', '')),
-        'datePosted': parse_date(row.get('Date Posted', '')),
+        'title': clean(get_column(row, 'title')),
+        'category': clean(get_column(row, 'category')).lower().replace(' ', '-'),
+        'tags': normalize_tags(get_column(row, 'tags')),
+        'synopsis': clean(get_column(row, 'synopsis')),
+        'duration': clean(get_column(row, 'duration')),
+        'image': clean(get_column(row, 'image')),
+        'redditLink': link if is_reddit else '',
+        'patreonLink': link if is_patreon else '',
+        'scriptAuthor': normalize_author(get_column(row, 'script author')),
+        'scriptAuthorPage': clean(get_column(row, 'script author page')),
+        'scriptLink': clean(get_column(row, 'script link')),
+        'audioEditor': clean(get_column(row, 'audio editor', 'audio editor ')),
+        'audioEditorPage': clean(get_column(row, 'audio editor page')),
+        'datePosted': parse_date(get_column(row, 'Date Posted', 'date posted', 'Date posted')),
         'collabPartners': [],
         '_source': source
     }
     
     # Add collab partners
     for i in range(1, 5):
-        name = clean(row.get(f'collab partner name {i}', ''))
-        link = clean(row.get(f'collab partner link {i}', ''))
+        name = clean(get_column(row, f'collab partner name {i}'))
+        link = clean(get_column(row, f'collab partner link {i}'))
         if name:
             audio['collabPartners'].append({'name': name, 'link': link})
     
@@ -182,13 +219,17 @@ def fix_future_dates(audios):
     return audios
 
 def main():
-    print("Fetching Reddit sheet...")
-    reddit_data = fetch_csv(REDDIT_SHEET_URL)
-    print(f"  Found {len(reddit_data)} rows")
+    print("=" * 50)
+    print("Building audios.json from Google Sheets")
+    print("=" * 50)
     
-    print("Fetching Patreon sheet...")
+    reddit_data = fetch_csv(REDDIT_SHEET_URL)
     patreon_data = fetch_csv(PATREON_SHEET_URL)
-    print(f"  Found {len(patreon_data)} rows")
+    
+    if not reddit_data and not patreon_data:
+        print("\nERROR: No data fetched from either sheet!")
+        print("Check that sheets are published to web as CSV")
+        return
     
     # Build merged audio list
     audios = {}
@@ -196,13 +237,19 @@ def main():
     # Add Patreon audios first (primary source)
     for row in patreon_data:
         audio = extract_audio(row, 'patreon')
+        if not audio['title']:
+            continue
         norm_title = normalize_title(audio['title'])
         if norm_title and norm_title not in audios:
             audios[norm_title] = audio
     
+    print(f"\nAfter Patreon: {len(audios)} audios")
+    
     # Merge Reddit audios
     for row in reddit_data:
         audio = extract_audio(row, 'reddit')
+        if not audio['title']:
+            continue
         norm_title = normalize_title(audio['title'])
         
         if not norm_title:
@@ -210,11 +257,18 @@ def main():
         
         if norm_title in audios:
             # Merge - add Reddit link to existing entry
-            audios[norm_title]['redditLink'] = audio['redditLink']
+            if audio['redditLink']:
+                audios[norm_title]['redditLink'] = audio['redditLink']
             if not audios[norm_title]['scriptLink'] and audio['scriptLink']:
                 audios[norm_title]['scriptLink'] = audio['scriptLink']
+            if not audios[norm_title]['scriptAuthor'] or audios[norm_title]['scriptAuthor'] == 'OC (Original Content)':
+                if audio['scriptAuthor'] and audio['scriptAuthor'] != 'OC (Original Content)':
+                    audios[norm_title]['scriptAuthor'] = audio['scriptAuthor']
+                    audios[norm_title]['scriptAuthorPage'] = audio['scriptAuthorPage']
         else:
             audios[norm_title] = audio
+    
+    print(f"After Reddit merge: {len(audios)} audios")
     
     # Convert to list and clean up
     audio_list = list(audios.values())
@@ -240,7 +294,9 @@ def main():
     reddit_only = sum(1 for a in audio_list if a['redditLink'] and not a['patreonLink'])
     patreon_only = sum(1 for a in audio_list if a['patreonLink'] and not a['redditLink'])
     
-    print(f"\nGenerated audios.json with {len(audio_list)} audios")
+    print(f"\n{'=' * 50}")
+    print(f"SUCCESS: Generated audios.json with {len(audio_list)} audios")
+    print(f"{'=' * 50}")
     print(f"  Both platforms: {both}")
     print(f"  Reddit only: {reddit_only}")
     print(f"  Patreon only: {patreon_only}")
