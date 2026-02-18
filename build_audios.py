@@ -14,8 +14,8 @@ from collections import Counter
 # ============================================
 # CONFIGURE THESE URLs FROM YOUR GOOGLE SHEET
 # ============================================
-REDDIT_SHEET_URL = "YOUR_REDDIT_CSV_URL_HERE"
-PATREON_SHEET_URL = "YOUR_PATREON_CSV_URL_HERE"
+REDDIT_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTGQ_95RZSlRZtRysMG6Nh1vB5pG93R-mbU6WaoMF2Ci0aB8EMjrWrLsx1mDmGesj1gSLBs2TjSfQPk/pubhtml"
+PATREON_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj5CXHi3my2A5n1THsopOz4jh9x3rLJu3mLaEtHGjR8_9cFOG2NzYEuvwPBEJmwKZsZi9XPepwiaXr/pubhtml"
 # ============================================
 
 def fetch_csv(url):
